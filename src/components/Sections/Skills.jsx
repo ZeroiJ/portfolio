@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { Code, Database, Cpu, Gamepad2 } from 'lucide-react';
 
 const SkillBar = ({ name, level, color }) => (
-    <div className="mb-10">
-        <div className="flex justify-between mb-3 font-pixel text-sm md:text-lg">
+    <div className="mb-12">
+        <div className="flex justify-between mb-4 font-pixel text-lg md:text-xl">
             <span>{name}</span>
             <span>{level}%</span>
         </div>
-        <div className="h-6 bg-gray-800 border-2 border-gray-600 relative overflow-hidden">
+        <div className="h-8 bg-gray-800 border-2 border-gray-600 relative overflow-hidden">
             <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${level}%` }}
@@ -31,19 +31,19 @@ const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="py-32 px-6 bg-retro-bg relative">
+        <section id="skills" className="py-40 px-6 bg-retro-bg relative">
             <div className="max-w-[80rem] mx-auto">
-                <div className="flex items-center gap-6 mb-20">
-                    <Code className="text-retro-primary w-12 h-12 md:w-16 md:h-16" />
-                    <h2 className="text-4xl md:text-6xl font-pixel text-retro-text">
+                <div className="flex items-center gap-8 mb-24">
+                    <Code className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
+                    <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
                         PLAYER STATS
                     </h2>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-20">
+                <div className="grid md:grid-cols-2 gap-24">
                     {/* Main Stats */}
-                    <div className="bg-gray-900/80 p-10 border-4 border-retro-text shadow-[12px_12px_0_#000]">
-                        <h3 className="font-pixel text-2xl text-retro-secondary mb-10 border-b-2 border-gray-700 pb-4">
+                    <div className="bg-gray-900/80 p-12 border-4 border-retro-text shadow-[12px_12px_0_#000]">
+                        <h3 className="font-pixel text-3xl text-retro-secondary mb-12 border-b-2 border-gray-700 pb-6">
                             SKILL TREE
                         </h3>
                         {skills.map((skill) => (
@@ -53,28 +53,28 @@ const Skills = () => {
 
                     {/* Inventory / Tools */}
                     <div>
-                        <h3 className="font-pixel text-2xl text-retro-accent mb-10 border-b-2 border-gray-700 pb-4">
+                        <h3 className="font-pixel text-3xl text-retro-accent mb-12 border-b-2 border-gray-700 pb-6">
                             INVENTORY
                         </h3>
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-2 gap-8">
                             {['VS Code', 'Jupyter', 'Unity (Learning)', 'Git', 'SQL', 'Pandas'].map((item) => (
                                 <motion.div
                                     key={item}
                                     whileHover={{ scale: 1.05, backgroundColor: '#333' }}
-                                    className="bg-gray-800 p-6 border-2 border-gray-600 flex items-center gap-4 cursor-help"
+                                    className="bg-gray-800 p-8 border-2 border-gray-600 flex items-center gap-4 cursor-help"
                                 >
-                                    <div className="w-3 h-3 bg-retro-secondary animate-pulse"></div>
-                                    <span className="font-mono text-lg">{item}</span>
+                                    <div className="w-4 h-4 bg-retro-secondary animate-pulse"></div>
+                                    <span className="font-mono text-xl">{item}</span>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="mt-12 bg-gray-900 p-8 border-2 border-retro-primary/50">
-                            <h4 className="font-pixel text-base text-retro-primary mb-4">CURRENT QUEST</h4>
-                            <p className="font-mono text-lg text-gray-400">
+                        <div className="mt-16 bg-gray-900 p-10 border-2 border-retro-primary/50">
+                            <h4 className="font-pixel text-xl text-retro-primary mb-6">CURRENT QUEST</h4>
+                            <p className="font-mono text-2xl text-gray-400">
                                 "Mastering the Art of Game Physics"
                             </p>
-                            <div className="mt-4 h-4 bg-gray-800 rounded-full overflow-hidden border border-gray-600">
+                            <div className="mt-6 h-6 bg-gray-800 rounded-full overflow-hidden border border-gray-600">
                                 <div className="h-full bg-retro-primary w-1/3"></div>
                             </div>
                         </div>
