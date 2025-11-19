@@ -7,28 +7,28 @@ const QuestItem = ({ title, subtitle, status, date, description }) => (
         initial={{ x: -20, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className="relative pl-8 pb-12 border-l-2 border-gray-700 last:border-0"
+        className="relative pl-12 pb-16 border-l-4 border-gray-700 last:border-0"
     >
-        <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 ${status === 'completed' ? 'bg-retro-primary border-retro-primary' : 'bg-retro-bg border-retro-secondary'}`}></div>
+        <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 ${status === 'completed' ? 'bg-retro-primary border-retro-primary' : 'bg-retro-bg border-retro-secondary'}`}></div>
 
-        <div className="bg-gray-900/50 p-6 border border-gray-700 hover:border-retro-secondary transition-colors">
-            <div className="flex justify-between items-start mb-2">
+        <div className="bg-gray-900/50 p-8 border-2 border-gray-700 hover:border-retro-secondary transition-colors">
+            <div className="flex justify-between items-start mb-4">
                 <div>
-                    <h4 className="font-pixel text-sm md:text-base text-retro-text">{title}</h4>
-                    <p className="text-retro-secondary text-xs md:text-sm font-mono">{subtitle}</p>
+                    <h4 className="font-pixel text-lg md:text-xl text-retro-text mb-2">{title}</h4>
+                    <p className="text-retro-secondary text-base md:text-lg font-mono">{subtitle}</p>
                 </div>
-                <span className="text-xs font-mono text-gray-500">{date}</span>
+                <span className="text-sm font-mono text-gray-500">{date}</span>
             </div>
 
-            <p className="text-gray-400 font-mono text-sm mb-4">
+            <p className="text-gray-400 font-mono text-lg mb-6 leading-relaxed">
                 {description}
             </p>
 
-            <div className="flex items-center gap-2 text-xs font-pixel">
+            <div className="flex items-center gap-3 text-sm font-pixel">
                 {status === 'completed' ? (
-                    <span className="text-green-500 flex items-center gap-1"><CheckCircle2 size={12} /> QUEST COMPLETE</span>
+                    <span className="text-green-500 flex items-center gap-2"><CheckCircle2 size={16} /> QUEST COMPLETE</span>
                 ) : (
-                    <span className="text-yellow-500 flex items-center gap-1"><Circle size={12} /> IN PROGRESS</span>
+                    <span className="text-yellow-500 flex items-center gap-2"><Circle size={16} /> IN PROGRESS</span>
                 )}
             </div>
         </div>
@@ -61,16 +61,16 @@ const Journey = () => {
     ];
 
     return (
-        <section id="journey" className="py-20 px-4 bg-retro-bg relative border-t-4 border-retro-text">
-            <div className="max-w-4xl mx-auto">
-                <div className="flex items-center gap-4 mb-12">
-                    <Map className="text-retro-primary w-8 h-8 md:w-12 md:h-12" />
-                    <h2 className="text-2xl md:text-4xl font-pixel text-retro-text">
+        <section id="journey" className="py-32 px-6 bg-retro-bg relative border-t-4 border-retro-text">
+            <div className="max-w-[80rem] mx-auto">
+                <div className="flex items-center gap-6 mb-20">
+                    <Map className="text-retro-primary w-12 h-12 md:w-16 md:h-16" />
+                    <h2 className="text-4xl md:text-6xl font-pixel text-retro-text">
                         QUEST LOG
                     </h2>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-8">
                     {quests.map((quest, index) => (
                         <QuestItem key={index} {...quest} />
                     ))}
