@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Hero = () => {
+const Hero = ({ onStart }) => {
     return (
         <section id="hero" className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
             {/* Grid Background Effect */}
@@ -20,21 +20,13 @@ const Hero = () => {
                     SUJAL
                 </h1>
 
-                <div className="text-3xl md:text-5xl text-retro-text font-mono mb-12 h-16">
+                <div className="text-3xl md:text-5xl text-retro-text font-mono mb-20 h-16">
                     <span className="mr-4">&gt;</span>
                     <span className="typing-effect">Data Scientist...</span>
                 </div>
 
-                {/* Floating Elements - Now inline below text */}
-                <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="text-retro-secondary font-pixel text-xl md:text-2xl animate-pulse mb-12"
-                >
-                    SCROLL TO CONTINUE
-                </motion.div>
-
                 <motion.button
+                    onClick={onStart}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="px-20 py-10 bg-retro-primary text-white font-pixel text-2xl md:text-3xl border-4 border-white shadow-[10px_10px_0_#000] hover:shadow-[14px_14px_0_#000] hover:-translate-y-2 transition-all"

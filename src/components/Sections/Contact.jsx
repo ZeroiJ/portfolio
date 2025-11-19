@@ -11,7 +11,7 @@ const SocialButton = ({ icon: Icon, label, href }) => (
         whileTap={{ scale: 0.95 }}
         className="flex flex-col items-center gap-6 p-12 bg-gray-800 border-2 border-gray-600 hover:border-retro-primary hover:bg-gray-700 transition-all group"
     >
-        <Icon className="w-16 h-16 text-gray-400 group-hover:text-retro-primary transition-colors" />
+        <Icon className="w-16 h-16 text-white group-hover:text-retro-primary transition-colors" />
         <span className="font-pixel text-lg md:text-xl text-gray-400 group-hover:text-retro-text">{label}</span>
     </motion.a>
 );
@@ -21,8 +21,10 @@ const Contact = () => {
         <section id="contact" className="py-40 px-6 bg-retro-bg relative">
             <div className="max-w-[80rem] mx-auto text-center">
                 <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8 }}
                     className="bg-gray-900/80 p-20 md:p-32 border-4 border-retro-text shadow-[12px_12px_0_#000]"
                 >
                     <h2 className="text-5xl md:text-7xl font-pixel text-retro-primary mb-12">

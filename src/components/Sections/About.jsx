@@ -6,19 +6,26 @@ const About = () => {
     return (
         <section id="about" className="py-40 px-6 bg-retro-bg relative border-t-4 border-retro-text">
             <div className="max-w-[80rem] mx-auto">
-                <div className="flex items-center gap-8 mb-24">
+                <motion.div
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex items-center gap-8 mb-24"
+                >
                     <User className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
                     <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
                         CHARACTER BIO
                     </h2>
-                </div>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-24 items-center">
                     {/* Avatar / Image Placeholder */}
                     <motion.div
-                        initial={{ x: -50, opacity: 0 }}
+                        initial={{ x: -100, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
                         className="border-4 border-retro-secondary p-6 bg-black/50"
                     >
                         <div className="aspect-square bg-gray-800 flex items-center justify-center overflow-hidden relative group">
@@ -29,9 +36,10 @@ const About = () => {
 
                     {/* Bio Text */}
                     <motion.div
-                        initial={{ x: 50, opacity: 0 }}
+                        initial={{ x: 100, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
                         className="space-y-12 font-mono text-2xl md:text-3xl"
                     >
                         <div className="bg-gray-900/50 p-12 border-l-8 border-retro-accent">

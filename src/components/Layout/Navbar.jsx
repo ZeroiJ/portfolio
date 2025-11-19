@@ -9,7 +9,7 @@ const NavItem = ({ icon: Icon, label, href }) => (
         whileTap={{ scale: 0.95 }}
         className="flex items-center gap-3 px-6 py-3 text-retro-text hover:text-retro-primary transition-colors cursor-pointer"
     >
-        <Icon size={24} />
+        <Icon size={24} className="text-white" />
         <span className="hidden md:inline font-pixel text-base md:text-lg">{label}</span>
     </motion.a>
 );
@@ -21,7 +21,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-28">
                     {/* Logo / Player Name */}
                     <div className="flex-shrink-0 flex items-center gap-4">
-                        <Terminal className="text-retro-primary w-10 h-10 md:w-12 md:h-12" />
+                        <Terminal className="text-white w-10 h-10 md:w-12 md:h-12" />
                         <span className="font-pixel text-retro-primary text-xl md:text-2xl">
                             PLAYER_1
                         </span>

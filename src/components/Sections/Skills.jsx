@@ -12,6 +12,7 @@ const SkillBar = ({ name, level, color }) => (
             <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${level}%` }}
+                viewport={{ once: false }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className={`h-full ${color} relative`}
             >
@@ -33,26 +34,43 @@ const Skills = () => {
     return (
         <section id="skills" className="py-40 px-6 bg-retro-bg relative">
             <div className="max-w-[80rem] mx-auto">
-                <div className="flex items-center gap-8 mb-24">
+                <motion.div
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex items-center gap-8 mb-24"
+                >
                     <Code className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
                     <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
                         PLAYER STATS
                     </h2>
-                </div>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-24">
                     {/* Main Stats */}
-                    <div className="bg-gray-900/80 p-12 border-4 border-retro-text shadow-[12px_12px_0_#000]">
+                    <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="bg-gray-900/80 p-12 border-4 border-retro-text shadow-[12px_12px_0_#000]"
+                    >
                         <h3 className="font-pixel text-3xl text-retro-secondary mb-12 border-b-2 border-gray-700 pb-6">
                             SKILL TREE
                         </h3>
                         {skills.map((skill) => (
                             <SkillBar key={skill.name} {...skill} />
                         ))}
-                    </div>
+                    </motion.div>
 
                     {/* Inventory / Tools */}
-                    <div>
+                    <motion.div
+                        initial={{ x: 100, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
                         <h3 className="font-pixel text-3xl text-retro-accent mb-12 border-b-2 border-gray-700 pb-6">
                             INVENTORY
                         </h3>
@@ -78,7 +96,7 @@ const Skills = () => {
                                 <div className="h-full bg-retro-primary w-1/3"></div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

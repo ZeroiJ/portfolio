@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Map, CheckCircle2, Circle } from 'lucide-react';
 
-const QuestItem = ({ title, subtitle, status, date, description }) => (
+const QuestItem = ({ title, subtitle, status, date, description, index }) => (
     <motion.div
-        initial={{ x: -20, opacity: 0 }}
+        initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8, delay: index * 0.2 }}
         className="relative pl-16 pb-20 border-l-4 border-gray-700 last:border-0"
     >
         <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 ${status === 'completed' ? 'bg-retro-primary border-retro-primary' : 'bg-retro-bg border-retro-secondary'}`}></div>
@@ -63,16 +64,22 @@ const Journey = () => {
     return (
         <section id="journey" className="py-40 px-6 bg-retro-bg relative border-t-4 border-retro-text">
             <div className="max-w-[80rem] mx-auto">
-                <div className="flex items-center gap-8 mb-24">
+                <motion.div
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex items-center gap-8 mb-24"
+                >
                     <Map className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
                     <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
                         QUEST LOG
                     </h2>
-                </div>
+                </motion.div>
 
                 <div className="space-y-12">
                     {quests.map((quest, index) => (
-                        <QuestItem key={index} {...quest} />
+                        <QuestItem key={index} index={index} {...quest} />
                     ))}
                 </div>
             </div>
