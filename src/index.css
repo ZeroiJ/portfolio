@@ -1,36 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-neo-bg: #FDFBF7;
+  --color-neo-text: #1A1A1A;
+  --color-neo-primary: #FF4D4D;
+  --color-neo-secondary: #4DFF4D;
+  --color-neo-accent: #4D4DFF;
+  --color-neo-border: #000000;
 
-:root {
-  font-family: 'VT323', monospace;
-  background-color: #202020;
-  color: #e0e0e0;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "Space Mono", monospace;
+  --font-sans: "Inter", sans-serif;
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  --background-image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-/* Retro Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+@layer base {
+  body {
+    @apply bg-neo-bg text-neo-text font-sans;
+    background-image: var(--background-image-noise);
+  }
+
+  /* Neo-Brutalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neo-bg border-l-2 border-neo-border;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neo-primary border-2 border-neo-border;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neo-accent;
+  }
 }
-::-webkit-scrollbar-track {
-  background: #202020;
+
+.typing-effect::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
 }
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border: 2px solid #202020;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ff0055;
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }

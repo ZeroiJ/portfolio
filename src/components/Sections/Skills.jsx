@@ -1,103 +1,101 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Cpu, Gamepad2 } from 'lucide-react';
 
-const SkillBar = ({ name, level, color }) => (
-    <div className="mb-12">
-        <div className="flex justify-between mb-4 font-pixel text-lg md:text-xl">
-            <span>{name}</span>
-            <span>{level}%</span>
+const SpecCard = ({ title, items, color }) => (
+    <motion.div
+        whileHover={{ y: -5 }}
+        className="bg-white border-2 border-black p-8 shadow-[8px_8px_0_#000] hover:shadow-[12px_12px_0_#000] transition-all"
+    >
+        <h3 className={`font-mono text-sm font-bold mb-6 uppercase tracking-wider ${color}`}>
+            {title}
+        </h3>
+        <div className="space-y-4">
+            {items.map((item) => (
+                <div key={item.name} className="group">
+                    <div className="flex justify-between font-serif text-xl font-bold mb-1 group-hover:text-neo-primary transition-colors">
+                        <span>{item.name}</span>
+                        <span className="font-mono text-sm text-gray-400">{item.level}%</span>
+                    </div>
+                    <div className="h-2 bg-gray-100 border border-black overflow-hidden">
+                        <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${item.level}%` }}
+                            transition={{ duration: 1, ease: "circOut" }}
+                            className="h-full bg-black"
+                        ></motion.div>
+                    </div>
+                </div>
+            ))}
         </div>
-        <div className="h-8 bg-gray-800 border-2 border-gray-600 relative overflow-hidden">
-            <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${level}%` }}
-                viewport={{ once: false }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className={`h-full ${color} relative`}
-            >
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[size:1.5rem_1.5rem] opacity-50"></div>
-            </motion.div>
-        </div>
-    </div>
+    </motion.div>
 );
 
 const Skills = () => {
-    const skills = [
-        { name: "PYTHON", level: 90, color: "bg-retro-primary" },
-        { name: "DATA ANALYSIS", level: 85, color: "bg-retro-secondary" },
-        { name: "MACHINE LEARNING", level: 75, color: "bg-retro-accent" },
-        { name: "GAME DESIGN", level: 40, color: "bg-green-500" },
-        { name: "REACT / WEB", level: 60, color: "bg-purple-500" },
-    ];
-
     return (
-        <section id="skills" className="py-40 px-6 bg-retro-bg relative">
-            <div className="max-w-[80rem] mx-auto">
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex items-center gap-8 mb-24"
-                >
-                    <Code className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
-                    <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
-                        PLAYER STATS
+        <section id="skills" className="py-32 px-6 bg-neo-bg">
+            <div className="max-w-[90rem] mx-auto">
+
+                {/* Section Header */}
+                <div className="mb-20 flex items-end gap-6 border-b-4 border-black pb-6">
+                    <h2 className="font-serif text-5xl md:text-7xl font-bold">
+                        Tech Specs
                     </h2>
-                </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-24">
-                    {/* Main Stats */}
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.3 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="bg-gray-900/80 p-12 border-4 border-retro-text shadow-[12px_12px_0_#000]"
-                    >
-                        <h3 className="font-pixel text-3xl text-retro-secondary mb-12 border-b-2 border-gray-700 pb-6">
-                            SKILL TREE
-                        </h3>
-                        {skills.map((skill) => (
-                            <SkillBar key={skill.name} {...skill} />
-                        ))}
-                    </motion.div>
-
-                    {/* Inventory / Tools */}
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.3 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                        <h3 className="font-pixel text-3xl text-retro-accent mb-12 border-b-2 border-gray-700 pb-6">
-                            INVENTORY
-                        </h3>
-                        <div className="grid grid-cols-2 gap-8">
-                            {['VS Code', 'Jupyter', 'Unity (Learning)', 'Git', 'SQL', 'Pandas'].map((item) => (
-                                <motion.div
-                                    key={item}
-                                    whileHover={{ scale: 1.05, backgroundColor: '#333' }}
-                                    className="bg-gray-800 p-8 border-2 border-gray-600 flex items-center gap-4 cursor-help"
-                                >
-                                    <div className="w-4 h-4 bg-retro-secondary animate-pulse"></div>
-                                    <span className="font-mono text-xl">{item}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div className="mt-16 bg-gray-900 p-10 border-2 border-retro-primary/50">
-                            <h4 className="font-pixel text-xl text-retro-primary mb-6">CURRENT QUEST</h4>
-                            <p className="font-mono text-2xl text-gray-400">
-                                "Mastering the Art of Game Physics"
-                            </p>
-                            <div className="mt-6 h-6 bg-gray-800 rounded-full overflow-hidden border border-gray-600">
-                                <div className="h-full bg-retro-primary w-1/3"></div>
-                            </div>
-                        </div>
-                    </motion.div>
+                    <span className="font-mono text-xl text-gray-500 mb-2">/ CAPABILITIES</span>
                 </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <SpecCard
+                        title="Core Processing"
+                        color="text-neo-primary"
+                        items={[
+                            { name: "Python", level: 95 },
+                            { name: "SQL", level: 85 },
+                            { name: "C++", level: 70 }
+                        ]}
+                    />
+                    <SpecCard
+                        title="Data Synthesis"
+                        color="text-neo-secondary"
+                        items={[
+                            { name: "Pandas/NumPy", level: 90 },
+                            { name: "Scikit-Learn", level: 80 },
+                            { name: "TensorFlow", level: 65 }
+                        ]}
+                    />
+                    <SpecCard
+                        title="Visual Rendering"
+                        color="text-neo-accent"
+                        items={[
+                            { name: "Unity Engine", level: 60 },
+                            { name: "React.js", level: 75 },
+                            { name: "Tailwind CSS", level: 85 }
+                        ]}
+                    />
+                </div>
+
+                {/* Inventory / Tools Marquee */}
+                <div className="mt-20 border-y-2 border-black py-6 overflow-hidden bg-white">
+                    <div className="flex gap-12 animate-marquee whitespace-nowrap font-mono text-xl font-bold text-gray-400">
+                        <span>VS CODE</span>
+                        <span>•</span>
+                        <span>JUPYTER</span>
+                        <span>•</span>
+                        <span>GIT</span>
+                        <span>•</span>
+                        <span>FIGMA</span>
+                        <span>•</span>
+                        <span>BLENDER</span>
+                        <span>•</span>
+                        <span>POSTGRESQL</span>
+                        <span>•</span>
+                        <span>VS CODE</span>
+                        <span>•</span>
+                        <span>JUPYTER</span>
+                        <span>•</span>
+                        <span>GIT</span>
+                    </div>
+                </div>
+
             </div>
         </section>
     );

@@ -1,87 +1,61 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Map, CheckCircle2, Circle } from 'lucide-react';
 
-const QuestItem = ({ title, subtitle, status, date, description, index }) => (
-    <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: index * 0.2 }}
-        className="relative pl-16 pb-20 border-l-4 border-gray-700 last:border-0"
-    >
-        <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 ${status === 'completed' ? 'bg-retro-primary border-retro-primary' : 'bg-retro-bg border-retro-secondary'}`}></div>
+const LogEntry = ({ year, title, subtitle, description }) => (
+    <div className="relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-12 group">
+        {/* Timeline Line */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-200 md:left-auto md:right-0 md:col-span-3 md:border-r-2 md:border-black md:bg-transparent md:w-auto">
+            <div className="absolute top-0 left-[-5px] md:right-[-6px] md:left-auto w-3 h-3 bg-white border-2 border-black rounded-full group-hover:bg-neo-primary transition-colors"></div>
+        </div>
 
-        <div className="bg-gray-900/50 p-10 border-2 border-gray-700 hover:border-retro-secondary transition-colors">
-            <div className="flex justify-between items-start mb-6">
-                <div>
-                    <h4 className="font-pixel text-xl md:text-2xl text-retro-text mb-3">{title}</h4>
-                    <p className="text-retro-secondary text-xl md:text-2xl font-mono">{subtitle}</p>
-                </div>
-                <span className="text-lg font-mono text-gray-500">{date}</span>
+        {/* Content */}
+        <div className="md:col-span-9 pb-16">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-4 mb-4">
+                <span className="font-mono text-neo-accent font-bold text-lg">{year}</span>
+                <h3 className="font-serif text-3xl font-bold">{title}</h3>
             </div>
-
-            <p className="text-gray-400 font-mono text-2xl mb-8 leading-relaxed">
+            <p className="font-mono text-sm text-gray-500 mb-4 uppercase tracking-widest">{subtitle}</p>
+            <p className="font-sans text-lg text-gray-700 leading-relaxed max-w-2xl">
                 {description}
             </p>
-
-            <div className="flex items-center gap-4 text-lg font-pixel">
-                {status === 'completed' ? (
-                    <span className="text-green-500 flex items-center gap-2"><CheckCircle2 size={24} /> QUEST COMPLETE</span>
-                ) : (
-                    <span className="text-yellow-500 flex items-center gap-2"><Circle size={24} /> IN PROGRESS</span>
-                )}
-            </div>
         </div>
-    </motion.div>
+    </div>
 );
 
 const Journey = () => {
-    const quests = [
-        {
-            title: "BACHELOR OF DATA SCIENCE",
-            subtitle: "University / College Name",
-            date: "2023 - Present",
-            description: "Main Quest. Learning statistics, machine learning algorithms, and big data processing. Building the foundation for complex system analysis.",
-            status: "active"
-        },
-        {
-            title: "GAME DEV FUNDAMENTALS",
-            subtitle: "Self-Taught / Online Courses",
-            date: "2024 - Present",
-            description: "Side Quest. Exploring Unity/Godot, learning C#, and understanding game loops and physics engines.",
-            status: "active"
-        },
-        {
-            title: "PYTHON MASTERY",
-            subtitle: "Skill Acquisition",
-            date: "2023",
-            description: "Completed comprehensive training in Python programming, focusing on data libraries (Pandas, NumPy).",
-            status: "completed"
-        }
-    ];
-
     return (
-        <section id="journey" className="py-40 px-6 bg-retro-bg relative border-t-4 border-retro-text">
-            <div className="max-w-[80rem] mx-auto">
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex items-center gap-8 mb-24"
-                >
-                    <Map className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
-                    <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
-                        QUEST LOG
-                    </h2>
-                </motion.div>
+        <section id="journey" className="py-32 px-6 bg-neo-bg">
+            <div className="max-w-[90rem] mx-auto">
 
-                <div className="space-y-12">
-                    {quests.map((quest, index) => (
-                        <QuestItem key={index} index={index} {...quest} />
-                    ))}
+                {/* Section Header */}
+                <div className="mb-20 flex items-end gap-6 border-b-4 border-black pb-6">
+                    <h2 className="font-serif text-5xl md:text-7xl font-bold">
+                        System Logs
+                    </h2>
+                    <span className="font-mono text-xl text-gray-500 mb-2">/ HISTORY</span>
                 </div>
+
+                <div className="max-w-5xl">
+                    <LogEntry
+                        year="2023 - NOW"
+                        title="Bachelor of Data Science"
+                        subtitle="University / College Name"
+                        description="Acquiring the source code for statistical analysis and machine learning. Currently optimizing algorithms and managing big data structures."
+                    />
+                    <LogEntry
+                        year="2024 - NOW"
+                        title="Game Dev Fundamentals"
+                        subtitle="Self-Taught / Online"
+                        description="Side-loading knowledge in Unity and C#. Experimenting with physics engines and game loops to create interactive simulations."
+                    />
+                    <LogEntry
+                        year="2023"
+                        title="Python Mastery"
+                        subtitle="Certification"
+                        description="Completed full system upgrade in Python programming. Installed libraries: Pandas, NumPy, Matplotlib."
+                    />
+                </div>
+
             </div>
         </section>
     );

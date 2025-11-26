@@ -1,39 +1,118 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { MessageSquare, Video, Mic } from 'lucide-react';
 
-const Hero = ({ onStart }) => {
+const ChatBubble = ({ text, isUser = false, delay = 0 }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay, duration: 0.5 }}
+        className={`p-4 max-w-[80%] mb-4 font-mono text-sm border-2 border-black shadow-[4px_4px_0_#000] ${isUser ? 'bg-neo-primary text-white self-end ml-auto' : 'bg-white text-black self-start'
+            }`}
+    >
+        {text}
+    </motion.div>
+);
+
+const Hero = () => {
     return (
-        <section id="hero" className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-            {/* Grid Background Effect */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none"></div>
+        <section id="hero" className="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="z-10 max-w-[90rem] mx-auto flex flex-col items-center"
-            >
-                <h2 className="text-3xl md:text-5xl text-retro-secondary font-pixel mb-12 tracking-widest">
-                    HELLO WORLD, I AM
-                </h2>
-                <h1 className="text-7xl md:text-9xl lg:text-[12rem] leading-none font-pixel text-retro-primary mb-16 drop-shadow-[10px_10px_0_rgba(0,0,0,1)]">
-                    SUJAL
-                </h1>
+            {/* Background Elements */}
+            <div className="absolute top-1/4 left-10 w-64 h-64 bg-neo-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div className="absolute top-1/3 right-10 w-64 h-64 bg-neo-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
-                <div className="text-3xl md:text-5xl text-retro-text font-mono mb-20 h-16">
-                    <span className="mr-4">&gt;</span>
-                    <span className="typing-effect">Data Scientist...</span>
+            <div className="max-w-[90rem] mx-auto w-full grid lg:grid-cols-2 gap-16 items-center z-10">
+
+                {/* Text Content */}
+                <div className="text-center lg:text-left">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="font-serif text-6xl md:text-8xl font-bold leading-tight mb-8"
+                    >
+                        You've never met a <span className="italic text-neo-primary">Data Scientist</span> like this.
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="font-mono text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0"
+                    >
+                        Bridging the gap between complex algorithms and creative game development.
+                        Meet your next favorite collaborator.
+                    </motion.p>
+                    <motion.button
+                        whileHover={{ scale: 1.05, boxShadow: "8px 8px 0px #000" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-8 py-4 bg-black text-white font-mono font-bold text-lg border-2 border-transparent shadow-[4px_4px_0_#FF4D4D]"
+                    >
+                        START COLLABORATING
+                    </motion.button>
                 </div>
 
-                <motion.button
-                    onClick={onStart}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="px-20 py-10 bg-retro-primary text-white font-pixel text-2xl md:text-3xl border-4 border-white shadow-[10px_10px_0_#000] hover:shadow-[14px_14px_0_#000] hover:-translate-y-2 transition-all"
+                {/* Conversational UI / Window */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="relative"
                 >
-                    PRESS START
-                </motion.button>
-            </motion.div>
+                    {/* Main Chat Window */}
+                    <div className="bg-neo-bg border-2 border-black shadow-[12px_12px_0_#000] overflow-hidden">
+                        {/* Window Header */}
+                        <div className="bg-white border-b-2 border-black p-3 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-500 border border-black"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-500 border border-black"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-500 border border-black"></div>
+                            </div>
+                            <span className="font-mono text-xs font-bold">CHAT_SESSION_01.log</span>
+                        </div>
+
+                        {/* Chat Content */}
+                        <div className="p-6 h-[400px] flex flex-col bg-gray-50/50">
+                            <ChatBubble text="Hey! I'm looking for someone who knows Python AND Game Dev." isUser={true} delay={0.8} />
+                            <ChatBubble text="I got you. I specialize in Data Science but I'm building games in Unity too." delay={1.5} />
+                            <ChatBubble text="Can you handle large datasets?" isUser={true} delay={2.5} />
+                            <ChatBubble text="Absolutely. Pandas, SQL, you name it. Check out my stats below." delay={3.5} />
+
+                            {/* Typing Indicator */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 4.5 }}
+                                className="mt-auto flex gap-2 items-center text-gray-400 font-mono text-xs"
+                            >
+                                <span>Sujal is typing...</span>
+                            </motion.div>
+                        </div>
+
+                        {/* Input Area */}
+                        <div className="p-4 border-t-2 border-black bg-white flex gap-4">
+                            <div className="flex-1 bg-gray-100 border-2 border-gray-300 p-2 font-mono text-sm text-gray-400">
+                                Write a message...
+                            </div>
+                            <button className="p-2 bg-neo-accent text-white border-2 border-black shadow-[2px_2px_0_#000]">
+                                <MessageSquare size={20} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Floating Elements */}
+                    <motion.div
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ repeat: Infinity, duration: 3 }}
+                        className="absolute -top-10 -right-10 bg-white p-4 border-2 border-black shadow-[8px_8px_0_#4DFF4D] z-20 hidden md:block"
+                    >
+                        <div className="flex items-center gap-3 font-mono font-bold">
+                            <Video className="text-neo-primary" />
+                            <span>VIDEO_CALL_ACTIVE</span>
+                        </div>
+                    </motion.div>
+
+                </motion.div>
+            </div>
         </section>
     );
 };

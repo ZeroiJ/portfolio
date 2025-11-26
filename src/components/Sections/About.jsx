@@ -1,72 +1,70 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User } from 'lucide-react';
+import { User, ArrowRight } from 'lucide-react';
 
 const About = () => {
     return (
-        <section id="about" className="py-40 px-6 bg-retro-bg relative border-t-4 border-retro-text">
-            <div className="max-w-[80rem] mx-auto">
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex items-center gap-8 mb-24"
-                >
-                    <User className="text-retro-primary w-16 h-16 md:w-20 md:h-20" />
-                    <h2 className="text-5xl md:text-7xl font-pixel text-retro-text">
-                        CHARACTER BIO
+        <section id="about" className="py-32 px-6 bg-neo-bg relative">
+            <div className="max-w-[90rem] mx-auto">
+
+                {/* Section Header */}
+                <div className="mb-20 flex items-end gap-6 border-b-4 border-black pb-6">
+                    <h2 className="font-serif text-5xl md:text-7xl font-bold">
+                        Profile
                     </h2>
-                </motion.div>
+                    <span className="font-mono text-xl text-gray-500 mb-2">/ WHO_AM_I</span>
+                </div>
 
-                <div className="grid md:grid-cols-2 gap-24 items-center">
-                    {/* Avatar / Image Placeholder */}
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.3 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="border-4 border-retro-secondary p-6 bg-black/50"
-                    >
-                        <div className="aspect-square bg-gray-800 flex items-center justify-center overflow-hidden relative group">
-                            <span className="font-pixel text-3xl text-gray-600">AVATAR_IMG</span>
-                            <div className="absolute inset-0 bg-retro-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </div>
-                    </motion.div>
-
-                    {/* Bio Text */}
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.3 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="space-y-12 font-mono text-2xl md:text-3xl"
-                    >
-                        <div className="bg-gray-900/50 p-12 border-l-8 border-retro-accent">
-                            <p className="text-retro-text mb-8">
-                                <span className="text-retro-accent font-bold">CLASS:</span> Data Scientist (Student)
-                            </p>
-                            <p className="text-retro-text mb-8">
-                                <span className="text-retro-primary font-bold">SUB-CLASS:</span> Aspiring Game Dev
-                            </p>
-                            <p className="text-gray-400 leading-relaxed">
-                                Currently grinding XP in the Data Science realm, mastering algorithms and predictive models.
-                                However, my true quest lies in the world of Game Development. I'm looking to combine my
-                                analytical skills with creativity to build immersive digital experiences.
-                            </p>
-                        </div>
-
-                        <div className="flex gap-10">
-                            <div className="flex-1 bg-gray-800 p-8 text-center border-2 border-gray-600">
-                                <div className="text-lg text-gray-400 mb-4">LEVEL</div>
-                                <div className="text-5xl font-pixel text-retro-secondary">21</div>
+                <div className="grid md:grid-cols-12 gap-12">
+                    {/* Profile Card */}
+                    <div className="md:col-span-5">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white border-2 border-black shadow-[12px_12px_0_#FF4D4D] p-2"
+                        >
+                            <div className="aspect-[4/5] bg-gray-100 border-2 border-black flex items-center justify-center overflow-hidden relative">
+                                {/* Placeholder for real image */}
+                                <span className="font-mono text-2xl font-bold text-gray-300">IMG_PLACEHOLDER</span>
+                                <div className="absolute inset-0 bg-neo-primary/10 mix-blend-overlay"></div>
                             </div>
-                            <div className="flex-1 bg-gray-800 p-8 text-center border-2 border-gray-600">
-                                <div className="text-lg text-gray-400 mb-4">EXP</div>
-                                <div className="text-5xl font-pixel text-retro-accent">85%</div>
+                            <div className="p-6 border-t-2 border-black mt-2">
+                                <h3 className="font-serif text-2xl font-bold">Sujal</h3>
+                                <p className="font-mono text-sm text-gray-500">LVL 21 • DATA SCIENTIST</p>
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
+
+                    {/* Bio Content */}
+                    <div className="md:col-span-7 flex flex-col justify-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-8"
+                        >
+                            <p className="font-serif text-3xl md:text-4xl leading-tight">
+                                I'm a Data Science student with a secret weapon: <span className="bg-neo-secondary px-2">Creativity.</span>
+                            </p>
+
+                            <div className="font-mono text-lg text-gray-600 space-y-6 leading-relaxed border-l-4 border-neo-accent pl-8">
+                                <p>
+                                    While others are just crunching numbers, I'm looking for ways to visualize them in 3D space.
+                                    My background in algorithms gives me the logic, but my passion for game dev gives me the vision.
+                                </p>
+                                <p>
+                                    I don't just build models; I build experiences.
+                                </p>
+                            </div>
+
+                            <div className="pt-8">
+                                <button className="group flex items-center gap-4 font-mono font-bold text-xl hover:text-neo-primary transition-colors">
+                                    READ FULL BIO <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
