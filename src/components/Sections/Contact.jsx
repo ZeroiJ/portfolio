@@ -48,10 +48,10 @@ const Contact = () => {
                     </div>
 
                     <div className="grid gap-6">
-                        <ContactLink icon={Github} label="GITHUB" href="https://github.com" />
+                        <ContactLink icon={Github} label="GITHUB" href="https://github.com/ZeroiJ" />
                         <ContactLink icon={Linkedin} label="LINKEDIN" href="https://linkedin.com" />
                         <ContactLink icon={Twitter} label="TWITTER" href="https://twitter.com" />
-                        <ContactLink icon={Mail} label="EMAIL" href="mailto:example@email.com" />
+                        <ContactLink icon={Mail} label="EMAIL" href="mailto:sujalbirwadkar19@gmail.com" />
                     </div>
                 </div>
 

@@ -30,7 +30,7 @@ const About = () => {
                                 <div className="absolute inset-0 bg-neo-primary/10 mix-blend-overlay"></div>
                             </div>
                             <div className="p-6 border-t-2 border-black mt-2">
-                                <h3 className="font-serif text-2xl font-bold">Sujal</h3>
+                                <h3 className="font-serif text-2xl font-bold">Sujal Birwadkar</h3>
                                 <p className="font-mono text-sm text-gray-500">LVL 21 • DATA SCIENTIST</p>
                             </div>
                         </motion.div>
