@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Video, Mic } from 'lucide-react';
+import { MessageSquare, Video } from 'lucide-react';
 
 const ChatBubble = ({ text, isUser = false, delay = 0 }) => (
     <motion.div
@@ -29,9 +29,11 @@ const Hero = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="font-serif text-6xl md:text-8xl font-bold leading-tight mb-8"
+                        className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-8"
                     >
-                        You've never met a <span className="italic text-neo-primary">Data Scientist</span> like this.
+                        Data Scientist Main. <br />
+                        <span className="text-neo-primary italic">Game Dev Sub-Class.</span> <br />
+                        Min-Maxing Reality.
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -39,8 +41,8 @@ const Hero = () => {
                         transition={{ delay: 0.2 }}
                         className="font-mono text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0"
                     >
-                        Bridging the gap between complex algorithms and creative game development.
-                        Meet your next favorite collaborator.
+                        Transitioning from the RNG struggle of Destiny 2 to the optimized freedom of Warframe.
+                        I analyze the meta, and now I’m learning to build it.
                     </motion.p>
                     <motion.button
                         whileHover={{ scale: 1.05, boxShadow: "8px 8px 0px #000" }}
@@ -72,10 +74,10 @@ const Hero = () => {
 
                         {/* Chat Content */}
                         <div className="p-6 h-[400px] flex flex-col bg-gray-50/50">
-                            <ChatBubble text="Hey! I'm looking for someone who knows Python AND Game Dev." isUser={true} delay={0.8} />
-                            <ChatBubble text="I got you. I specialize in Data Science but I'm building games in Unity too." delay={1.5} />
-                            <ChatBubble text="Can you handle large datasets?" isUser={true} delay={2.5} />
-                            <ChatBubble text="Absolutely. Pandas, SQL, you name it. Check out my stats below." delay={3.5} />
+                            <ChatBubble text="So you analyze data... like drop rates?" isUser={true} delay={0.8} />
+                            <ChatBubble text="Exactly. I treat datasets like loot tables. Finding the pattern in the chaos." delay={1.5} />
+                            <ChatBubble text="And the Game Dev part?" isUser={true} delay={2.5} />
+                            <ChatBubble text="That's my new main. Building the systems instead of just farming them." delay={3.5} />
 
                             {/* Typing Indicator */}
                             <motion.div
