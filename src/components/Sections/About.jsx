@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { User, ArrowRight } from 'lucide-react';
+import profileImg from '../../assets/profile.jpg';
 
 const About = () => {
     return (
@@ -12,7 +13,7 @@ const About = () => {
                     <h2 className="font-serif text-5xl md:text-7xl font-bold">
                         About Me
                     </h2>
-                    <span className="font-mono text-xl text-gray-500 mb-2">/ THE_LORE_TAB</span>
+                    <span className="font-mono text-xl text-gray-500 mb-2">/ THE_LORD_HIMSELF_SUJAL_BIRWADKAR</span>
                 </div>
 
                 <div className="grid md:grid-cols-12 gap-12">
@@ -25,9 +26,8 @@ const About = () => {
                             className="bg-white border-2 border-black shadow-[12px_12px_0_#FF4D4D] p-2"
                         >
                             <div className="aspect-[4/5] bg-gray-100 border-2 border-black flex items-center justify-center overflow-hidden relative">
-                                {/* Placeholder for real image */}
-                                <span className="font-mono text-2xl font-bold text-gray-300">IMG_PLACEHOLDER</span>
-                                <div className="absolute inset-0 bg-neo-primary/10 mix-blend-overlay"></div>
+                                <img src={profileImg} alt="Sujal Birwadkar" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                                <div className="absolute inset-0 bg-neo-primary/10 mix-blend-overlay pointer-events-none"></div>
                             </div>
                             <div className="p-6 border-t-2 border-black mt-2">
                                 <h3 className="font-serif text-2xl font-bold">Sujal Birwadkar</h3>
