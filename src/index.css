@@ -1,12 +1,36 @@
 @import "tailwindcss";
 
-@theme {
+/* Define CSS Variables for Theming */
+:root {
+  /* Default (Tavus) */
   --color-neo-bg: #FDFBF7;
   --color-neo-text: #1A1A1A;
   --color-neo-primary: #FF4D4D;
   --color-neo-secondary: #4DFF4D;
   --color-neo-accent: #4D4DFF;
   --color-neo-border: #000000;
+}
+
+:root[data-theme="marathon"] {
+  --color-neo-bg: #050505;
+  --color-neo-text: #FFFFFF;
+  --color-neo-primary: #CCFF00;
+  /* Acid Green */
+  --color-neo-secondary: #00F0FF;
+  /* Electric Blue */
+  --color-neo-accent: #FF0055;
+  /* Cyber Red */
+  --color-neo-border: #333333;
+}
+
+@theme {
+  /* Map Tailwind keys to CSS variables */
+  --color-neo-bg: var(--color-neo-bg);
+  --color-neo-text: var(--color-neo-text);
+  --color-neo-primary: var(--color-neo-primary);
+  --color-neo-secondary: var(--color-neo-secondary);
+  --color-neo-accent: var(--color-neo-accent);
+  --color-neo-border: var(--color-neo-border);
 
   --font-serif: "Playfair Display", serif;
   --font-mono: "Space Mono", monospace;

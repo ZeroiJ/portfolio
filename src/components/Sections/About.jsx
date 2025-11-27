@@ -1,9 +1,89 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, ArrowRight } from 'lucide-react';
+import { User, ArrowRight, Database, Code } from 'lucide-react';
 import profileImg from '../../assets/profile.jpg';
+import { useTheme } from '../../context/ThemeContext';
 
 const About = () => {
+    const { theme } = useTheme();
+
+    if (theme === 'marathon') {
+        return (
+            <section id="about" className="py-32 px-6 bg-neo-bg text-neo-text relative border-t border-neo-border">
+                <div className="max-w-[90rem] mx-auto">
+                    {/* Marathon Header */}
+                    <div className="mb-20 flex items-center justify-between border-b border-neo-border pb-6">
+                        <h2 className="font-sans font-black text-5xl md:text-7xl uppercase tracking-tighter">
+                            Runner <span className="text-neo-primary">Dossier</span>
+                        </h2>
+                        <span className="font-mono text-sm text-neo-primary border border-neo-primary px-4 py-1 rounded-full">
+                            ID: SUJAL_B
+                        </span>
+                    </div>
+
+                    <div className="grid md:grid-cols-12 gap-12">
+                        {/* Profile Image - Marathon Style */}
+                        <div className="md:col-span-5">
+                            <div className="relative group">
+                                <div className="absolute -inset-2 bg-neo-primary opacity-20 blur-lg group-hover:opacity-40 transition-opacity"></div>
+                                <div className="aspect-[4/5] bg-black border border-neo-border relative overflow-hidden">
+                                    <img src={profileImg} alt="Sujal Birwadkar" className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500" />
+
+                                    {/* HUD Overlay */}
+                                    <div className="absolute inset-0 border-[1px] border-neo-primary/30 m-4 pointer-events-none">
+                                        <div className="absolute top-0 left-0 w-2 h-2 bg-neo-primary"></div>
+                                        <div className="absolute top-0 right-0 w-2 h-2 bg-neo-primary"></div>
+                                        <div className="absolute bottom-0 left-0 w-2 h-2 bg-neo-primary"></div>
+                                        <div className="absolute bottom-0 right-0 w-2 h-2 bg-neo-primary"></div>
+                                    </div>
+
+                                    <div className="absolute bottom-8 left-8 font-mono text-xs text-neo-primary">
+                                        <p>SCANNING...</p>
+                                        <p>MATCH FOUND: 99.9%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bio Content - Marathon Style */}
+                        <div className="md:col-span-7 flex flex-col justify-center">
+                            <div className="space-y-8">
+                                <div className="font-mono text-lg text-gray-400 space-y-6 leading-relaxed">
+                                    <p className="border-l-2 border-neo-primary pl-6">
+                                        <span className="text-neo-primary font-bold">&gt;&gt; DECRYPTING LOG:</span><br />
+                                        Subject originated in the <span className="text-white">Destiny 2</span> ecosystem.
+                                        Observed behavior: Excessive grinding, pattern recognition, and optimization of RNG mechanics.
+                                    </p>
+                                    <p>
+                                        <span className="text-neo-primary font-bold">&gt;&gt; CURRENT STATUS:</span><br />
+                                        Subject has migrated to the <span className="text-white">Warframe</span> sector.
+                                        Now utilizing Data Science protocols to engineer outcomes rather than awaiting probability.
+                                        <br /><br />
+                                        <span className="text-white italic">"I don't just visualize data; I mod it."</span>
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4 mt-8">
+                                    <div className="bg-neo-border/20 p-4 border border-neo-border">
+                                        <Database className="text-neo-primary mb-2" />
+                                        <h4 className="font-bold text-white">DATA_ARCHITECT</h4>
+                                        <p className="text-xs text-gray-500 font-mono">Python, SQL, Pandas</p>
+                                    </div>
+                                    <div className="bg-neo-border/20 p-4 border border-neo-border">
+                                        <Code className="text-neo-secondary mb-2" />
+                                        <h4 className="font-bold text-white">SYSTEM_BUILDER</h4>
+                                        <p className="text-xs text-gray-500 font-mono">C++, React, Game Dev</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    // Default Tavus Theme
     return (
         <section id="about" className="py-32 px-6 bg-neo-bg relative">
             <div className="max-w-[90rem] mx-auto">

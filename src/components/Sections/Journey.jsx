@@ -1,99 +1,103 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
-const QuestEntry = ({ title, subtitle, tech, description, type }) => (
-    <div className="relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-12 group mb-16 last:mb-0">
-        {/* Timeline Line */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-200 md:left-auto md:right-0 md:col-span-3 md:border-r-2 md:border-black md:bg-transparent md:w-auto">
-            <div className={`absolute top-0 left-[-5px] md:right-[-6px] md:left-auto w-3 h-3 border-2 border-black rounded-full transition-colors ${type === 'main' ? 'bg-neo-primary' : 'bg-white group-hover:bg-neo-secondary'}`}></div>
-        </div>
+const QuestEntry = ({ type, title, subtitle, description, tech }) => {
+    const { theme } = useTheme();
 
-        {/* Content */}
-        <div className="md:col-span-9">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-4 mb-4">
-                <span className={`font-mono font-bold text-sm px-3 py-1 border border-black ${type === 'main' ? 'bg-black text-white' : 'bg-white text-black'}`}>
-                    {type === 'main' ? 'MAIN QUEST' : 'SIDE QUEST'}
-                </span>
-                <h3 className="font-serif text-3xl font-bold">{title}</h3>
-            </div>
-
-            <p className="font-mono text-sm text-gray-500 mb-4 uppercase tracking-widest">{subtitle}</p>
-
-            {tech && (
-                <div className="flex gap-2 mb-6 flex-wrap">
-                    {tech.map(t => (
-                        <span key={t} className="font-mono text-xs font-bold bg-gray-100 px-2 py-1 border border-gray-300">
-                            [{t}]
-                        </span>
-                    ))}
+    if (theme === 'marathon') {
+        return (
+            <div className="relative pl-8 border-l border-neo-border pb-12 last:pb-0">
+                <div className={`absolute -left-[5px] top-0 w-2 h-2 ${type === 'main' ? 'bg-neo-primary' : 'bg-neo-secondary'}`}></div>
+                <div className="mb-2 flex items-center gap-3">
+                    <span className={`text-xs font-mono px-2 py-0.5 border ${type === 'main' ? 'border-neo-primary text-neo-primary' : 'border-neo-secondary text-neo-secondary'}`}>
+                        {type === 'main' ? 'MAIN_OP' : 'SIDE_OP'}
+                    </span>
+                    <h3 className="text-xl font-bold text-white">{title}</h3>
                 </div>
-            )}
+                <p className="font-mono text-sm text-gray-400 mb-4">{subtitle}</p>
+                <p className="text-gray-300 text-sm leading-relaxed max-w-2xl mb-4">{description}</p>
+                {tech && (
+                    <div className="flex gap-2 flex-wrap">
+                        {tech.map((t, i) => (
+                            <span key={i} className="text-[10px] font-mono bg-neo-border/30 text-gray-400 px-2 py-1">{t}</span>
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    }
 
-            <p className="font-sans text-lg text-gray-700 leading-relaxed max-w-3xl border-l-4 border-gray-200 pl-6 italic">
-                "{description}"
-            </p>
+    // Tavus Style
+    return (
+        <div className="relative pl-8 border-l-4 border-black pb-12 last:pb-0">
+            <div className={`absolute -left-[10px] top-0 w-4 h-4 rounded-full border-2 border-black ${type === 'main' ? 'bg-neo-primary' : 'bg-white'}`}></div>
+
+            <div className="bg-white border-2 border-black shadow-[8px_8px_0_#000] p-6">
+                <div className="flex justify-between items-start mb-2">
+                    <div>
+                        <span className={`text-xs font-bold px-2 py-1 border border-black mb-2 inline-block ${type === 'main' ? 'bg-neo-primary text-white' : 'bg-neo-secondary text-black'}`}>
+                            {type === 'main' ? 'MAIN QUEST' : 'SIDE QUEST'}
+                        </span>
+                        <h3 className="text-xl font-bold">{title}</h3>
+                    </div>
+                </div>
+                <p className="font-mono text-sm text-gray-500 mb-4">{subtitle}</p>
+                <p className="text-gray-700 mb-4">{description}</p>
+                {tech && (
+                    <div className="flex gap-2 flex-wrap">
+                        {tech.map((t, i) => (
+                            <span key={i} className="text-xs font-bold bg-gray-100 px-2 py-1 border border-black">{t}</span>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 const Journey = () => {
+    const { theme } = useTheme();
+
     return (
-        <section id="journey" className="py-32 px-6 bg-neo-bg">
+        <section id="journey" className={`py-32 px-6 ${theme === 'marathon' ? 'bg-neo-bg text-neo-text' : 'bg-neo-bg'}`}>
             <div className="max-w-[90rem] mx-auto">
+                {theme === 'marathon' ? (
+                    <div className="mb-20 border-b border-neo-border pb-6">
+                        <h2 className="font-sans font-black text-5xl md:text-7xl uppercase tracking-tighter">
+                            Operation <span className="text-neo-accent">History</span>
+                        </h2>
+                    </div>
+                ) : (
+                    <div className="mb-20">
+                        <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">Quest Log</h2>
+                        <p className="font-mono text-xl text-gray-500">Campaign Progress</p>
+                    </div>
+                )}
 
-                {/* Section Header */}
-                <div className="mb-20 flex items-end gap-6 border-b-4 border-black pb-6">
-                    <h2 className="font-serif text-5xl md:text-7xl font-bold">
-                        Quest Log
-                    </h2>
-                    <span className="font-mono text-xl text-gray-500 mb-2">/ PROJECTS_&_XP</span>
-                </div>
-
-                <div className="max-w-5xl">
-                    {/* Education - Main Quest */}
+                <div className="max-w-3xl">
                     <QuestEntry
                         type="main"
                         title="B.Tech in CSE (Data Science)"
                         subtitle="MGMCET | 2024 - 2028"
                         description="Acquiring the source code for statistical analysis and machine learning. Currently optimizing algorithms and managing big data structures."
                     />
-
-                    {/* Project 1 */}
                     <QuestEntry
                         type="side"
-                        title="The 'God Roll' Analysis"
+                        title='The "God Roll" Analysis'
                         subtitle="Data Science Focus"
                         tech={['Python', 'Pandas', 'Matplotlib']}
-                        description="You know that feeling when you calculate the exact DPS output of a build? I did that, but for real-world data. I used Exploratory Data Analysis to find the 'meta' in this dataset, visualizing trends that others missed."
+                        description="You know that feeling when you calculate the exact DPS output of a build? I did that, but for real-world data. Built a dashboard to visualize trends in massive datasets."
                     />
-
-                    {/* Project 2 */}
                     <QuestEntry
                         type="side"
-                        title="The Dashboard"
-                        subtitle="Power BI Focus"
-                        tech={['Power BI', 'SQL']}
-                        description="Think of this as the UI for a complex raid. I took raw user data and built a dashboard that tells a story, allowing the user to track performance metrics in real-time without needing a wiki."
-                    />
-
-                    {/* Project 3 */}
-                    <QuestEntry
-                        type="side"
-                        title="The Prototype"
-                        subtitle="Game Dev / C++ Focus"
-                        tech={['C++', 'SDL/Unity']}
-                        description="My first step into the Void. A simple game loop where I applied object-oriented principles. It’s not a Triple-A title yet, but the hit-boxes are tighter than Destiny’s PvP netcode."
-                    />
-
-                    {/* Self Taught - Side Quest */}
-                    <QuestEntry
-                        type="side"
-                        title="Trying hard to be Game Dev"
-                        subtitle="Self-Taught / Online"
-                        description="Side-loading knowledge in Unity and C#. Experimenting with physics engines and game loops to create interactive simulations."
+                        title="Prototype Game Loop"
+                        subtitle="Game Dev Focus"
+                        tech={['C++', 'Raylib']}
+                        description="Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. It's janky, but it runs at 144fps."
                     />
                 </div>
-
             </div>
         </section>
     );
