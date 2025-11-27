@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Send, Terminal } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { FlickeringGrid } from '../ui/flickering-grid';
 
 const Hero = () => {
     const { theme } = useTheme();
@@ -10,7 +11,16 @@ const Hero = () => {
         return (
             <section className="min-h-screen flex flex-col justify-center px-6 pt-20 relative overflow-hidden bg-neo-bg text-neo-text">
                 {/* Background Grid */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none"></div>
+                <div className="absolute inset-0 z-0 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none">
+                    <FlickeringGrid
+                        squareSize={4}
+                        gridGap={6}
+                        color="#CCFF00"
+                        maxOpacity={0.2}
+                        flickerChance={0.3}
+                        className="w-full h-full"
+                    />
+                </div>
 
                 <div className="max-w-[90rem] mx-auto w-full grid lg:grid-cols-12 gap-12 items-center relative z-10">
                     <div className="lg:col-span-8">
