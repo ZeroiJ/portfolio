@@ -27,7 +27,7 @@ const Navbar = () => {
                         <Zap size={16} className={theme === 'marathon' ? 'fill-current' : ''} />
                     </div>
                     <span className="hidden md:block">
-                        {theme === 'tavus' ? 'MODE: TAVUS' : 'MODE: MARATHON'}
+                        {theme === 'tavus' ? 'MODE: OK GUY' : 'MODE: MARATHON'}
                     </span>
                 </button>
 
