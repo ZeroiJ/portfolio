@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Terminal, Activity, Globe, Layers, FileCode, AlertCircle, CheckCircle } from 'lucide-react';
+import { Terminal, Activity, Globe, Layers, FileCode, AlertCircle, CheckCircle, X } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import ConsolePanel from './ConsolePanel';
 import InspectorPanel from './InspectorPanel';
 import NetworkPanel from './NetworkPanel';
@@ -7,6 +8,7 @@ import PerformancePanel from './PerformancePanel';
 import SourcesPanel from './SourcesPanel';
 
 const DebugLayout = ({ children }) => {
+    const { toggleTheme } = useTheme();
     const [activeTab, setActiveTab] = useState('console');
 
     const tabs = [
@@ -45,8 +47,8 @@ const DebugLayout = ({ children }) => {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center gap-2 px-4 h-full text-xs font-bold border-r border-neo-border transition-colors ${activeTab === tab.id
-                                    ? 'bg-neo-primary/10 text-neo-primary border-t-2 border-t-neo-primary'
-                                    : 'text-gray-500 hover:bg-neo-border/10 hover:text-gray-300'
+                                ? 'bg-neo-primary/10 text-neo-primary border-t-2 border-t-neo-primary'
+                                : 'text-gray-500 hover:bg-neo-border/10 hover:text-gray-300'
                                 }`}
                         >
                             <tab.icon size={12} />
@@ -64,6 +66,14 @@ const DebugLayout = ({ children }) => {
                         <AlertCircle size={12} />
                         <span>ERRORS: 3</span>
                     </div>
+                    <button
+                        onClick={toggleTheme}
+                        className="flex items-center gap-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 px-2 py-1 rounded transition-colors"
+                        title="Exit Debug View"
+                    >
+                        <X size={12} />
+                        <span>EXIT</span>
+                    </button>
                 </div>
             </header>
 
