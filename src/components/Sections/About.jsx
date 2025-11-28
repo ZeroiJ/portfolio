@@ -130,18 +130,18 @@ const About = () => {
 
                             <div className="font-mono text-lg text-gray-600 space-y-6 leading-relaxed border-l-4 border-neo-accent pl-8">
                                 <p>
-                                    For years, I was in a committed, toxic relationship with Destiny 2. It taught me how to grind,
-                                    how to analyze patterns in the chaos, and how to chase the perfect 'God Roll' (Data Wrangling).
+                                    For years, I was in a committed, toxic relationship with Destiny 2. We’re on a break. It still checks my playtime. It taught me how to grind,
+                                    how to analyze patterns in the chaos, and how to cope when the loot gods queue-dodge your account.
                                     But eventually, the 'content vaulting' and rigid seasonal models felt like cleaning bad datasets—necessary, but exhausting.
                                 </p>
                                 <p>
-                                    Then, I met Warframe. If Destiny was about hoping for the right drop, Warframe is about engineering the right outcome.
+                                    Then, I met Warframe. Same addiction, more control. Now the only thing I farm is my own bad decisions. If Destiny was about hoping for the right drop, Warframe is about engineering the right outcome.
                                     That’s where I am now. I’ve taken my Data Science foundation—my obsession with mechanics, numbers, and optimization—and
                                     bullet-jumped into Game Development.
                                 </p>
                                 <p className="font-bold text-black">
-                                    I don’t just visualize data; I mod it. I don’t just write code; I’m building the Foundry.
-                                    I am a Data Science student mastering the systems of the past to build the games of the future.
+                                    I don’t just visualize data; I mod it like it dropped with the wrong polarity. I don’t just write code; I’m building the Foundry.
+                                    A Data Science student reverse‑engineering yesterday’s systems to make tomorrow’s games slightly less grindy.
                                 </p>
                             </div>
                         </motion.div>

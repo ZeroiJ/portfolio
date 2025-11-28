@@ -65,7 +65,9 @@ const Hero = () => {
                                 <div className="mt-4 p-4 bg-neo-primary/10 border border-neo-primary/30 text-xs leading-relaxed">
                                     &gt; INITIALIZING NEURAL LINK...<br />
                                     &gt; ACCESSING ARCHIVES...<br />
-                                    &gt; WELCOME TO THE NETWORK.
+                                    &gt; WELCOME TO THE NETWORK.<br />
+                                    &gt; SYSTEM ONLINE - READY TO DEPLOY NEXT-GEN EXPERIENCES.<br />
+                                    &gt; PATCH NOTES: SOCIAL ANXIETY DEBUFFED BY 5%.
                                 </div>
                             </div>
                         </div>
@@ -93,11 +95,12 @@ const Hero = () => {
                     <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-8">
                         Data Scientist Main. <br />
                         <span className="text-neo-primary italic">Game Dev Sub-Class.</span> <br />
-                        Min-Maxing Reality.
+                        Currently overthinking both games and life balance.
+                        <span className="block text-sm font-mono text-gray-500 mt-2">Currently optimizing sleep schedule… build is not viable.</span>
                     </h1>
 
                     <p className="font-mono text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0">
-                        Transitioning from the RNG struggle of Destiny 2 to the optimized freedom of Warframe.
+                        Transitioning from Destiny 2’s RNG trauma to Warframe’s spreadsheet enlightenment.
                         I analyze the meta, and now I’m learning to build it.
                     </p>
 
@@ -128,6 +131,7 @@ const Hero = () => {
                         <div className="space-y-2">
                             <div className="h-2 bg-gray-200 w-full"></div>
                             <div className="h-2 bg-gray-200 w-3/4"></div>
+                            <p className="font-mono text-[10px] text-red-500 mt-2">Warning: unsolicited build suggestions may occur.</p>
                         </div>
                     </motion.div>
 

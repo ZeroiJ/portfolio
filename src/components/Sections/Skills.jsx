@@ -74,7 +74,7 @@ const Skills = () => {
                 ) : (
                     <div className="mb-20">
                         <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">The Loadout</h2>
-                        <p className="font-mono text-xl text-gray-500">Current Meta Build</p>
+                        <p className="font-mono text-xl text-gray-500">Current Meta Build <span className="text-sm block mt-1">(Subject to nerfs by future semesters.)</span></p>
                     </div>
                 )}
 
