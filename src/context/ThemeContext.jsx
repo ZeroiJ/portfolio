@@ -13,7 +13,11 @@ export const ThemeProvider = ({ children }) => {
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme(prev => prev === 'tavus' ? 'marathon' : 'tavus');
+        setTheme(prev => {
+            if (prev === 'tavus') return 'marathon';
+            if (prev === 'marathon') return 'debug';
+            return 'tavus';
+        });
     };
 
     return (

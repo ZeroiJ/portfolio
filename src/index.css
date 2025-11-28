@@ -23,6 +23,22 @@
   --color-neo-border: #333333;
 }
 
+/* Debug Theme */
+:root[data-theme="debug"] {
+  --color-neo-bg: #1e1e1e;
+  /* VS Code Dark */
+  --color-neo-text: #d4d4d4;
+  /* Off-white */
+  --color-neo-primary: #3b82f6;
+  /* Info Blue */
+  --color-neo-secondary: #eab308;
+  /* Warn Yellow */
+  --color-neo-accent: #ef4444;
+  /* Error Red */
+  --color-neo-border: #3f3f46;
+  /* Zinc 700 */
+}
+
 @theme {
   /* Map Tailwind keys to CSS variables */
   --color-neo-bg: var(--color-neo-bg);
