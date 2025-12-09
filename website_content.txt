@@ -1,0 +1,191 @@
+WEBSITE CONTENT EXPORT
+======================
+
+GLOBAL NAVIGATION (Navbar)
+--------------------------
+Modes:
+1. OK GUY (Buffs: Caffeine, Anxiety)
+2. MARATHON (Protocol: Tryhard)
+3. DEBUG VIEW (Status: It works on my machine)
+
+Links: ABOUT, SKILLS, JOURNEY, CONTACT
+
+--------------------------------------------------------------------------------
+
+SECTION: HERO
+=============
+
+[Mode: MARATHON]
+----------------
+Overhead: SYSTEM_OVERRIDE // AUTHORIZED
+Headline: WAKE UP, RUNNER.
+Subline: The meta has shifted. The grind is over. I am a Data Scientist engineering the future of Game Development.
+
+Status Panel:
+- STATUS: ONLINE
+- CLASS: TECH-MANCER
+- CURRENT_OBJECTIVE: DEPLOY_PORTFOLIO
+- Logs:
+  > INITIALIZING NEURAL LINK...
+  > ACCESSING ARCHIVES...
+  > WELCOME TO THE NETWORK.
+  > SYSTEM ONLINE - READY TO DEPLOY NEXT-GEN EXPERIENCES.
+  > PATCH NOTES: SOCIAL ANXIETY DEBUFFED BY 5%.
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Greeting: Hey! I'm Sujal.
+Headline: Data Scientist Main. Game Dev Sub-Class. Professional Stack Overflow Copy-Paster.
+Subline: Currently optimizing sleep schedule… build is not viable. Error 404: Energy not found.
+Bio: Transitioning from Destiny 2’s RNG trauma to Warframe’s spreadsheet enlightenment. I analyze the meta, and now I’m learning to build it. (Also, please hire me, my GPU needs an upgrade.)
+Interaction: Tell me about your projects...
+
+Visuals:
+- LIVE_FEED
+- Warning: unsolicited build suggestions may occur.
+- System Status: Compiling Life Choices...
+
+--------------------------------------------------------------------------------
+
+SECTION: ABOUT
+==============
+
+[Mode: MARATHON]
+----------------
+Header: Runner Dossier
+ID: SUJAL_B
+HUD: SCANNING... MATCH FOUND: 99.9%
+
+Log Entry:
+>> DECRYPTING LOG:
+Subject originated in the Destiny 2 ecosystem. Observed behavior: Excessive grinding, pattern recognition, and optimization of RNG mechanics.
+
+>> CURRENT STATUS:
+Subject has migrated to the Warframe sector. Now utilizing Data Science protocols to engineer outcomes rather than awaiting probability.
+"I don't just visualize data; I mod it."
+(Note: Subject refuses to touch grass.)
+
+Roles:
+- DATA_ARCHITECT (Python, SQL, Pandas)
+- SYSTEM_BUILDER (C++, React, Game Dev)
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Header: About Me / THE_LORD_HIMSELF_SUJAL_BIRWADKAR
+Card: Sujal Birwadkar | LVL 21 • DATA SCIENTIST
+
+Content:
+The Narrative: My Toxic Ex (Destiny 2)
+
+For years, I was in a committed, toxic relationship with Destiny 2. We’re on a break. It still checks my playtime. It taught me how to grind and how to cope when the loot gods queue-dodge your account. But eventually, the 'content vaulting' felt like cleaning bad datasets—necessary, but it hurts my soul.
+
+Then, I met Warframe. Same addiction, better market economy. Now the only thing I farm is my own bad decisions.
+
+I’ve taken my Data Science foundation—my obsession with mechanics, numbers, and optimization—and bullet-jumped into Game Development. I don’t just write code; I write bugs that look like features.
+
+--------------------------------------------------------------------------------
+
+SECTION: SKILLS
+===============
+
+[Mode: MARATHON]
+----------------
+Header: System Augmentations
+
+Loadout:
+1. Primary Weapon // The Data Science Arsenal
+   - Python: The Exotic
+   - Pandas & NumPy: Legendary Perks
+   - Power BI: The HUD
+   - SQL: Ammo Reserves
+
+2. Heavy Weapon // The Technical Foundation
+   - C++: The Prime Warframe
+   - React.js: UI Skin
+   - Tailwind CSS: Fashion Frame
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Header: The Loadout
+Subline: Current Meta Build (Subject to nerfs by future semesters.)
+
+Loadout:
+1. Primary Weapon (The Data Science Arsenal)
+   - Python: The Exotic (My daily driver. Like Telesto, it breaks the game in new and exciting ways.)
+   - Pandas & NumPy: Legendary Perks (The essential mods. Because Excel is for NPCs.)
+   - SQL: Ammo Reserves (Querying the void. SELECT * FROM Brain WHERE Knowledge = 'Gone'.)
+
+2. Heavy Weapon (The Technical Foundation)
+   - C++: The Prime Warframe (The backbone of performance. Currently causing memory leaks in my brain.)
+   - CSS: Fashion Frame (The true endgame. Centering a div is harder than a Day 1 Raid.)
+   - Linux: OS Main ((I use Arch, btw. Had to mention it.))
+
+--------------------------------------------------------------------------------
+
+SECTION: JOURNEY
+================
+
+[Mode: MARATHON]
+----------------
+Header: Operation History
+
+Entries:
+1. MAIN_OP: B.Tech in CSE (Data Science)
+   - MGMCET | 2024 - 2028
+   - Acquiring the source code for statistical analysis and machine learning. Currently optimizing algorithms and managing big data structures.
+
+2. SIDE_OP: The "God Roll" Analysis (Data Science Focus)
+   - You know that feeling when you calculate the exact DPS output of a build? I did that, but for real-world data. Built a dashboard to visualize trends in massive datasets.
+   - Tech: Python, Pandas, Matplotlib
+
+3. SIDE_OP: Prototype Game Loop (Game Dev Focus)
+   - Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. It's janky, but it runs at 144fps.
+   - Tech: C++, Raylib
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Header: Quest Log
+Subline: Campaign Progress
+
+Entries:
+1. MAIN QUEST: B.Tech in CSE (Data Science)
+   - MGMCET | 2024 - 2028
+   - Current Objective: Survive the "Maths" boss fight without using a revive token. Status: Grinding XP.
+
+2. SIDE QUEST: The "God Roll" Analysis (Data Science Focus)
+   - You know that feeling when you calculate the exact DPS output of a build? I did that, but for real-world data. Built a dashboard to visualize trends in massive datasets.
+   - Tech: Python, Pandas, Matplotlib
+
+3. SIDE QUEST: Prototype Game Loop (Game Dev Focus)
+   - Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. Performance: It runs at 144fps... as long as you don't move the mouse too fast.
+   - Tech: C++, Raylib, Pure Spite
+
+--------------------------------------------------------------------------------
+
+SECTION: CONTACT
+================
+
+[Mode: MARATHON]
+----------------
+Header: Extraction Signal
+Text: Ready to squad up? Send the invite. My comms are open for new missions.
+
+Links:
+- GITHUB (My Codex)
+- EMAIL (Direct Message)
+- LINKEDIN (Global Chat)
+- RESUME (My Build Config)
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Header: Looking for a Clan? (Or Just a Job?)
+Text: Whether it's a raid boss (complex project) or a quick skirmish (freelance), I'm ready to join the fireteam. I promise my code has better documentation than Destiny's lore.
+
+Links:
+- GITHUB (My Spaghetti Code)
+- EMAIL (Direct Message / Pls no spam)
+- LINKEDIN (Global Chat / Corporate Mask On)
+- RESUME (My Stat Sheet / DPS Check)
+
+======================
+EXPORT COMPLETE

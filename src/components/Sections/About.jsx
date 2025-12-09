@@ -59,7 +59,7 @@ const About = () => {
                                         Subject has migrated to the <span className="text-white">Warframe</span> sector.
                                         Now utilizing Data Science protocols to engineer outcomes rather than awaiting probability.
                                         <br /><br />
-                                        <span className="text-white italic">"I don't just visualize data; I mod it."</span>
+                                        <span className="text-white italic">"I don't just visualize data; I mod it."</span> (Note: Subject refuses to touch grass.)
                                     </p>
                                 </div>
 
@@ -125,23 +125,18 @@ const About = () => {
                             className="space-y-8"
                         >
                             <h3 className="font-serif text-3xl md:text-4xl font-bold">
-                                The Narrative: <span className="text-neo-primary">Breaking Up with RNG</span>
+                                The Narrative: <span className="text-neo-primary">My Toxic Ex (Destiny 2)</span>
                             </h3>
 
                             <div className="font-mono text-lg text-gray-600 space-y-6 leading-relaxed border-l-4 border-neo-accent pl-8">
                                 <p>
-                                    For years, I was in a committed, toxic relationship with Destiny 2. We’re on a break. It still checks my playtime. It taught me how to grind,
-                                    how to analyze patterns in the chaos, and how to cope when the loot gods queue-dodge your account.
-                                    But eventually, the 'content vaulting' and rigid seasonal models felt like cleaning bad datasets—necessary, but exhausting.
+                                    For years, I was in a committed, toxic relationship with Destiny 2. We’re on a break. It still checks my playtime. It taught me how to grind and how to cope when the loot gods queue-dodge your account. But eventually, the 'content vaulting' felt like cleaning bad datasets—necessary, but it hurts my soul.
                                 </p>
                                 <p>
-                                    Then, I met Warframe. Same addiction, more control. Now the only thing I farm is my own bad decisions. If Destiny was about hoping for the right drop, Warframe is about engineering the right outcome.
-                                    That’s where I am now. I’ve taken my Data Science foundation—my obsession with mechanics, numbers, and optimization—and
-                                    bullet-jumped into Game Development.
+                                    Then, I met Warframe. Same addiction, better market economy. Now the only thing I farm is my own bad decisions.
                                 </p>
                                 <p className="font-bold text-black">
-                                    I don’t just visualize data; I mod it like it dropped with the wrong polarity. I don’t just write code; I’m building the Foundry.
-                                    A Data Science student reverse‑engineering yesterday’s systems to make tomorrow’s games slightly less grindy.
+                                    I’ve taken my Data Science foundation—my obsession with mechanics, numbers, and optimization—and bullet-jumped into Game Development. I don’t just write code; I write bugs that look like features.
                                 </p>
                             </div>
                         </motion.div>

@@ -83,10 +83,9 @@ const Skills = () => {
                     subtitle="The Data Science Arsenal"
                     color="text-neo-primary"
                     items={[
-                        { name: "Python", type: "The Exotic", desc: "My daily driver. Best-in-slot for automation and crunching massive datasets." },
-                        { name: "Pandas & NumPy", type: "Legendary Perks", desc: "The essential mods for reshaping data into usable formats." },
-                        { name: "Power BI", type: "The HUD", desc: "Visualizing the battlefield. Turning raw numbers into actionable intel." },
-                        { name: "SQL", type: "Ammo Reserves", desc: "Querying the void. Extracting exactly what I need from the database." }
+                        { name: "Python", type: "The Exotic", desc: "My daily driver. Like Telesto, it breaks the game in new and exciting ways." },
+                        { name: "Pandas & NumPy", type: "Legendary Perks", desc: "The essential mods. Because Excel is for NPCs." },
+                        { name: "SQL", type: "Ammo Reserves", desc: "Querying the void. SELECT * FROM Brain WHERE Knowledge = 'Gone'." }
                     ]}
                 />
 
@@ -95,9 +94,9 @@ const Skills = () => {
                     subtitle="The Technical Foundation"
                     color="text-neo-accent"
                     items={[
-                        { name: "C++", type: "The Prime Warframe", desc: "The backbone of performance. Learning low-level memory management because Python isn't fast enough for the swarm." },
-                        { name: "React.js", type: "UI Skin", desc: "Building interfaces that feel alive. Like this portfolio." },
-                        { name: "Tailwind CSS", type: "Fashion Frame", desc: "Styling at the speed of light. No more CSS file clutter." }
+                        { name: "C++", type: "The Prime Warframe", desc: "The backbone of performance. Currently causing memory leaks in my brain." },
+                        { name: "CSS", type: "Fashion Frame", desc: "The true endgame. Centering a div is harder than a Day 1 Raid." },
+                        { name: "Linux", type: "OS Main", desc: "(I use Arch, btw. Had to mention it.)" }
                     ]}
                 />
             </div>

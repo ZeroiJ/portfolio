@@ -45,21 +45,21 @@ const Navbar = () => {
                                 className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'tavus' ? 'bg-zinc-800 text-white border-l-2 border-white' : 'text-gray-400'}`}
                             >
                                 [1] OK GUY
-                                <span className="block text-[10px] opacity-60 font-normal mt-1">Buffs: Coffee, Copium</span>
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Buffs: Caffeine, Anxiety</span>
                             </button>
                             <button
                                 onClick={() => setTheme('marathon')}
                                 className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'marathon' ? 'bg-zinc-800 text-neo-primary border-l-2 border-neo-primary' : 'text-gray-400'}`}
                             >
                                 [2] MARATHON
-                                <span className="block text-[10px] opacity-60 font-normal mt-1">Protocol: Override</span>
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Protocol: Tryhard</span>
                             </button>
                             <button
                                 onClick={() => setTheme('debug')}
                                 className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'debug' ? 'bg-zinc-800 text-red-500 border-l-2 border-red-500' : 'text-gray-400'}`}
                             >
                                 [3] DEBUG VIEW
-                                <span className="block text-[10px] opacity-60 font-normal mt-1">Warning: Profiling active</span>
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Status: It works on my machine</span>
                             </button>
                         </div>
                         <div className="mt-2 border-t border-white/20 pt-2 px-2">

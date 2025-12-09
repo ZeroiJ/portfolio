@@ -81,7 +81,7 @@ const Journey = () => {
                         type="main"
                         title="B.Tech in CSE (Data Science)"
                         subtitle="MGMCET | 2024 - 2028"
-                        description="Acquiring the source code for statistical analysis and machine learning. Currently optimizing algorithms and managing big data structures."
+                        description='Current Objective: Survive the "Maths" boss fight without using a revive token. Status: Grinding XP.'
                     />
                     <QuestEntry
                         type="side"
@@ -94,8 +94,8 @@ const Journey = () => {
                         type="side"
                         title="Prototype Game Loop"
                         subtitle="Game Dev Focus"
-                        tech={['C++', 'Raylib']}
-                        description="Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. It's janky, but it runs at 144fps."
+                        tech={['C++', 'Raylib', 'Pure Spite']}
+                        description="Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. Performance: It runs at 144fps... as long as you don't move the mouse too fast."
                     />
                 </div>
             </div>

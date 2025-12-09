@@ -65,20 +65,20 @@ const Contact = () => {
                             <>
                                 <h2 className="font-serif text-6xl md:text-8xl font-bold mb-8 leading-none">
                                     Looking for <br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-neo-primary to-neo-accent">a Clan?</span>
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-neo-primary to-neo-accent">a Clan?</span> <span className="text-4xl block mt-2">(Or Just a Job?)</span>
                                 </h2>
                                 <p className="font-mono text-xl mb-12 max-w-md">
-                                    Whether it's a raid boss (complex project) or a quick skirmish (freelance), I'm ready to join the fireteam.
+                                    Whether it's a raid boss (complex project) or a quick skirmish (freelance), I'm ready to join the fireteam. I promise my code has better documentation than Destiny's lore.
                                 </p>
                             </>
                         )}
                     </div>
 
                     <div className="space-y-6">
-                        <ContactLink icon={Github} label="GITHUB" subLabel="My Codex" href="https://github.com/ZeroiJ" />
-                        <ContactLink icon={Mail} label="EMAIL" subLabel="Direct Message" href="mailto:sujalbirwadkar19@gmail.com" />
-                        <ContactLink icon={Linkedin} label="LINKEDIN" subLabel="Global Chat" href="#" />
-                        <ContactLink icon={FileText} label="RESUME" subLabel="My Build Config" href="#" />
+                        <ContactLink icon={Github} label="GITHUB" subLabel="My Spaghetti Code" href="https://github.com/ZeroiJ" />
+                        <ContactLink icon={Mail} label="EMAIL" subLabel="Direct Message / Pls no spam" href="mailto:sujalbirwadkar19@gmail.com" />
+                        <ContactLink icon={Linkedin} label="LINKEDIN" subLabel="Global Chat / Corporate Mask On" href="#" />
+                        <ContactLink icon={FileText} label="RESUME" subLabel="My Stat Sheet / DPS Check" href="#" />
                     </div>
                 </div>
             </div>

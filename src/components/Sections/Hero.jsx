@@ -95,13 +95,13 @@ const Hero = () => {
                     <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-8">
                         Data Scientist Main. <br />
                         <span className="text-neo-primary italic">Game Dev Sub-Class.</span> <br />
-                        Currently overthinking both games and life balance.
-                        <span className="block text-sm font-mono text-gray-500 mt-2">Currently optimizing sleep schedule… build is not viable.</span>
+                        Professional Stack Overflow Copy-Paster.
+                        <span className="block text-sm font-mono text-gray-500 mt-2">Currently optimizing sleep schedule… build is not viable. Error 404: Energy not found.</span>
                     </h1>
 
                     <p className="font-mono text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0">
                         Transitioning from Destiny 2’s RNG trauma to Warframe’s spreadsheet enlightenment.
-                        I analyze the meta, and now I’m learning to build it.
+                        I analyze the meta, and now I’m learning to build it. (Also, please hire me, my GPU needs an upgrade.)
                     </p>
 
                     {/* Chat Input Simulation */}
@@ -140,8 +140,8 @@ const Hero = () => {
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         className="absolute bottom-20 left-0 bg-neo-accent text-white border-2 border-black p-6 shadow-[-12px_12px_0_#000] w-72 z-10"
                     >
-                        <h3 className="font-serif text-2xl font-bold mb-2">System Online</h3>
-                        <p className="font-mono text-xs opacity-80">Ready to deploy next-gen experiences.</p>
+                        <h3 className="font-serif text-2xl font-bold mb-2">System Status</h3>
+                        <p className="font-mono text-xs opacity-80">Compiling Life Choices...</p>
                     </motion.div>
                 </div>
             </div>
