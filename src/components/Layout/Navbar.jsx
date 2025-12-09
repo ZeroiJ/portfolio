@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme, setTheme } = useTheme();
 
     const navLinks = [
         { name: 'ABOUT', href: '#about' },
@@ -18,18 +18,55 @@ const Navbar = () => {
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference text-white">
             <div className="max-w-[90rem] mx-auto flex justify-between items-center">
 
-                {/* Left: Theme Toggle */}
-                <button
-                    onClick={toggleTheme}
-                    className="group flex items-center gap-3 font-mono text-sm font-bold tracking-widest hover:text-neo-primary transition-colors"
-                >
-                    <div className={`w-8 h-8 border-2 border-white flex items-center justify-center transition-all duration-300 ${theme === 'marathon' ? 'bg-neo-primary border-neo-primary text-black' : 'group-hover:bg-white group-hover:text-black'}`}>
-                        <Zap size={16} className={theme === 'marathon' ? 'fill-current' : ''} />
+                {/* Left: Theme Dropdown */}
+                <div className="relative group">
+                    <button className="flex items-center gap-3 font-mono text-sm font-bold tracking-widest hover:text-neo-primary transition-colors py-2">
+                        <div className={`w-8 h-8 border-2 border-white flex items-center justify-center transition-all duration-300 ${theme === 'marathon' ? 'bg-neo-primary border-neo-primary text-black' : 'group-hover:bg-white group-hover:text-black'}`}>
+                            <Zap size={16} className={theme === 'marathon' ? 'fill-current' : ''} />
+                        </div>
+                        <span className="hidden md:block">
+                            {theme === 'tavus' ? 'MODE: OK GUY' : 'MODE: MARATHON'}
+                        </span>
+                        <motion.div
+                            animate={{ rotate: 0 }}
+                            whileHover={{ rotate: 180 }}
+                            className="hidden md:block"
+                        >
+                            <Menu size={14} className="group-hover:hidden" />
+                            <ChevronDown size={14} className="hidden group-hover:block" />
+                        </motion.div>
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    <div className="absolute top-full left-0 mt-2 w-72 bg-black border-2 border-white p-2 hidden group-hover:block shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]">
+                        <div className="flex flex-col gap-1">
+                            <button
+                                onClick={() => setTheme('tavus')}
+                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'tavus' ? 'bg-white text-black' : 'text-gray-400'}`}
+                            >
+                                [1] OK GUY
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Buffs: Coffee, Copium</span>
+                            </button>
+                            <button
+                                onClick={() => setTheme('marathon')}
+                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-neo-primary hover:text-black transition-colors ${theme === 'marathon' ? 'bg-neo-primary text-black' : 'text-gray-400'}`}
+                            >
+                                [2] MARATHON
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Protocol: Override</span>
+                            </button>
+                            <button
+                                onClick={() => setTheme('debug')}
+                                className="text-left px-4 py-3 font-mono text-xs font-bold text-gray-400 hover:bg-red-500 hover:text-black transition-colors"
+                            >
+                                [3] DEBUG VIEW
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Warning: Profiling active</span>
+                            </button>
+                        </div>
+                        <div className="mt-2 border-t border-white/20 pt-2 px-2">
+                            <p className="text-[10px] text-gray-500 font-mono">Select functionality...</p>
+                        </div>
                     </div>
-                    <span className="hidden md:block">
-                        {theme === 'tavus' ? 'MODE: OK GUY (buffs active: Coffee, Copium)' : 'MODE: MARATHON'}
-                    </span>
-                </button>
+                </div>
 
                 {/* Center: Navigation */}
                 <div className="hidden md:flex items-center gap-12">
