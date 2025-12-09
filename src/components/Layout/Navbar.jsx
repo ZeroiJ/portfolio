@@ -42,21 +42,21 @@ const Navbar = () => {
                         <div className="flex flex-col gap-1">
                             <button
                                 onClick={() => setTheme('tavus')}
-                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'tavus' ? 'bg-white text-black' : 'text-gray-400'}`}
+                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'tavus' ? 'bg-zinc-800 text-white border-l-2 border-white' : 'text-gray-400'}`}
                             >
                                 [1] OK GUY
                                 <span className="block text-[10px] opacity-60 font-normal mt-1">Buffs: Coffee, Copium</span>
                             </button>
                             <button
                                 onClick={() => setTheme('marathon')}
-                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-neo-primary hover:text-black transition-colors ${theme === 'marathon' ? 'bg-neo-primary text-black' : 'text-gray-400'}`}
+                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'marathon' ? 'bg-zinc-800 text-neo-primary border-l-2 border-neo-primary' : 'text-gray-400'}`}
                             >
                                 [2] MARATHON
                                 <span className="block text-[10px] opacity-60 font-normal mt-1">Protocol: Override</span>
                             </button>
                             <button
                                 onClick={() => setTheme('debug')}
-                                className="text-left px-4 py-3 font-mono text-xs font-bold text-gray-400 hover:bg-red-500 hover:text-black transition-colors"
+                                className={`text-left px-4 py-3 font-mono text-xs font-bold hover:bg-white hover:text-black transition-colors ${theme === 'debug' ? 'bg-zinc-800 text-red-500 border-l-2 border-red-500' : 'text-gray-400'}`}
                             >
                                 [3] DEBUG VIEW
                                 <span className="block text-[10px] opacity-60 font-normal mt-1">Warning: Profiling active</span>
