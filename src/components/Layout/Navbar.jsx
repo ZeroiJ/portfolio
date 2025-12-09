@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { theme, toggleTheme, setTheme } = useTheme();
+    const navigate = useNavigate();
 
     const navLinks = [
         { name: 'ABOUT', href: '#about' },
@@ -60,6 +63,14 @@ const Navbar = () => {
                             >
                                 [3] DEBUG VIEW
                                 <span className="block text-[10px] opacity-60 font-normal mt-1">Status: It works on my machine</span>
+                            </button>
+                            <div className="h-px bg-white/20 my-1"></div>
+                            <button
+                                onClick={() => navigate('/mockup')}
+                                className="text-left px-4 py-3 font-mono text-xs font-bold text-blue-400 hover:bg-blue-500 hover:text-white transition-colors"
+                            >
+                                [4] SECRET LAB
+                                <span className="block text-[10px] opacity-60 font-normal mt-1">Experimental: Shader Mockup</span>
                             </button>
                         </div>
                         <div className="mt-2 border-t border-white/20 pt-2 px-2">

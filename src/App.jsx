@@ -7,6 +7,23 @@ import Skills from './components/Sections/Skills';
 import Journey from './components/Sections/Journey';
 import Contact from './components/Sections/Contact';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NewDesignMockup from './components/Mockup/NewDesignMockup';
+
+function Home() {
+  return (
+    <div className="bg-neo-bg min-h-screen text-neo-text font-sans selection:bg-neo-primary selection:text-white">
+      <Layout>
+        <Hero />
+        <About />
+        <Skills />
+        <Journey />
+        <Contact />
+      </Layout>
+    </div>
+  );
+}
+
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -33,15 +50,12 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-neo-bg min-h-screen text-neo-text font-sans selection:bg-neo-primary selection:text-white">
-      <Layout>
-        <Hero />
-        <About />
-        <Skills />
-        <Journey />
-        <Contact />
-      </Layout>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/mockup" element={<NewDesignMockup />} />
+      </Routes>
+    </Router>
   );
 }
 
