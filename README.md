@@ -1,4 +1,8 @@
-# Portfolio
+# Portfolio 🟢 `[LIVE]`
+
+> **My personal digital playground.**
+>
+> *React + Tailwind + Self-Roasting functionality.*
 
 Yes, I used GitHub to store my portfolio.
 
