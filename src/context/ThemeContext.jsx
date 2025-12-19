@@ -3,25 +3,18 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState(() => {
-        return localStorage.getItem('portfolio-theme') || 'tavus';
-    });
+    // Lock theme to 'tavus' permanently
+    const theme = 'tavus';
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('portfolio-theme', theme);
-    }, [theme]);
+        // Clean up legacy local storage if it exists
+        localStorage.removeItem('portfolio-theme');
+    }, []);
 
-    const toggleTheme = () => {
-        setTheme(prev => {
-            if (prev === 'tavus') return 'marathon';
-            if (prev === 'marathon') return 'debug';
-            return 'tavus';
-        });
-    };
-
+    // No toggle logic needed anymore
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+        <ThemeContext.Provider value={{ theme }}>
             {children}
         </ThemeContext.Provider>
     );

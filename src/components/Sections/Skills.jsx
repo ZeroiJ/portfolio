@@ -4,31 +4,7 @@ import { Code, Terminal, Database, Cpu, Layers, Wrench } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const WeaponSlot = ({ title, subtitle, items, color }) => {
-    const { theme } = useTheme();
-
-    if (theme === 'marathon') {
-        return (
-            <div className="mb-12">
-                <div className="flex items-center gap-4 mb-6 border-b border-neo-border pb-2">
-                    <div className={`w-3 h-3 ${color.replace('text-', 'bg-')}`}></div>
-                    <h3 className="font-mono text-xl text-white tracking-widest">{title} // {subtitle}</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {items.map((item, index) => (
-                        <div key={index} className="bg-neo-border/10 border border-neo-border p-4 hover:bg-neo-border/30 transition-colors group">
-                            <div className="flex justify-between items-start mb-2">
-                                <span className={`font-bold ${color}`}>{item.name}</span>
-                                <span className="text-[10px] font-mono text-gray-500">{item.type}</span>
-                            </div>
-                            <p className="text-xs text-gray-400 font-mono leading-relaxed">{item.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
-    // Tavus Style
+    // Tavus Style - Simplified
     return (
         <div className="mb-16">
             <div className="flex items-center gap-4 mb-8">
@@ -60,23 +36,13 @@ const WeaponSlot = ({ title, subtitle, items, color }) => {
 };
 
 const Skills = () => {
-    const { theme } = useTheme();
-
     return (
-        <section id="skills" className={`py-32 px-6 ${theme === 'marathon' ? 'bg-neo-bg text-neo-text' : 'bg-white'}`}>
+        <section id="skills" className="py-32 px-6 bg-white">
             <div className="max-w-[90rem] mx-auto">
-                {theme === 'marathon' ? (
-                    <div className="mb-20 border-b border-neo-border pb-6">
-                        <h2 className="font-sans font-black text-5xl md:text-7xl uppercase tracking-tighter">
-                            System <span className="text-neo-secondary">Augmentations</span>
-                        </h2>
-                    </div>
-                ) : (
-                    <div className="mb-20">
-                        <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">The Loadout</h2>
-                        <p className="font-mono text-xl text-gray-500">Current Meta Build <span className="text-sm block mt-1">(Subject to nerfs by future semesters.)</span></p>
-                    </div>
-                )}
+                <div className="mb-20">
+                    <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">The Loadout</h2>
+                    <p className="font-mono text-xl text-gray-500">Current Meta Build <span className="text-sm block mt-1">(Subject to nerfs by future semesters.)</span></p>
+                </div>
 
                 <WeaponSlot
                     title="Primary Weapon"

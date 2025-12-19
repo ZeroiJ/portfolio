@@ -11,33 +11,7 @@
   --color-neo-border: #000000;
 }
 
-:root[data-theme="marathon"] {
-  --color-neo-bg: #050505;
-  --color-neo-text: #FFFFFF;
-  --color-neo-primary: #CCFF00;
-  /* Acid Green */
-  --color-neo-secondary: #00F0FF;
-  /* Electric Blue */
-  --color-neo-accent: #FF0055;
-  /* Cyber Red */
-  --color-neo-border: #333333;
-}
-
-/* Debug Theme */
-:root[data-theme="debug"] {
-  --color-neo-bg: #1e1e1e;
-  /* VS Code Dark */
-  --color-neo-text: #d4d4d4;
-  /* Off-white */
-  --color-neo-primary: #3b82f6;
-  /* Info Blue */
-  --color-neo-secondary: #eab308;
-  /* Warn Yellow */
-  --color-neo-accent: #ef4444;
-  /* Error Red */
-  --color-neo-border: #3f3f46;
-  /* Zinc 700 */
-}
+/* Main theme permanently set to Tavus, other themes removed */
 
 @theme {
   /* Map Tailwind keys to CSS variables */

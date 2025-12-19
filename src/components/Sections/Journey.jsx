@@ -4,32 +4,7 @@ import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const QuestEntry = ({ type, title, subtitle, description, tech }) => {
-    const { theme } = useTheme();
-
-    if (theme === 'marathon') {
-        return (
-            <div className="relative pl-8 border-l border-neo-border pb-12 last:pb-0">
-                <div className={`absolute -left-[5px] top-0 w-2 h-2 ${type === 'main' ? 'bg-neo-primary' : 'bg-neo-secondary'}`}></div>
-                <div className="mb-2 flex items-center gap-3">
-                    <span className={`text-xs font-mono px-2 py-0.5 border ${type === 'main' ? 'border-neo-primary text-neo-primary' : 'border-neo-secondary text-neo-secondary'}`}>
-                        {type === 'main' ? 'MAIN_OP' : 'SIDE_OP'}
-                    </span>
-                    <h3 className="text-xl font-bold text-white">{title}</h3>
-                </div>
-                <p className="font-mono text-sm text-gray-400 mb-4">{subtitle}</p>
-                <p className="text-gray-300 text-sm leading-relaxed max-w-2xl mb-4">{description}</p>
-                {tech && (
-                    <div className="flex gap-2 flex-wrap">
-                        {tech.map((t, i) => (
-                            <span key={i} className="text-[10px] font-mono bg-neo-border/30 text-gray-400 px-2 py-1">{t}</span>
-                        ))}
-                    </div>
-                )}
-            </div>
-        );
-    }
-
-    // Tavus Style
+    // Tavus Style - Simplified
     return (
         <div className="relative pl-8 border-l-4 border-black pb-12 last:pb-0">
             <div className={`absolute -left-[10px] top-0 w-4 h-4 rounded-full border-2 border-black ${type === 'main' ? 'bg-neo-primary' : 'bg-white'}`}></div>
@@ -58,23 +33,13 @@ const QuestEntry = ({ type, title, subtitle, description, tech }) => {
 };
 
 const Journey = () => {
-    const { theme } = useTheme();
-
     return (
-        <section id="journey" className={`py-32 px-6 ${theme === 'marathon' ? 'bg-neo-bg text-neo-text' : 'bg-neo-bg'}`}>
+        <section id="journey" className="py-32 px-6 bg-neo-bg">
             <div className="max-w-[90rem] mx-auto">
-                {theme === 'marathon' ? (
-                    <div className="mb-20 border-b border-neo-border pb-6">
-                        <h2 className="font-sans font-black text-5xl md:text-7xl uppercase tracking-tighter">
-                            Operation <span className="text-neo-accent">History</span>
-                        </h2>
-                    </div>
-                ) : (
-                    <div className="mb-20">
-                        <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">Quest Log</h2>
-                        <p className="font-mono text-xl text-gray-500">Campaign Progress</p>
-                    </div>
-                )}
+                <div className="mb-20">
+                    <h2 className="font-serif text-5xl md:text-7xl font-bold mb-4">Quest Log</h2>
+                    <p className="font-mono text-xl text-gray-500">Campaign Progress</p>
+                </div>
 
                 <div className="max-w-3xl">
                     <QuestEntry

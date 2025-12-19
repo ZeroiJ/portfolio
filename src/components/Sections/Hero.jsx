@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Send, Terminal } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { FlickeringGrid } from '../ui/flickering-grid';
+// import { FlickeringGrid } from '../ui/flickering-grid'; // Removed
 
 const Hero = () => {
     const { theme } = useTheme();

@@ -7,8 +7,9 @@ import Skills from './components/Sections/Skills';
 import Journey from './components/Sections/Journey';
 import Contact from './components/Sections/Contact';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NewDesignMockup from './components/Mockup/NewDesignMockup';
+// Router removed as we are back to single page
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import NewDesignMockup from './components/Mockup/NewDesignMockup';
 
 function Home() {
   return (
@@ -50,12 +51,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mockup" element={<NewDesignMockup />} />
-      </Routes>
-    </Router>
+    <Home />
   );
 }
 
