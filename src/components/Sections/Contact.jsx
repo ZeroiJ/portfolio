@@ -78,7 +78,7 @@ const Contact = () => {
                         <ContactLink icon={Github} label="GITHUB" subLabel="My Spaghetti Code" href="https://github.com/ZeroiJ" />
                         <ContactLink icon={Mail} label="EMAIL" subLabel="Direct Message / Pls no spam" href="mailto:sujalbirwadkar19@gmail.com" />
                         <ContactLink icon={Linkedin} label="LINKEDIN" subLabel="Global Chat / Corporate Mask On" href="#" />
-                        <ContactLink icon={FileText} label="RESUME" subLabel="My Stat Sheet / DPS Check" href="#" />
+                        {/* Resume removed as per user request */}
                     </div>
                 </div>
             </div>

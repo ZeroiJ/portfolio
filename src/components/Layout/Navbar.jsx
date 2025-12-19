@@ -79,18 +79,9 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* Center: Navigation */}
+                {/* Center: Navigation Links Removed as per user request */}
                 <div className="hidden md:flex items-center gap-12">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="font-mono text-sm font-bold tracking-widest hover:text-neo-primary transition-colors relative group"
-                        >
-                            {link.name}
-                            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-neo-primary transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    ))}
+                    {/* Links hidden/removed */}
                 </div>
 
                 {/* Right: Mobile Menu Toggle */}
@@ -112,6 +103,7 @@ const Navbar = () => {
                         className="absolute top-24 left-6 right-6 bg-black border-2 border-white p-6 md:hidden"
                     >
                         <div className="flex flex-col gap-6">
+                            {/* Navigation Links Removed 
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
@@ -122,6 +114,7 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
+                            */}
                         </div>
                     </motion.div>
                 )}

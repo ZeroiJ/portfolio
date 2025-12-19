@@ -95,7 +95,7 @@ const Journey = () => {
                         title="Prototype Game Loop"
                         subtitle="Game Dev Focus"
                         tech={['C++', 'Raylib', 'Pure Spite']}
-                        description="Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. Performance: It runs at 144fps... as long as you don't move the mouse too fast."
+                        description="Built a simple movement shooter engine from scratch. No Unity, no Unreal. Just raw C++ and math. Performance: It runs at 144fps... as long as you don't move the mouse too fast. (PS: Havent uploaded on github as i am still min-maxing it on performance)"
                     />
                 </div>
             </div>
