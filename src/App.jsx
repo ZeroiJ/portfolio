@@ -5,6 +5,7 @@ import Hero from './components/Sections/Hero';
 import About from './components/Sections/About';
 import Skills from './components/Sections/Skills';
 import Journey from './components/Sections/Journey';
+import Projects from './components/Sections/Projects';
 import Contact from './components/Sections/Contact';
 
 // Router removed as we are back to single page
@@ -19,6 +20,7 @@ function Home() {
         <About />
         <Skills />
         <Journey />
+        <Projects />
         <Contact />
       </Layout>
     </div>
