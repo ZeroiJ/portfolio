@@ -162,6 +162,72 @@ Entries:
 
 --------------------------------------------------------------------------------
 
+SECTION: PROJECTS
+=================
+
+[Mode: MARATHON]
+----------------
+Header: Deployment Archive
+
+Projects:
+1. California Housing Price Model (Linear Regression)
+   - Protocol: Predictive Analysis
+   - Description: Implemented a Linear Regression model using Scikit-Learn to predict median housing values. Utilized feature engineering on census data to minimize error margins.
+   - Stack: Python, Scikit-Learn
+
+2. COVID-19 Recovery Trends (Time Series Analysis)
+   - Protocol: Global Health Monitoring
+   - Description: Analyzed pandemic spread velocities and recovery rates across multiple nations. Produced statistical visualizations to track recovery trends over time.
+   - Stack: Jupyter, Pandas, Matplotlib
+
+3. Spotify Audio Analysis (Exploratory Data Analysis)
+   - Protocol: Sonic Pattern Recognition
+   - Description: Investigated audio feature correlations across 114,000 tracks. Identified key popularity drivers and acoustic signatures in large-scale music data.
+   - Stack: Python, Data Visualization
+
+4. Streaming Wars: Netflix vs. Amazon Prime (Comparative EDA)
+   - Protocol: Market Strategy Analysis
+   - Description: Comparative analysis of content strategies, catalog composition, and audience targeting between two major streaming platforms.
+   - Stack: Python, Seaborn
+
+5. WhatsApp Group Chat Analysis (Social Pattern Mining)
+   - Protocol: Communication Metrics
+   - Description: Parsed and analyzed 980 messages from a high-frequency group chat to identify activity peaks, messaging patterns, and content themes.
+   - Stack: Python, NLP Basics
+
+[Mode: OK GUY (Tavus)]
+----------------------
+Header: The "It Works On My Machine" Gallery
+Subline: Things I built that actually run (mostly).
+
+Projects:
+1. California Housing Model (The "Can I Afford This?" Calculator)
+   - What it does: Predicts house prices.
+   - The Reality: It told me I can't afford a house in California. Accuracy: 100% on my depression, 90% on the data.
+   - Tech: Python (and a lot of crying over regression lines).
+
+2. COVID-19 Analysis (The 2020 Flashback)
+   - What it does: Time-series analysis of recovery rates.
+   - The Reality: Reminded me of when we thought a 2-week lockdown was long. Good graphs, sad vibes.
+   - Tech: Jupyter Notebooks (because I like cells).
+
+3. Spotify Analysis (Why My Music Taste is Basic)
+   - What it does: Analyzed 114k songs to find popularity drivers.
+   - The Reality: Validated that yes, pop music is repetitive, and yes, I still listen to it.
+   - Tech: Python.
+
+4. Netflix vs. Amazon Prime (The "What to Watch" Dilemma)
+   - What it does: Compared content libraries.
+   - The Reality: Spent 10 hours coding this analysis instead of just picking a movie to watch.
+   - Tech: Python, Indecision.
+
+5. WhatsApp Chat Analysis (Exposing My Roommates)
+   - What it does: Analyzed 980 messages from the house group chat.
+   - The Reality: Proved that 80% of our communication is just "Who ate my yogurt?" and "Rent is due." Peak activity: 2 AM.
+   - Tech: Python, NLP (Natural Language Privacy-invasion).
+
+--------------------------------------------------------------------------------
+
 SECTION: CONTACT
 ================
 
