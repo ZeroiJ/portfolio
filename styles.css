@@ -120,8 +120,9 @@ button:focus-visible {
   width: clamp(40px, 6vw, 52px);
   height: clamp(40px, 6vw, 52px);
   border-radius: 6px;
-  filter: grayscale(100%);
   border: 1px solid var(--line);
+  object-fit: cover;
+  display: block;
 }
 
 .name {
@@ -276,10 +277,12 @@ p {
   width: 32px;
   height: 32px;
   border: 1px solid var(--line);
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-size: 11px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: #fff;
+  padding: 2px;
+  box-sizing: border-box;
 }
 
 .edu-title { font-weight: 600; font-size: clamp(12px, 1.75vw, 14px); }

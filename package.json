@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Static portfolio; build copies assets to dist/ for Cloudflare.",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && cp index.html styles.css script.js dist/",
+    "build": "rm -rf dist && mkdir -p dist && mkdir -p dist/assets && cp index.html styles.css script.js dist/ && cp assets/profile.jpg assets/mgmcet-logo.jpg dist/assets/",
     "dev": "wrangler dev --local",
     "deploy": "wrangler deploy"
   },
