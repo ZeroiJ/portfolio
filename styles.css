@@ -117,12 +117,13 @@ button:focus-visible {
 }
 
 .avatar {
-  width: clamp(40px, 6vw, 52px);
-  height: clamp(40px, 6vw, 52px);
-  border-radius: 6px;
+  width: clamp(72px, 11vw, 96px);
+  height: clamp(72px, 11vw, 96px);
+  border-radius: 0;
   border: 1px solid var(--line);
   object-fit: cover;
   display: block;
+  flex-shrink: 0;
 }
 
 .name {
@@ -269,19 +270,20 @@ p {
 
 .edu {
   display: flex;
-  gap: 10px;
+  gap: 14px;
   align-items: center;
 }
 
 .edu-logo {
-  width: 32px;
-  height: 32px;
+  width: clamp(52px, 8vw, 72px);
+  height: clamp(52px, 8vw, 72px);
   border: 1px solid var(--line);
+  border-radius: 0;
   display: block;
   flex-shrink: 0;
   object-fit: contain;
   background: #fff;
-  padding: 2px;
+  padding: 4px;
   box-sizing: border-box;
 }
 
