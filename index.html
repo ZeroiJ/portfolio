@@ -1,13 +1,259 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sujal Birwadkar — Portfolio</title>
+  <meta name="description" content="Sujal Birwadkar — Data Science student building data systems and analytics tools." />
+  <link rel="canonical" href="https://sujalbirwadkar.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sujal Birwadkar — Portfolio" />
+  <meta property="og:description" content="Sujal Birwadkar — Data Science student building data systems and analytics tools." />
+  <meta property="og:url" content="https://sujalbirwadkar.dev/" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/167567825?v=4" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sujal Birwadkar — Portfolio" />
+  <meta name="twitter:description" content="Sujal Birwadkar — Data Science student building data systems and analytics tools." />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/167567825?v=4" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-accent"></div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <div class="page">
+    <header class="header">
+      <div class="header-left">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/167567825?v=4" alt="Sujal Birwadkar" />
+        <div>
+          <div class="name">Sujal Birwadkar</div>
+          <div class="meta mono-label">
+            <span class="meta-segment">AGE:20</span>
+            <span class="meta-segment">LOC:NAVI MUMBAI</span>
+            <span class="meta-segment">TIME: <span id="localTime">--:--</span></span>
+            <span class="meta-segment">TZ:IST Indian Standard Time</span>
+          </div>
+        </div>
+      </div>
+      <nav class="header-nav mono-label">
+        <a href="https://www.linkedin.com/in/sujal-birwadkar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/ZeroiJ" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#" id="emailNav" class="email-trigger">Email</a>
+        <a href="#" class="btn" id="resumeDownloadBtn">Resume ↗</a>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <section class="left">
+        <div class="section reveal">
+          <div class="section-title mono-label">01 About</div>
+          <div class="divider"></div>
+          <div class="about-copy">
+            <p>
+              <strong>Sujal Birwadkar. 20. Navi Mumbai.</strong>
+              Second year at MGMCET, with the IIT Madras BS programme on the side.
+              I like building things that actually run — reinforcement-learning agents, CLI tools, and data pipelines that sit at the intersection of AI/ML and reliable systems.
+            </p>
+            <p>
+              Arch Linux daily driver; terminal for almost everything.
+              Sometimes I win hackathons. Sometimes my laptop dies at 78%.
+            </p>
+          </div>
+
+          <div class="micro-col mono-label">
+            <div class="micro-col-title">Now playing</div>
+            <p class="micro-col-line">
+              Song <a href="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO" target="_blank" rel="noopener noreferrer">Peaceful Piano</a> Spotify
+            </p>
+            <p class="micro-col-line">
+              Read <a href="https://arxiv.org/abs/1908.06049" target="_blank" rel="noopener noreferrer">ZeroER: Entity Resolution using Zero Labeled Examples</a> Wu et al.
+            </p>
+            <div class="micro-col-title micro-col-title--spaced">Currently</div>
+            <p class="micro-col-line">Building QuerySight — agentic analytics on messy data.</p>
+            <p class="micro-col-line">Learning RL &amp; ML depth, Python, SQL — plus whatever IITM assigns this week.</p>
+          </div>
+        </div>
+
+        <div class="section reveal">
+          <div class="section-title mono-label">02 Education</div>
+          <div class="divider"></div>
+          <div class="edu">
+            <div class="edu-logo mono-label">U</div>
+            <div>
+              <div class="edu-title">BTech in Data Science</div>
+              <div class="edu-sub mono-label">MGMCET, Navi Mumbai • 2024 — 2028</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section reveal">
+          <div class="section-title mono-label">03 Tools</div>
+          <div class="divider"></div>
+          <div class="tools-row"><span class="tools-label mono-label">Lang</span><span>Python, SQL, R</span></div>
+          <div class="tools-row"><span class="tools-label mono-label">Data</span><span>Pandas, NumPy, Polars, PySpark</span></div>
+          <div class="tools-row"><span class="tools-label mono-label">Stack</span><span>PostgreSQL, BigQuery, dbt, Airflow</span></div>
+          <div class="tools-row"><span class="tools-label mono-label">BI</span><span>Power BI, Tableau, Excel</span></div>
+          <div class="tools-row"><span class="tools-label mono-label">Infra</span><span>Docker, Git, Linux</span></div>
+        </div>
+
+        <div class="section reveal" id="resume">
+          <div class="section-title mono-label">04 Experience</div>
+          <div class="divider"></div>
+
+          <div class="exp-open">
+            <div class="exp-open-kicker mono-label">Actively hiring my first formal role</div>
+            <p class="exp-open-body">
+              I am seeking internships and project collaborations in data science, analytics, and data engineering — teams that care about measurable impact, clean pipelines, and clear communication.
+            </p>
+            <div class="exp-chips mono-label" aria-label="Focus areas">
+              <span>Internships</span><span>Data</span><span>ML</span><span>RL</span><span>Remote OK</span>
+            </div>
+            <button type="button" class="btn lets-talk mono-label" id="letsTalkBtn">Let's talk</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="section reveal" id="projects">
+          <div class="section-header">
+            <div class="section-title mono-label">05 Projects</div>
+            <a class="more mono-label" href="https://github.com/ZeroiJ" target="_blank" rel="noopener noreferrer">More on GitHub ↗</a>
+          </div>
+          <div class="divider"></div>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">Guardian Manager</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/guardian-manager" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">React<span class="tag-sep">·</span>TypeScript<span class="tag-sep">·</span>Vite</div>
+            <p class="project-note mono-label">Fully vibe-coded — consider yourself warned.</p>
+            <p class="project-desc">Destiny 2 inventory management web app. Full-stack flow with Bungie API integration.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="guardian-manager">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>TypeScript</span>
+            </div>
+          </article>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">RustDB</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/database-engine" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">Rust<span class="tag-sep">·</span>B-tree<span class="tag-sep">·</span>WAL<span class="tag-sep">·</span>Storage</div>
+            <p class="project-desc">SQL database engine built from scratch: real B-Tree storage layer, buffer pool, WAL, and TCP server.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="database-engine">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>Rust</span>
+            </div>
+          </article>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">SQL Optimizer — R1</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/sql-optimizer-hackathon-round_1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">Python<span class="tag-sep">·</span>Gradio<span class="tag-sep">·</span>Hackathon</div>
+            <p class="project-desc">SQL query optimizer prototype. Hackathon Round 1 at METAxScaler School of Technology.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="sql-optimizer-hackathon-round_1">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>Python</span>
+            </div>
+          </article>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">Autonomic DBRE — R2</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/autonomus-DBRE" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">Python<span class="tag-sep">·</span>Docker<span class="tag-sep">·</span>Hackathon</div>
+            <p class="project-desc">Autonomic Database Reliability Engineering prototype. Hackathon Round 2 at METAxScaler School of Technology.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="autonomus-DBRE">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>Python</span>
+            </div>
+          </article>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">Ironveil</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/ironveil" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">Rust<span class="tag-sep">·</span>Roguelike<span class="tag-sep">·</span>Terminal</div>
+            <p class="project-desc">Terminal-based roguelike dungeon crawler — built for fun and to sharpen systems thinking.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="ironveil">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>Rust</span>
+            </div>
+          </article>
+
+          <article class="project" data-stagger>
+            <div class="project-head">
+              <div class="project-title">Analysis Pack</div>
+              <div class="project-actions mono-label">
+                <a class="btn" href="https://github.com/ZeroiJ/spotify-data-analysis" target="_blank" rel="noopener noreferrer">Notebooks ↗</a>
+              </div>
+            </div>
+            <div class="project-tags project-tags--inline mono-label" aria-label="Stack">Jupyter<span class="tag-sep">·</span>Python<span class="tag-sep">·</span>EDA</div>
+            <p class="project-note mono-label">Aggregates several notebook-first repos (Spotify is the hub repo below).</p>
+            <p class="project-desc">Bundle of analyses — Spotify listening, COVID-19, WhatsApp chats, Netflix vs Prime, California housing, and more.</p>
+            <div class="project-foot mono-label">
+              <span class="gh-stars" data-owner="ZeroiJ" data-repo="spotify-data-analysis">— …</span>
+              <span class="project-foot-sep">·</span>
+              <span>Jupyter</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="section reveal">
+          <div class="section-title mono-label">06 Guestbook</div>
+          <div class="divider"></div>
+          <div class="stamps">
+            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
+            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
+            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
+            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
+          </div>
+          <div class="guestbook">
+            <div class="pixel"></div>
+            <div>
+              <input class="input" type="text" placeholder="Name" />
+              <div class="guestbook-actions">
+                <button class="btn mono-label" type="button">Clear</button>
+                <button class="btn mono-label" type="button">Stamp ↗</button>
+              </div>
+            </div>
+          </div>
+          <div class="palette">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer mono-label">
+      <div>sujalbirwadkar.dev • 2026 • built from scratch</div>
+      <div class="footer-hint">vanilla HTML/CSS/JS</div>
+      <div class="keys">r resume · g github · e email</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
