@@ -1,0 +1,9 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static portfolio; build copies assets to dist/ for Cloudflare.",
+  "scripts": {
+    "build": "rm -rf dist && mkdir -p dist && cp index.html styles.css script.js dist/"
+  }
+}
