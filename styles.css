@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-  --bg: #f7f4ef;
-  --text: #1a1a1a;
-  --muted: #5c5c5c;
-  --line: #d4cfc6;
-  --accent: #ff6a00;
+  /* Dune — from palette-options.html */
+  --bg: #f2ebe4;
+  --text: #3a322c;
+  --muted: #6b5e52;
+  --line: #d9cfc3;
+  --accent: #9a6b4f;
   --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Space Mono", ui-monospace, "Cascadia Code", monospace;
   --page-pad-x: clamp(10px, 1.25vw + 6px, 28px);
@@ -14,7 +15,15 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+::selection {
+  background: rgba(154, 107, 79, 0.22);
+  color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
 
 body {
   margin: 0;
@@ -79,7 +88,7 @@ button:focus-visible {
   color: #fff;
   background: var(--text);
   border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(31, 31, 31, 0.15);
+  box-shadow: 0 10px 30px rgba(58, 50, 44, 0.12);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
   opacity: 0;
   pointer-events: none;
@@ -353,12 +362,13 @@ p {
   background: transparent;
   padding: 8px 12px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .lets-talk:hover {
   background: var(--accent);
   color: #fff;
+  border-color: var(--accent);
 }
 
 .project {
@@ -372,7 +382,7 @@ p {
 .project:last-child { border-bottom: none; }
 
 .project:hover {
-  box-shadow: 0 12px 28px rgba(31, 31, 31, 0.07);
+  box-shadow: 0 12px 28px rgba(58, 50, 44, 0.07);
   background: rgba(255, 255, 255, 0.45);
 }
 
@@ -397,6 +407,14 @@ p {
   padding: 4px 6px;
   font-size: clamp(10px, 1.45vw, 11px);
   letter-spacing: 0.04em;
+  color: var(--text);
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.project-actions .btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: var(--muted);
 }
 
 .project-tags--inline {
@@ -584,10 +602,27 @@ p {
   padding: 6px 8px;
   font-size: clamp(11px, 1.65vw, 12px);
   background: transparent;
+  color: var(--text);
 }
 
-.guestbook-actions { display: flex; gap: 6px; flex-wrap: wrap; }
-.guestbook-actions .btn { border: 1px solid var(--line); padding: 6px 8px; font-size: clamp(10px, 1.45vw, 11px); background: transparent; cursor: pointer; }
+.input::placeholder {
+  color: var(--muted);
+}
+
+.guestbook-actions .btn {
+  border: 1px solid var(--line);
+  padding: 6px 8px;
+  font-size: clamp(10px, 1.45vw, 11px);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.guestbook-actions .btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: var(--muted);
+}
 
 .palette { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 

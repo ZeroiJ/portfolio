@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Calm palette options — portfolio preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
     body {
@@ -104,14 +107,109 @@
       border-radius: 3px;
       border: 1px solid rgba(0,0,0,0.15);
     }
+    .dembrandt {
+      max-width: 1200px;
+      margin-bottom: 1.75rem;
+      padding: 1rem 1.1rem 1.15rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .dembrandt h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 0.35rem;
+      font-family: "IBM Plex Serif", Georgia, serif;
+    }
+    .dembrandt .sub {
+      font-size: 0.75rem;
+      color: #4e5a5f;
+      margin: 0 0 0.85rem;
+      max-width: 58rem;
+      line-height: 1.4;
+    }
+    .dembrandt .sub code {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+    }
+    .palette-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+      align-items: flex-end;
+      margin-bottom: 0.85rem;
+    }
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 56px;
+    }
+    .swatch-item .blob {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .swatch-item .blob.dark-ring {
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), 0 0 0 1px rgba(0,0,0,0.4);
+    }
+    .swatch-item .hex {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.62rem;
+      color: #333;
+    }
+    .swatch-item .tag {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #74ade8;
+    }
+    .vars-row {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.65rem;
+      color: #4e5a5f;
+      line-height: 1.55;
+      padding-top: 0.65rem;
+      border-top: 1px solid #dadde2;
+    }
+    .vars-row strong { color: #1a1a1a; font-weight: 500; }
   </style>
 </head>
 <body>
   <h1>Calm palette options</h1>
   <p class="lead">
     Open this file in your browser (<code>palette-options.html</code>). Each card mimics a tiny slice of your portfolio: page background, text, muted label, divider, accent. Hex values are in the strip at the bottom of each card.
-    <strong>Zed.dev — light / dark</strong> cards below are <em>approximate</em> swatches derived from their public CSS (e.g. <code>html.light</code> / <code>html.dark</code> nav background <code>#f7f7f2</code> / <code>#121417</code>, cream scale, and brand greens)—not an official Zed export.
   </p>
+
+  <section class="dembrandt" aria-labelledby="dembrandt-heading">
+    <h2 id="dembrandt-heading">zed.dev — Dembrandt extraction</h2>
+    <p class="sub">
+      Colors and tokens below match a <strong>Dembrandt</strong> run on <code>https://zed.dev/</code> with <code>--dark-mode</code> (saved JSON under <code>output/zed.dev/</code>). Palette order follows frequency in the report; tags mark dark-mode-only swatches. Typography on the two Zed cards uses <strong>IBM Plex Serif</strong> and <strong>IBM Plex Mono</strong> as stand-ins for the site’s Plex / Zed Mono stacks.
+    </p>
+    <div class="palette-row">
+      <div class="swatch-item"><span class="blob" style="background:#dadde2"></span><span class="hex">#dadde2</span><span class="tag">chrome</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#a9afbc"></span><span class="hex">#a9afbc</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#4e5a5f"></span><span class="hex">#4e5a5f</span></div>
+      <div class="swatch-item"><span class="blob dark-ring" style="background:#000000"></span><span class="hex">#000000</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#74ade8"></span><span class="hex">#74ade8</span><span class="tag">accent</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#d07277"></span><span class="hex">#d07277</span></div>
+      <div class="swatch-item"><span class="blob dark-ring" style="background:#2f343e"></span><span class="hex">#2f343e</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#dce0e5"></span><span class="hex">#dce0e5</span><span class="tag">dark</span></div>
+      <div class="swatch-item"><span class="blob dark-ring" style="background:#00040a"></span><span class="hex">#00040a</span><span class="tag">dark</span></div>
+      <div class="swatch-item"><span class="blob" style="background:#ffffff"></span><span class="hex">#ffffff</span></div>
+    </div>
+    <div class="vars-row">
+      <strong>CSS variables</strong> (resolved where fixed hex): <code>--color-white</code> #fff ·
+      <code>--c15t-text</code> hsl(0,0%,10%) ≈ <strong>#1a1a1a</strong> ·
+      <code>--c15t-text-muted</code> hsl(0,0%,40%) ≈ <strong>#666666</strong> ·
+      <code>--c15t-text-on-primary</code> #fff ·
+      <code>--color-black</code> #000
+    </div>
+  </section>
 
   <div class="grid">
 
@@ -133,6 +231,55 @@
         <span><i class="dot" style="background:#5c5c5c"></i>muted</span>
         <span><i class="dot" style="background:#d4cfc6"></i>line</span>
         <span><i class="dot" style="background:#ff6a00"></i>accent</span>
+      </div>
+    </div>
+
+    <!-- zed.dev — Dembrandt light (extracted palette + CSS tokens) -->
+    <div class="card">
+      <div class="card-head" style="color:#4e5a5f;border-color:#dadde2;background:#f5f6f8;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.68rem;letter-spacing:0.04em">Zed.dev — Dembrandt (light)</div>
+      <div class="mock" style="background:#ffffff;color:#1a1a1a;font-family:'IBM Plex Serif',Georgia,serif">
+        <div class="mock-title" style="font-weight:600;letter-spacing:-0.02em">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#666666;font-family:'IBM Plex Mono',ui-monospace,monospace">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#dadde2"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#a9afbc;color:#4e5a5f;font-family:'IBM Plex Mono',ui-monospace,monospace">Projects</span>
+          <span class="mock-accent" style="background:#2f343e;color:#a9afbc;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500">Primary</span>
+          <span style="font-size:0.62rem;color:#74ade8;font-family:'IBM Plex Mono',ui-monospace,monospace;text-decoration:underline;text-underline-offset:2px">Link</span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#d07277;flex-shrink:0" title="coral accent"></span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#ffffff"></i>bg</span>
+        <span><i class="dot" style="background:#1a1a1a"></i>text</span>
+        <span><i class="dot" style="background:#666666"></i>muted</span>
+        <span><i class="dot" style="background:#dadde2"></i>line</span>
+        <span><i class="dot" style="background:#74ade8"></i>link</span>
+        <span><i class="dot" style="background:#d07277"></i>coral</span>
+        <span><i class="dot" style="background:#2f343e"></i>btn</span>
+      </div>
+    </div>
+
+    <!-- zed.dev — Dembrandt dark (dark-mode swatches from extraction) -->
+    <div class="card">
+      <div class="card-head" style="color:#a9afbc;border-color:#2f343e;background:#00040a;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.68rem;letter-spacing:0.04em">Zed.dev — Dembrandt (dark)</div>
+      <div class="mock" style="background:#00040a;color:#dce0e5;font-family:'IBM Plex Serif',Georgia,serif">
+        <div class="mock-title" style="font-weight:600;letter-spacing:-0.02em">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#a9afbc;font-family:'IBM Plex Mono',ui-monospace,monospace">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#2f343e"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#4e5a5f;color:#a9afbc;font-family:'IBM Plex Mono',ui-monospace,monospace">Projects</span>
+          <span class="mock-accent" style="background:#2f343e;color:#dce0e5;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500">Primary</span>
+          <span style="font-size:0.62rem;color:#74ade8;font-family:'IBM Plex Mono',ui-monospace,monospace;text-decoration:underline;text-underline-offset:2px">Link</span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#d07277;flex-shrink:0" title="coral accent"></span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#dce0e5;background:rgba(255,255,255,0.04);border-top-color:#2f343e">
+        <span><i class="dot" style="background:#00040a;border-color:#4e5a5f"></i>bg</span>
+        <span><i class="dot" style="background:#dce0e5"></i>text</span>
+        <span><i class="dot" style="background:#a9afbc"></i>muted</span>
+        <span><i class="dot" style="background:#2f343e"></i>line</span>
+        <span><i class="dot" style="background:#74ade8"></i>link</span>
+        <span><i class="dot" style="background:#d07277"></i>coral</span>
       </div>
     </div>
 
@@ -238,48 +385,6 @@
         <span><i class="dot" style="background:#6b5e52"></i>#6b5e52</span>
         <span><i class="dot" style="background:#d9cfc3"></i>#d9cfc3</span>
         <span><i class="dot" style="background:#9a6b4f"></i>#9a6b4f</span>
-      </div>
-    </div>
-
-    <!-- Zed.dev — light (from site CSS: nav bg, cream scale, brand green) -->
-    <div class="card">
-      <div class="card-head" style="color:#5c574a;border-color:#d1cfc8;background:#f7f7f2">Zed.dev — light (inspired)</div>
-      <div class="mock" style="background:#f7f7f2;color:#38352d">
-        <div class="mock-title">Sujal Birwadkar</div>
-        <div class="mock-muted" style="color:#5c574a">AGE:20 · LOC:NAVI MUMBAI</div>
-        <div class="mock-line" style="background:#d1cfc8"></div>
-        <div class="mock-row">
-          <span class="mock-chip" style="border-color:#d1cfc8;color:#5c574a">Projects</span>
-          <span class="mock-accent" style="background:#00a544">Accent</span>
-        </div>
-      </div>
-      <div class="swatches" style="color:#333">
-        <span><i class="dot" style="background:#f7f7f2"></i>#f7f7f2</span>
-        <span><i class="dot" style="background:#38352d"></i>#38352d</span>
-        <span><i class="dot" style="background:#5c574a"></i>#5c574a</span>
-        <span><i class="dot" style="background:#d1cfc8"></i>#d1cfc8</span>
-        <span><i class="dot" style="background:#00a544"></i>#00a544</span>
-      </div>
-    </div>
-
-    <!-- Zed.dev — dark (from site CSS: dark nav bg, panel tones, brand green) -->
-    <div class="card">
-      <div class="card-head" style="color:#9aa0a8;border-color:#2c3038;background:#121417">Zed.dev — dark (inspired)</div>
-      <div class="mock" style="background:#121417;color:#eceadf">
-        <div class="mock-title">Sujal Birwadkar</div>
-        <div class="mock-muted" style="color:#9aa0a8">AGE:20 · LOC:NAVI MUMBAI</div>
-        <div class="mock-line" style="background:#2c3038"></div>
-        <div class="mock-row">
-          <span class="mock-chip" style="border-color:#2c3038;color:#9aa0a8">Projects</span>
-          <span class="mock-accent" style="background:#00c758">Accent</span>
-        </div>
-      </div>
-      <div class="swatches" style="color:#ddd;background:rgba(255,255,255,0.06)">
-        <span><i class="dot" style="background:#121417"></i>#121417</span>
-        <span><i class="dot" style="background:#eceadf"></i>#eceadf</span>
-        <span><i class="dot" style="background:#9aa0a8"></i>#9aa0a8</span>
-        <span><i class="dot" style="background:#2c3038"></i>#2c3038</span>
-        <span><i class="dot" style="background:#00c758"></i>#00c758</span>
       </div>
     </div>
 
