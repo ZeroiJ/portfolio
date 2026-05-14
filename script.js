@@ -5,6 +5,13 @@ const GITHUB_PROFILE = 'https://github.com/ZeroiJ';
 const GH_CACHE_KEY = 'portfolioGhStars';
 const GH_CACHE_TTL_MS = 60 * 60 * 1000;
 
+const GUESTBOOK_GRID = 10;
+const GUESTBOOK_CELLS = GUESTBOOK_GRID * GUESTBOOK_GRID;
+const PALETTE_HEX = ['#1f1f1f', '#ff6a00', '#1b7f79', '#6b5ca5', '#c63d2f'];
+const VISIT_LS_KEY = 'portfolioVisitV1';
+const VISIT_TTL_MS = 30 * 60 * 1000;
+const GB_POLL_MS = 45 * 1000;
+
 /** Plain-text / structured mirror of the portfolio for offline resume HTML (no images). */
 const RESUME = {
   name: 'Sujal Birwadkar',
@@ -428,6 +435,287 @@ function initScrollReveal() {
   nodes.forEach((n) => io.observe(n));
 }
 
+/** @type {Uint8Array | null} */
+let guestbookPixels = null;
+/** @type {HTMLButtonElement[] | null} */
+let guestbookPixelEls = null;
+let guestbookSelectedColor = 0;
+let guestbookPollTimer;
+
+function guestbookCellsOrThrow() {
+  if (!guestbookPixelEls || guestbookPixelEls.length !== GUESTBOOK_CELLS) {
+    throw new Error('Guestbook editor not ready');
+  }
+  return guestbookPixelEls;
+}
+
+function syncGuestbookEditorCell(i) {
+  if (!guestbookPixels) return;
+  const cells = guestbookPixelEls;
+  if (!cells || !cells[i]) return;
+  cells[i].style.background = PALETTE_HEX[guestbookPixels[i]] ?? PALETTE_HEX[0];
+}
+
+function paintGuestbookCell(i) {
+  if (!guestbookPixels || i < 0 || i >= GUESTBOOK_CELLS) return;
+  guestbookPixels[i] = guestbookSelectedColor;
+  syncGuestbookEditorCell(i);
+}
+
+function buildGuestbookEditor() {
+  const root = document.getElementById('pixelEditor');
+  if (!root) return;
+
+  root.innerHTML = '';
+  root.classList.add('pixel-editor');
+  guestbookPixels = new Uint8Array(GUESTBOOK_CELLS);
+  guestbookPixelEls = [];
+
+  for (let i = 0; i < GUESTBOOK_CELLS; i += 1) {
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'pixel-cell';
+    cell.dataset.i = String(i);
+    cell.style.background = PALETTE_HEX[0];
+    cell.setAttribute('aria-label', `Pixel ${1 + Math.floor(i / GUESTBOOK_GRID)}, ${1 + (i % GUESTBOOK_GRID)}`);
+    root.appendChild(cell);
+    guestbookPixelEls.push(cell);
+  }
+
+  let painting = false;
+
+  root.addEventListener('mousedown', (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    const idx = t.dataset.i;
+    if (idx === undefined) return;
+    painting = true;
+    paintGuestbookCell(Number(idx));
+  });
+
+  root.addEventListener('mouseenter', (e) => {
+    if (!painting) return;
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    const idx = t.dataset.i;
+    if (idx === undefined) return;
+    paintGuestbookCell(Number(idx));
+  }, true);
+
+  window.addEventListener('mouseup', () => {
+    painting = false;
+  });
+}
+
+function clearGuestbookEditor() {
+  if (!guestbookPixels) return;
+  guestbookPixels.fill(0);
+  for (let i = 0; i < GUESTBOOK_CELLS; i += 1) syncGuestbookEditorCell(i);
+}
+
+function bindGuestbookPalette() {
+  const root = document.getElementById('guestbookPalette');
+  if (!root) return;
+
+  root.querySelectorAll('.palette-swatch').forEach((btn) => {
+    if (!(btn instanceof HTMLButtonElement)) return;
+    btn.addEventListener('click', () => {
+      const raw = btn.getAttribute('data-color-index');
+      const n = raw !== null ? Number(raw) : NaN;
+      if (!Number.isInteger(n) || n < 0 || n > 4) return;
+      guestbookSelectedColor = n;
+      root.querySelectorAll('.palette-swatch').forEach((b) => {
+        if (!(b instanceof HTMLButtonElement)) return;
+        const sel = b === btn;
+        b.classList.toggle('is-selected', sel);
+        b.setAttribute('aria-selected', sel ? 'true' : 'false');
+      });
+    });
+  });
+}
+
+function guestbookPixelsFlat() {
+  if (!guestbookPixels) return [];
+  return Array.from(guestbookPixels);
+}
+
+function renderGuestbookStamps(entries) {
+  const grid = document.getElementById('stampsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  if (!entries.length) {
+    const empty = document.createElement('div');
+    empty.className = 'stamps-empty mono-label';
+    empty.textContent = 'No stamps yet — be the first.';
+    grid.appendChild(empty);
+    return;
+  }
+
+  for (const entry of entries) {
+    if (!entry.pixels || entry.pixels.length !== GUESTBOOK_CELLS) continue;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'stamp';
+    wrap.title = entry.name;
+
+    for (let i = 0; i < GUESTBOOK_CELLS; i += 1) {
+      const c = entry.pixels[i];
+      const cell = document.createElement('span');
+      cell.className = 'stamp-cell';
+      const idx = typeof c === 'number' && c >= 0 && c <= 4 ? c : 0;
+      cell.style.background = PALETTE_HEX[idx];
+      wrap.appendChild(cell);
+    }
+
+    grid.appendChild(wrap);
+  }
+}
+
+async function fetchGuestbookEntries() {
+  const res = await fetch('/api/guestbook', { headers: { Accept: 'application/json' } });
+  if (!res.ok) throw new Error(String(res.status));
+  const data = await res.json();
+  const entries = Array.isArray(data.entries) ? data.entries : [];
+  return entries;
+}
+
+async function refreshGuestbookStamps() {
+  try {
+    const entries = await fetchGuestbookEntries();
+    renderGuestbookStamps(entries);
+  } catch {
+    const grid = document.getElementById('stampsGrid');
+    if (grid && !grid.querySelector('.stamp')) {
+      grid.innerHTML = '';
+      const empty = document.createElement('div');
+      empty.className = 'stamps-empty mono-label';
+      empty.textContent = 'Guestbook offline — try again later.';
+      grid.appendChild(empty);
+    }
+  }
+}
+
+async function refreshVisitorCount() {
+  const el = document.getElementById('visitorNum');
+  if (!el) return;
+  try {
+    const res = await fetch('/api/visitors', { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    el.textContent = typeof data.count === 'number' ? String(data.count) : '—';
+  } catch {
+    el.textContent = '—';
+  }
+}
+
+async function maybeIncrementVisitorCount() {
+  const el = document.getElementById('visitorNum');
+  const now = Date.now();
+  let shouldPost = true;
+  try {
+    const raw = localStorage.getItem(VISIT_LS_KEY);
+    if (raw) {
+      const ts = parseInt(raw, 10);
+      if (Number.isFinite(ts) && now - ts < VISIT_TTL_MS) shouldPost = false;
+    }
+  } catch {
+    /* ignore */
+  }
+
+  if (!shouldPost) return;
+
+  try {
+    const res = await fetch('/api/visitors', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', Accept: 'application/json' },
+      body: '{}'
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    try {
+      localStorage.setItem(VISIT_LS_KEY, String(now));
+    } catch {
+      /* ignore */
+    }
+    if (el && typeof data.count === 'number') el.textContent = String(data.count);
+  } catch {
+    /* ignore */
+  }
+}
+
+function bindGuestbookActions() {
+  const clearBtn = document.getElementById('guestbookClear');
+  const stampBtn = document.getElementById('guestbookStamp');
+  const nameInput = document.getElementById('guestbookName');
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      clearGuestbookEditor();
+    });
+  }
+
+  if (stampBtn && nameInput) {
+    stampBtn.addEventListener('click', async () => {
+      try {
+        guestbookCellsOrThrow();
+      } catch {
+        showToast('Editor not ready');
+        return;
+      }
+
+      const name = String(nameInput.value ?? '').trim();
+      if (!name) {
+        showToast('Add your name first');
+        return;
+      }
+
+      const pixels = guestbookPixelsFlat();
+      if (!pixels.some((c) => c !== 0)) {
+        showToast('Draw something first');
+        return;
+      }
+
+      stampBtn.disabled = true;
+      try {
+        const res = await fetch('/api/guestbook', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ name, pixels })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          showToast(typeof data.error === 'string' ? data.error : 'Could not stamp');
+          return;
+        }
+        showToast('Stamped');
+        clearGuestbookEditor();
+        nameInput.value = '';
+        await refreshGuestbookStamps();
+      } catch {
+        showToast('Network error — try again');
+      } finally {
+        stampBtn.disabled = false;
+      }
+    });
+  }
+}
+
+function initGuestbook() {
+  buildGuestbookEditor();
+  bindGuestbookPalette();
+  bindGuestbookActions();
+  refreshGuestbookStamps();
+  clearInterval(guestbookPollTimer);
+  guestbookPollTimer = setInterval(refreshGuestbookStamps, GB_POLL_MS);
+}
+
+function initVisitors() {
+  refreshVisitorCount();
+  maybeIncrementVisitorCount();
+}
+
 function staggerProjects() {
   const root = document.getElementById('projects');
   if (!root) return;
@@ -474,3 +762,5 @@ bindResumeDownload();
 initScrollReveal();
 staggerProjects();
 hydrateGitHubStars();
+initGuestbook();
+initVisitors();

@@ -224,31 +224,30 @@
         <div class="section reveal">
           <div class="section-title mono-label">06 Guestbook</div>
           <div class="divider"></div>
-          <div class="stamps">
-            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
-            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
-            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
-            <div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div><div class="stamp"></div>
-          </div>
+          <div class="stamps" id="stampsGrid" aria-live="polite"></div>
           <div class="guestbook">
-            <div class="pixel"></div>
+            <div class="pixel" id="pixelEditor" role="application" aria-label="10 by 10 stamp editor"></div>
             <div>
-              <input class="input" type="text" placeholder="Name" />
+              <input id="guestbookName" class="input" type="text" placeholder="Name" maxlength="32" autocomplete="nickname" />
               <div class="guestbook-actions">
-                <button class="btn mono-label" type="button">Clear</button>
-                <button class="btn mono-label" type="button">Stamp ↗</button>
+                <button id="guestbookClear" class="btn mono-label" type="button">Clear</button>
+                <button id="guestbookStamp" class="btn mono-label" type="button">Stamp ↗</button>
               </div>
             </div>
           </div>
-          <div class="palette">
-            <span></span><span></span><span></span><span></span><span></span>
+          <div class="palette" id="guestbookPalette" role="listbox" aria-label="Ink colors">
+            <button type="button" class="palette-swatch is-selected" data-color-index="0" aria-selected="true" aria-label="Black"></button>
+            <button type="button" class="palette-swatch" data-color-index="1" aria-label="Orange"></button>
+            <button type="button" class="palette-swatch" data-color-index="2" aria-label="Teal"></button>
+            <button type="button" class="palette-swatch" data-color-index="3" aria-label="Purple"></button>
+            <button type="button" class="palette-swatch" data-color-index="4" aria-label="Red"></button>
           </div>
         </div>
       </section>
     </div>
 
     <footer class="footer mono-label">
-      <div>sujalbirwadkar.dev • 2026 • built from scratch</div>
+      <div>sujalbirwadkar.dev • 2026 • built from scratch · visitors <span id="visitorNum">—</span></div>
       <div class="footer-hint">vanilla HTML/CSS/JS</div>
       <div class="keys">r resume · g github · e email</div>
     </footer>
