@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calm palette options — portfolio preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 1.5rem clamp(12px, 3vw, 28px) 3rem;
+      font-family: system-ui, sans-serif;
+      background: #e8e6e3;
+      color: #222;
+      line-height: 1.45;
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.35rem;
+    }
+    .lead {
+      font-size: 0.88rem;
+      color: #444;
+      max-width: 52rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+    }
+    .card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .card-head {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line, #ccc);
+      background: rgba(255,255,255,0.35);
+    }
+    .mock {
+      padding: 1rem 1rem 1.1rem;
+      min-height: 140px;
+    }
+    .mock-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .mock-muted {
+      font-size: 0.68rem;
+      margin: 0 0 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .mock-line {
+      height: 1px;
+      margin: 0.5rem 0 0.65rem;
+    }
+    .mock-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .mock-chip {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.45rem;
+      border: 1px solid;
+      border-radius: 2px;
+    }
+    .mock-accent {
+      font-size: 0.62rem;
+      padding: 0.25rem 0.5rem;
+      color: #fff;
+      border-radius: 2px;
+    }
+    .swatches {
+      display: flex;
+      gap: 4px;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.65rem;
+      font-family: ui-monospace, monospace;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      background: rgba(0,0,0,0.03);
+      flex-wrap: wrap;
+    }
+    .swatches span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>Calm palette options</h1>
+  <p class="lead">
+    Open this file in your browser (<code>palette-options.html</code>). Each card mimics a tiny slice of your portfolio: page background, text, muted label, divider, accent. Hex values are in the strip at the bottom of each card.
+  </p>
+
+  <div class="grid">
+
+    <!-- Current (reference) -->
+    <div class="card">
+      <div class="card-head" style="color:#5c5c5c;border-color:#d4cfc6;background:#f7f4ef">Current — warm paper</div>
+      <div class="mock" style="background:#f7f4ef;color:#1a1a1a">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#5c5c5c">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#d4cfc6"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#d4cfc6;color:#5c5c5c">Projects</span>
+          <span class="mock-accent" style="background:#ff6a00">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#f7f4ef"></i>bg</span>
+        <span><i class="dot" style="background:#1a1a1a"></i>text</span>
+        <span><i class="dot" style="background:#5c5c5c"></i>muted</span>
+        <span><i class="dot" style="background:#d4cfc6"></i>line</span>
+        <span><i class="dot" style="background:#ff6a00"></i>accent</span>
+      </div>
+    </div>
+
+    <!-- Sage + stone -->
+    <div class="card">
+      <div class="card-head" style="color:#4a564d;border-color:#c5cdc4;background:#eef2ee">Sage + stone</div>
+      <div class="mock" style="background:#eef2ee;color:#1e2420">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#4a564d">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#c5cdc4"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#c5cdc4;color:#4a564d">Projects</span>
+          <span class="mock-accent" style="background:#5a6b5e">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#eef2ee"></i>#eef2ee</span>
+        <span><i class="dot" style="background:#1e2420"></i>#1e2420</span>
+        <span><i class="dot" style="background:#4a564d"></i>#4a564d</span>
+        <span><i class="dot" style="background:#c5cdc4"></i>#c5cdc4</span>
+        <span><i class="dot" style="background:#5a6b5e"></i>#5a6b5e</span>
+      </div>
+    </div>
+
+    <!-- Fog + ink -->
+    <div class="card">
+      <div class="card-head" style="color:#5a6570;border-color:#cfd6dd;background:#f0f2f5">Fog + ink</div>
+      <div class="mock" style="background:#f0f2f5;color:#1a1f26">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#5a6570">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#cfd6dd"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#cfd6dd;color:#5a6570">Projects</span>
+          <span class="mock-accent" style="background:#5b7c99">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#f0f2f5"></i>#f0f2f5</span>
+        <span><i class="dot" style="background:#1a1f26"></i>#1a1f26</span>
+        <span><i class="dot" style="background:#5a6570"></i>#5a6570</span>
+        <span><i class="dot" style="background:#cfd6dd"></i>#cfd6dd</span>
+        <span><i class="dot" style="background:#5b7c99"></i>#5b7c99</span>
+      </div>
+    </div>
+
+    <!-- Paper + sepia -->
+    <div class="card">
+      <div class="card-head" style="color:#5c5348;border-color:#d8d0c4;background:#faf6ef">Paper + sepia</div>
+      <div class="mock" style="background:#faf6ef;color:#3d3832">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#5c5348">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#d8d0c4"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#d8d0c4;color:#5c5348">Projects</span>
+          <span class="mock-accent" style="background:#a86b52">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#faf6ef"></i>#faf6ef</span>
+        <span><i class="dot" style="background:#3d3832"></i>#3d3832</span>
+        <span><i class="dot" style="background:#5c5348"></i>#5c5348</span>
+        <span><i class="dot" style="background:#d8d0c4"></i>#d8d0c4</span>
+        <span><i class="dot" style="background:#a86b52"></i>#a86b52</span>
+      </div>
+    </div>
+
+    <!-- Sea glass -->
+    <div class="card">
+      <div class="card-head" style="color:#4a635c;border-color:#c5d8d0;background:#e8f0ee">Sea glass</div>
+      <div class="mock" style="background:#e8f0ee;color:#1a2824">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#4a635c">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#c5d8d0"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#c5d8d0;color:#4a635c">Projects</span>
+          <span class="mock-accent" style="background:#3d7a6f">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#e8f0ee"></i>#e8f0ee</span>
+        <span><i class="dot" style="background:#1a2824"></i>#1a2824</span>
+        <span><i class="dot" style="background:#4a635c"></i>#4a635c</span>
+        <span><i class="dot" style="background:#c5d8d0"></i>#c5d8d0</span>
+        <span><i class="dot" style="background:#3d7a6f"></i>#3d7a6f</span>
+      </div>
+    </div>
+
+    <!-- Dune -->
+    <div class="card">
+      <div class="card-head" style="color:#6b5e52;border-color:#d9cfc3;background:#f2ebe4">Dune</div>
+      <div class="mock" style="background:#f2ebe4;color:#3a322c">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#6b5e52">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#d9cfc3"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#d9cfc3;color:#6b5e52">Projects</span>
+          <span class="mock-accent" style="background:#9a6b4f">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#333">
+        <span><i class="dot" style="background:#f2ebe4"></i>#f2ebe4</span>
+        <span><i class="dot" style="background:#3a322c"></i>#3a322c</span>
+        <span><i class="dot" style="background:#6b5e52"></i>#6b5e52</span>
+        <span><i class="dot" style="background:#d9cfc3"></i>#d9cfc3</span>
+        <span><i class="dot" style="background:#9a6b4f"></i>#9a6b4f</span>
+      </div>
+    </div>
+
+    <!-- OLED soft (dark calm) -->
+    <div class="card">
+      <div class="card-head" style="color:#9a9690;border-color:#3a3d42;background:#1a1c1e">OLED soft (dark)</div>
+      <div class="mock" style="background:#1a1c1e;color:#e8e6e3">
+        <div class="mock-title">Sujal Birwadkar</div>
+        <div class="mock-muted" style="color:#9a9690">AGE:20 · LOC:NAVI MUMBAI</div>
+        <div class="mock-line" style="background:#3a3d42"></div>
+        <div class="mock-row">
+          <span class="mock-chip" style="border-color:#3a3d42;color:#9a9690">Projects</span>
+          <span class="mock-accent" style="background:#7d8a9e">Accent</span>
+        </div>
+      </div>
+      <div class="swatches" style="color:#ddd;background:rgba(255,255,255,0.06)">
+        <span><i class="dot" style="background:#1a1c1e"></i>#1a1c1e</span>
+        <span><i class="dot" style="background:#e8e6e3"></i>#e8e6e3</span>
+        <span><i class="dot" style="background:#9a9690"></i>#9a9690</span>
+        <span><i class="dot" style="background:#3a3d42"></i>#3a3d42</span>
+        <span><i class="dot" style="background:#7d8a9e"></i>#7d8a9e</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
