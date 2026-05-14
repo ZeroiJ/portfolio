@@ -40,7 +40,7 @@ Then open the URL Wrangler prints (for example `http://localhost:8787`). The gue
 | Method | Path | Purpose |
 |--------|------|---------|
 | `GET` | `/api/guestbook` | List approved stamps (newest first). |
-| `POST` | `/api/guestbook` | JSON `{ "name": string, "pixels": number[] }` — `pixels` must be length 100 with integers `0`–`4` (palette indices), not all zero. |
+| `POST` | `/api/guestbook` | JSON `{ "name": string, "pixels": number[] }` — `pixels` must be length 100 with integers `0`–`5` (palette indices; `5` is paper). Rejects if every cell is paper (blank). |
 | `GET` | `/api/visitors` | Current visitor count. |
 | `POST` | `/api/visitors` | Increment count once per client IP within a server-side cooldown (6 hours), in addition to the browser `localStorage` TTL in `script.js`. |
 

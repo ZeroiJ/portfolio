@@ -64,10 +64,10 @@ function moderatePixels(raw: unknown): number[] | null {
   if (!Array.isArray(raw) || raw.length !== CELLS) return null;
   const out: number[] = [];
   for (const v of raw) {
-    if (typeof v !== 'number' || !Number.isInteger(v) || v < 0 || v > 4) return null;
+    if (typeof v !== 'number' || !Number.isInteger(v) || v < 0 || v > 5) return null;
     out.push(v);
   }
-  if (out.every((c) => c === 0)) return null;
+  if (out.every((c) => c === 5)) return null;
   return out;
 }
 
@@ -176,7 +176,7 @@ async function handlePostGuestbook(request: Request, env: Env): Promise<Response
   const name = moderateName(o.name);
   const pixels = moderatePixels(o.pixels);
   if (!name) return json({ error: 'Invalid or empty name' }, 400);
-  if (!pixels) return json({ error: 'Invalid stamp pixels (use 10×10 palette indices 0–4, not all empty)' }, 400);
+  if (!pixels) return json({ error: 'Invalid stamp pixels (10×10 palette indices 0–5, not all paper)' }, 400);
 
   const id = crypto.randomUUID();
   const created_at = Date.now();

@@ -7,7 +7,8 @@ const GH_CACHE_TTL_MS = 60 * 60 * 1000;
 
 const GUESTBOOK_GRID = 10;
 const GUESTBOOK_CELLS = GUESTBOOK_GRID * GUESTBOOK_GRID;
-const PALETTE_HEX = ['#1f1f1f', '#ff6a00', '#1b7f79', '#6b5ca5', '#c63d2f'];
+const PALETTE_HEX = ['#1f1f1f', '#ff6a00', '#1b7f79', '#6b5ca5', '#c63d2f', '#efe9e1'];
+const GUESTBOOK_PAPER = 5;
 const VISIT_LS_KEY = 'portfolioVisitV1';
 const VISIT_TTL_MS = 30 * 60 * 1000;
 const GB_POLL_MS = 45 * 1000;
@@ -453,7 +454,8 @@ function syncGuestbookEditorCell(i) {
   if (!guestbookPixels) return;
   const cells = guestbookPixelEls;
   if (!cells || !cells[i]) return;
-  cells[i].style.background = PALETTE_HEX[guestbookPixels[i]] ?? PALETTE_HEX[0];
+  const c = guestbookPixels[i];
+  cells[i].style.background = PALETTE_HEX[c] ?? PALETTE_HEX[GUESTBOOK_PAPER];
 }
 
 function paintGuestbookCell(i) {
@@ -476,40 +478,50 @@ function buildGuestbookEditor() {
     cell.type = 'button';
     cell.className = 'pixel-cell';
     cell.dataset.i = String(i);
-    cell.style.background = PALETTE_HEX[0];
+    cell.style.background = PALETTE_HEX[GUESTBOOK_PAPER];
     cell.setAttribute('aria-label', `Pixel ${1 + Math.floor(i / GUESTBOOK_GRID)}, ${1 + (i % GUESTBOOK_GRID)}`);
     root.appendChild(cell);
     guestbookPixelEls.push(cell);
   }
 
+  guestbookPixels.fill(GUESTBOOK_PAPER);
+
   let painting = false;
 
-  root.addEventListener('mousedown', (e) => {
-    const t = e.target;
-    if (!(t instanceof HTMLElement)) return;
-    const idx = t.dataset.i;
-    if (idx === undefined) return;
-    painting = true;
-    paintGuestbookCell(Number(idx));
-  });
-
-  root.addEventListener('mouseenter', (e) => {
-    if (!painting) return;
-    const t = e.target;
-    if (!(t instanceof HTMLElement)) return;
-    const idx = t.dataset.i;
-    if (idx === undefined) return;
-    paintGuestbookCell(Number(idx));
-  }, true);
-
-  window.addEventListener('mouseup', () => {
+  const endPaint = () => {
     painting = false;
+  };
+
+  root.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    const t = e.target;
+    if (!(t instanceof HTMLElement) || !t.classList.contains('pixel-cell')) return;
+    painting = true;
+    try {
+      root.setPointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+    paintGuestbookCell(Number(t.dataset.i ?? -1));
   });
+
+  root.addEventListener('pointermove', (e) => {
+    if (!painting) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    if (!(el instanceof HTMLElement) || !el.classList.contains('pixel-cell')) return;
+    const idx = el.dataset.i;
+    if (idx === undefined) return;
+    paintGuestbookCell(Number(idx));
+  });
+
+  root.addEventListener('pointerup', endPaint);
+  root.addEventListener('pointercancel', endPaint);
+  root.addEventListener('lostpointercapture', endPaint);
 }
 
 function clearGuestbookEditor() {
   if (!guestbookPixels) return;
-  guestbookPixels.fill(0);
+  guestbookPixels.fill(GUESTBOOK_PAPER);
   for (let i = 0; i < GUESTBOOK_CELLS; i += 1) syncGuestbookEditorCell(i);
 }
 
@@ -522,7 +534,7 @@ function bindGuestbookPalette() {
     btn.addEventListener('click', () => {
       const raw = btn.getAttribute('data-color-index');
       const n = raw !== null ? Number(raw) : NaN;
-      if (!Number.isInteger(n) || n < 0 || n > 4) return;
+      if (!Number.isInteger(n) || n < 0 || n > 5) return;
       guestbookSelectedColor = n;
       root.querySelectorAll('.palette-swatch').forEach((b) => {
         if (!(b instanceof HTMLButtonElement)) return;
@@ -556,6 +568,9 @@ function renderGuestbookStamps(entries) {
   for (const entry of entries) {
     if (!entry.pixels || entry.pixels.length !== GUESTBOOK_CELLS) continue;
 
+    const card = document.createElement('div');
+    card.className = 'stamp-card';
+
     const wrap = document.createElement('div');
     wrap.className = 'stamp';
     wrap.title = entry.name;
@@ -564,12 +579,19 @@ function renderGuestbookStamps(entries) {
       const c = entry.pixels[i];
       const cell = document.createElement('span');
       cell.className = 'stamp-cell';
-      const idx = typeof c === 'number' && c >= 0 && c <= 4 ? c : 0;
+      let idx = typeof c === 'number' && Number.isInteger(c) ? c : 0;
+      if (idx < 0 || idx > 5) idx = 0;
       cell.style.background = PALETTE_HEX[idx];
       wrap.appendChild(cell);
     }
 
-    grid.appendChild(wrap);
+    const author = document.createElement('div');
+    author.className = 'stamp-author mono-label';
+    author.textContent = entry.name;
+
+    card.appendChild(wrap);
+    card.appendChild(author);
+    grid.appendChild(card);
   }
 }
 
@@ -582,16 +604,25 @@ async function fetchGuestbookEntries() {
 }
 
 async function refreshGuestbookStamps() {
+  const status = document.getElementById('stampsStatus');
+  const grid = document.getElementById('stampsGrid');
   try {
     const entries = await fetchGuestbookEntries();
+    if (status) {
+      status.textContent = '';
+      status.classList.add('is-hidden');
+    }
     renderGuestbookStamps(entries);
   } catch {
-    const grid = document.getElementById('stampsGrid');
-    if (grid && !grid.querySelector('.stamp')) {
+    if (grid && !grid.querySelector('.stamp-card')) {
+      if (status) {
+        status.classList.remove('is-hidden');
+        status.textContent = 'Guestbook offline — try again later.';
+      }
       grid.innerHTML = '';
       const empty = document.createElement('div');
       empty.className = 'stamps-empty mono-label';
-      empty.textContent = 'Guestbook offline — try again later.';
+      empty.textContent = 'Could not load stamps.';
       grid.appendChild(empty);
     }
   }
@@ -604,7 +635,7 @@ async function refreshVisitorCount() {
     const res = await fetch('/api/visitors', { headers: { Accept: 'application/json' } });
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
-    el.textContent = typeof data.count === 'number' ? String(data.count) : '—';
+    el.textContent = typeof data.count === 'number' ? `#${data.count.toLocaleString('en-US')}` : '—';
   } catch {
     el.textContent = '—';
   }
@@ -639,7 +670,7 @@ async function maybeIncrementVisitorCount() {
     } catch {
       /* ignore */
     }
-    if (el && typeof data.count === 'number') el.textContent = String(data.count);
+    if (el && typeof data.count === 'number') el.textContent = `#${data.count.toLocaleString('en-US')}`;
   } catch {
     /* ignore */
   }
@@ -672,7 +703,7 @@ function bindGuestbookActions() {
       }
 
       const pixels = guestbookPixelsFlat();
-      if (!pixels.some((c) => c !== 0)) {
+      if (!pixels.some((c) => c !== GUESTBOOK_PAPER)) {
         showToast('Draw something first');
         return;
       }

@@ -224,30 +224,37 @@
         <div class="section reveal">
           <div class="section-title mono-label">06 Guestbook</div>
           <div class="divider"></div>
-          <div class="stamps" id="stampsGrid" aria-live="polite"></div>
-          <div class="guestbook">
-            <div class="pixel" id="pixelEditor" role="application" aria-label="10 by 10 stamp editor"></div>
-            <div>
-              <input id="guestbookName" class="input" type="text" placeholder="Name" maxlength="32" autocomplete="nickname" />
-              <div class="guestbook-actions">
-                <button id="guestbookClear" class="btn mono-label" type="button">Clear</button>
-                <button id="guestbookStamp" class="btn mono-label" type="button">Stamp ↗</button>
+          <p class="guestbook-intro mono-label" id="stampsStatus" aria-live="polite">Loading stamps…</p>
+          <div class="stamps stamps--gallery" id="stampsGrid" aria-label="Stamps from visitors"></div>
+          <div class="guestbook-leave">
+            <div class="guestbook-leave-title mono-label">Leave a stamp</div>
+            <div class="guestbook-workspace">
+              <div class="guestbook-canvas-col">
+                <div class="pixel" id="pixelEditor" role="application" aria-label="10 by 10 stamp editor"></div>
+                <div class="palette" id="guestbookPalette" role="listbox" aria-label="Ink colors">
+                  <button type="button" class="palette-swatch is-selected" data-color-index="0" aria-selected="true" aria-label="Black"></button>
+                  <button type="button" class="palette-swatch" data-color-index="1" aria-label="Orange"></button>
+                  <button type="button" class="palette-swatch" data-color-index="2" aria-label="Teal"></button>
+                  <button type="button" class="palette-swatch" data-color-index="3" aria-label="Purple"></button>
+                  <button type="button" class="palette-swatch" data-color-index="4" aria-label="Red"></button>
+                  <button type="button" class="palette-swatch" data-color-index="5" aria-label="Paper"></button>
+                </div>
+              </div>
+              <div class="guestbook-form-col">
+                <input id="guestbookName" class="input" type="text" placeholder="Name" maxlength="32" autocomplete="nickname" />
+                <div class="guestbook-actions">
+                  <button id="guestbookClear" class="btn mono-label" type="button">Clear</button>
+                  <button id="guestbookStamp" class="btn mono-label" type="button">Stamp ↗</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="palette" id="guestbookPalette" role="listbox" aria-label="Ink colors">
-            <button type="button" class="palette-swatch is-selected" data-color-index="0" aria-selected="true" aria-label="Black"></button>
-            <button type="button" class="palette-swatch" data-color-index="1" aria-label="Orange"></button>
-            <button type="button" class="palette-swatch" data-color-index="2" aria-label="Teal"></button>
-            <button type="button" class="palette-swatch" data-color-index="3" aria-label="Purple"></button>
-            <button type="button" class="palette-swatch" data-color-index="4" aria-label="Red"></button>
           </div>
         </div>
       </section>
     </div>
 
     <footer class="footer mono-label">
-      <div>sujalbirwadkar.dev • 2026 • built from scratch · visitors <span id="visitorNum">—</span></div>
+      <div>sujalbirwadkar.dev • 2026 • built from scratch · visitor <span id="visitorNum">—</span></div>
       <div class="footer-hint">vanilla HTML/CSS/JS</div>
       <div class="keys">r resume · g github · e email</div>
     </footer>
