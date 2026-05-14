@@ -13,83 +13,74 @@ const VISIT_LS_KEY = 'portfolioVisitV1';
 const VISIT_TTL_MS = 30 * 60 * 1000;
 const GB_POLL_MS = 45 * 1000;
 
-/** Plain-text / structured mirror of the portfolio for offline resume HTML (no images). */
+/** Plain-text / structured mirror for downloadable resume HTML (no images). */
 const RESUME = {
   name: 'Sujal Birwadkar',
+  metaLine: '20 · Navi Mumbai · sujalbirwadkar.dev',
   contact: {
     email: EMAIL,
     linkedin: 'https://www.linkedin.com/in/sujal-birwadkar',
     github: GITHUB_PROFILE
   },
   about: [
-    'Second year at MGMCET, with the IIT Madras BS programme on the side. I like building things that actually run — reinforcement-learning agents, CLI tools, and data pipelines that sit at the intersection of AI/ML and reliable systems.',
-    'Arch Linux daily driver; terminal for almost everything. Sometimes I win hackathons. Sometimes my laptop dies at 78%.'
+    'Second year at MGMCET (BTech Data Science) + IIT Madras BS on the side. I build things that actually run — RL agents, database engines, CLI tools, data pipelines. Arch Linux daily driver, terminal for almost everything.',
+    'Sometimes I win hackathons. Sometimes my laptop dies at 78%.'
   ],
-  nowPlaying: {
-    songLabel: 'Peaceful Piano',
-    songUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO',
-    readLabel: 'ZeroER: Entity Resolution using Zero Labeled Examples',
-    readUrl: 'https://arxiv.org/abs/1908.06049',
-    readAttribution: 'Wu et al.'
-  },
-  currently: [
-    'Building QuerySight — agentic analytics on messy data.',
-    'Learning RL & ML depth, Python, SQL — plus whatever IITM assigns this week.'
+  education: [
+    {
+      degree: 'BTech in Data Science',
+      line: 'MGMCET, Navi Mumbai · 2024 — 2028'
+    },
+    {
+      degree: 'BS Degree (Data Science & Applications)',
+      line: 'IIT Madras · ongoing'
+    }
   ],
-  education: {
-    degree: 'BTech in Data Science',
-    school: 'MGMCET, Navi Mumbai • 2024 — 2028'
-  },
   tools: [
-    { label: 'Lang', value: 'Python, SQL, R' },
+    { label: 'Lang', value: 'Python, SQL, Rust, R' },
     { label: 'Data', value: 'Pandas, NumPy, Polars, PySpark' },
-    { label: 'Stack', value: 'PostgreSQL, BigQuery, dbt, Airflow' },
-    { label: 'BI', value: 'Power BI, Tableau, Excel' },
-    { label: 'Infra', value: 'Docker, Git, Linux' }
+    { label: 'ML/RL', value: 'PyTorch, Gradio, GRPO' },
+    { label: 'Infra', value: 'Docker, Git, Linux, PostgreSQL' }
   ],
-  experience: {
-    kicker: 'Actively hiring my first formal role',
-    body: 'I am seeking internships and project collaborations in data science, analytics, and data engineering — teams that care about measurable impact, clean pipelines, and clear communication.',
-    chips: ['Internships', 'Data', 'ML', 'RL', 'Remote OK']
-  },
   projects: [
     {
-      title: 'Guardian Manager',
-      stack: 'React · TypeScript · Vite',
-      note: 'Fully vibe-coded — consider yourself warned.',
-      desc: 'Destiny 2 inventory management web app. Full-stack flow with Bungie API integration.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/guardian-manager' }]
-    },
-    {
-      title: 'RustDB',
-      stack: 'Rust · B-tree · WAL · Storage',
-      desc: 'SQL database engine built from scratch: real B-Tree storage layer, buffer pool, WAL, and TCP server.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/database-engine' }]
-    },
-    {
-      title: 'SQL Optimizer — R1',
-      stack: 'Python · Gradio · Hackathon',
-      desc: 'SQL query optimizer prototype. Hackathon Round 1 at METAxScaler School of Technology.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/sql-optimizer-hackathon-round_1' }]
-    },
-    {
-      title: 'Autonomic DBRE — R2',
-      stack: 'Python · Docker · Hackathon',
-      desc: 'Autonomic Database Reliability Engineering prototype. Hackathon Round 2 at METAxScaler School of Technology.',
+      title: 'Autonomic DBRE',
+      stack: 'Python · PyTorch · GRPO · Docker · Gradio · Hackathon finalist',
+      desc:
+        'Self-improving database reliability agent built for the Meta × Scaler OpenEnv Grand Finale (top finalists, 52,000+ entrants). Used GRPO training with ELO-based playbook evolution — reward improved from 0.02 → 0.477 over training. Recovered from hardware failure mid-run, resumed from checkpoint 350 and submitted successfully.',
       links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/autonomus-DBRE' }]
     },
     {
-      title: 'Ironveil',
-      stack: 'Rust · Roguelike · Terminal',
-      desc: 'Terminal-based roguelike dungeon crawler — built for fun and to sharpen systems thinking.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/ironveil' }]
+      title: 'RustDB',
+      stack: 'Rust · B-Tree · WAL · Storage Engine',
+      desc: 'SQL database engine built from scratch: B-Tree storage layer, buffer pool manager, write-ahead log, and TCP server. No ORM, no shortcuts.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/database-engine' }]
     },
     {
-      title: 'Analysis Pack',
-      stack: 'Jupyter · Python · EDA',
-      note: 'Aggregates several notebook-first repos (Spotify is the hub repo below).',
-      desc: 'Bundle of analyses — Spotify listening, COVID-19, WhatsApp chats, Netflix vs Prime, California housing, and more.',
-      links: [{ label: 'Notebooks', url: 'https://github.com/ZeroiJ/spotify-data-analysis' }]
+      title: 'Ghost',
+      stack: 'Python · Gemini Flash · faster-whisper · Tesseract · Hyprland',
+      desc:
+        'Screen-share-invisible AI interview assistant for Hyprland/Wayland. Uses Hyprland window rules to exclude the overlay from screenshare capture while staying visible locally. Real-time transcription via faster-whisper, OCR via Tesseract, LLM responses via Gemini Flash API.',
+      links: []
+    },
+    {
+      title: 'SQL Optimizer — R1',
+      stack: 'Python · Gradio · RL · Hackathon',
+      desc:
+        'RL environment for SQL query optimization with a live reward function, built as Round 1 submission for Meta × Scaler OpenEnv. Selected as finalist out of 52,000+ developers.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/sql-optimizer-hackathon-round_1' }]
+    },
+    {
+      title: 'Guardian Manager',
+      stack: 'React · TypeScript · Vite · Bungie API',
+      desc: 'Destiny 2 inventory management web app with full Bungie API integration.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/guardian-manager' }]
+    },
+    {
+      title: 'Ironveil',
+      stack: 'Rust · Terminal · Roguelike',
+      desc: 'Terminal-based roguelike dungeon crawler. Built to learn systems-level Rust.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/ironveil' }]
     }
   ]
 };
@@ -125,23 +116,28 @@ function buildResumeHtmlDocument() {
   const projectsHtml = r.projects
     .map((p) => {
       const noteBlock = p.note ? `<p class="note">${escapeHtml(p.note)}</p>` : '';
-      const links = p.links
+      const linkItems = Array.isArray(p.links) ? p.links : [];
+      const linksInner = linkItems
         .map((l) => `<a href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`)
         .join(' · ');
-      return `
-<section class="project">
-  <h3>${escapeHtml(p.title)}</h3>
-  <p class="stack">${escapeHtml(p.stack)}</p>
-  ${noteBlock}
-  <p>${escapeHtml(p.desc)}</p>
-  <p class="links">${links}</p>
-</section>`;
+      const linksBlock =
+        linkItems.length > 0 ? `\n    <p class="links">${linksInner}</p>` : '';
+      return `<section class="project">
+    <h3>${escapeHtml(p.title)}</h3>
+    <p class="stack">${escapeHtml(p.stack)}</p>
+    ${noteBlock}<p>${escapeHtml(p.desc)}</p>${linksBlock}
+  </section>`;
     })
-    .join('\n');
+    .join('\n\n  ');
 
-  const chips = r.experience.chips.map((c) => `<span class="chip">${escapeHtml(c)}</span>`).join('');
+  const aboutParas = r.about.map((p) => `<p>${escapeHtml(p)}</p>`).join('\n  ');
 
-  const aboutParas = r.about.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+  const educationHtml = r.education
+    .map(
+      (e) =>
+        `<p><strong>${escapeHtml(e.degree)}</strong> · ${escapeHtml(e.line)}</p>`
+    )
+    .join('\n  ');
 
   const generatedAt = escapeHtml(formatResumeTime());
 
@@ -155,8 +151,8 @@ function buildResumeHtmlDocument() {
     :root { --text: #111; --muted: #444; --line: #ccc; --accent: #c24100; }
     * { box-sizing: border-box; }
     body { font-family: Georgia, "Times New Roman", serif; margin: 0; padding: 1.25rem 1.5rem 2rem; color: var(--text); line-height: 1.45; max-width: 52rem; }
-    h1 { font-size: 1.65rem; margin: 0 0 0.35rem; letter-spacing: -0.02em; }
-    .tagline { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--muted); }
+    h1 { font-size: 1.65rem; margin: 0 0 0.2rem; letter-spacing: -0.02em; }
+    .meta { margin: 0 0 0.4rem; font-size: 0.9rem; color: var(--muted); }
     .contact { font-size: 0.9rem; margin-bottom: 1.25rem; }
     .contact a { color: var(--text); }
     h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 0.25rem; margin: 1.35rem 0 0.5rem; page-break-after: avoid; }
@@ -167,8 +163,6 @@ function buildResumeHtmlDocument() {
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
     th { text-align: left; width: 5.5rem; color: var(--muted); font-weight: 600; padding: 0.2rem 0.5rem 0.2rem 0; vertical-align: top; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
     td { padding: 0.2rem 0; }
-    .chips { margin: 0.35rem 0 0.75rem; }
-    .chip { display: inline-block; border: 1px solid var(--line); padding: 0.12rem 0.45rem; font-size: 0.68rem; margin: 0 0.35rem 0.25rem 0; letter-spacing: 0.05em; text-transform: uppercase; font-family: ui-monospace, monospace; color: var(--muted); }
     .project { margin-bottom: 1rem; page-break-inside: avoid; }
     .project h3 { font-size: 1.05rem; margin: 0 0 0.15rem; }
     footer { margin-top: 1.5rem; font-size: 0.75rem; color: var(--muted); }
@@ -181,7 +175,7 @@ function buildResumeHtmlDocument() {
 </head>
 <body>
   <h1>${escapeHtml(r.name)}</h1>
-  <p class="tagline">Sujal Birwadkar · 20 · Navi Mumbai</p>
+  <p class="meta">${escapeHtml(r.metaLine)}</p>
   <p class="contact">
     <a href="mailto:${escapeHtml(r.contact.email)}">${escapeHtml(r.contact.email)}</a>
     · <a href="${escapeHtml(r.contact.linkedin)}">LinkedIn</a>
@@ -191,28 +185,19 @@ function buildResumeHtmlDocument() {
   <h2>About</h2>
   ${aboutParas}
 
-  <h2>Now playing</h2>
-  <p>Song <a href="${escapeHtml(r.nowPlaying.songUrl)}">${escapeHtml(r.nowPlaying.songLabel)}</a> (Spotify)</p>
-  <p>Read <a href="${escapeHtml(r.nowPlaying.readUrl)}">${escapeHtml(r.nowPlaying.readLabel)}</a> ${escapeHtml(r.nowPlaying.readAttribution)}</p>
-
-  <h2>Currently</h2>
-  ${r.currently.map((line) => `<p>${escapeHtml(line)}</p>`).join('')}
-
   <h2>Education</h2>
-  <p><strong>${escapeHtml(r.education.degree)}</strong><br />${escapeHtml(r.education.school)}</p>
+  ${educationHtml}
 
   <h2>Tools</h2>
-  <table>${toolsRows}</table>
-
-  <h2>Experience</h2>
-  <p><strong>${escapeHtml(r.experience.kicker)}</strong></p>
-  <p>${escapeHtml(r.experience.body)}</p>
-  <div class="chips">${chips}</div>
+  <table>
+    ${toolsRows}
+  </table>
 
   <h2>Projects</h2>
+
   ${projectsHtml}
 
-  <footer>Generated ${generatedAt} (IST) · No images · sujalbirwadkar.dev</footer>
+  <footer>Generated ${generatedAt} · sujalbirwadkar.dev</footer>
 </body>
 </html>`;
 }
