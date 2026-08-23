@@ -1,5 +1,9 @@
 document.documentElement.classList.add('portfolio-js');
 
+/* ============================================================
+   CONSTANTS
+   ============================================================ */
+
 const EMAIL = 'sujalbirwadkar19@gmail.com';
 const GITHUB_PROFILE = 'https://github.com/ZeroiJ';
 const GH_CACHE_KEY = 'portfolioGhStars';
@@ -13,7 +17,10 @@ const VISIT_LS_KEY = 'portfolioVisitV1';
 const VISIT_TTL_MS = 30 * 60 * 1000;
 const GB_POLL_MS = 45 * 1000;
 
-/** Plain-text / structured mirror for downloadable resume HTML (no images). */
+/* ============================================================
+   RESUME DATA
+   ============================================================ */
+
 const RESUME = {
   name: 'Sujal Birwadkar',
   metaLine: '20 · Navi Mumbai · sujalbirwadkar.dev',
@@ -32,44 +39,18 @@ const RESUME = {
       line: 'MGMCET, Navi Mumbai · 2024 — 2028'
     },
     {
-      degree: 'BS Degree (Data Science & Applications)',
-      line: 'IIT Madras · ongoing'
+      degree: 'BS Data Science & Applications',
+      line: 'IIT Madras (Online) · 2025 — ongoing'
     }
   ],
   tools: [
     { label: 'Lang', value: 'Python, SQL, Rust, R' },
     { label: 'Data', value: 'Pandas, NumPy, Polars, PySpark' },
-    { label: 'ML/RL', value: 'PyTorch, Gradio, GRPO' },
-    { label: 'Infra', value: 'Docker, Git, Linux, PostgreSQL' }
+    { label: 'Stack', value: 'PostgreSQL, BigQuery, dbt, Airflow' },
+    { label: 'BI', value: 'Power BI, Tableau, Excel' },
+    { label: 'Infra', value: 'Docker, Git, Linux' }
   ],
   projects: [
-    {
-      title: 'Autonomic DBRE',
-      stack: 'Python · PyTorch · GRPO · Docker · Gradio · Hackathon finalist',
-      desc:
-        'Self-improving database reliability agent built for the Meta × Scaler OpenEnv Grand Finale (top finalists, 52,000+ entrants). Used GRPO training with ELO-based playbook evolution — reward improved from 0.02 → 0.477 over training. Recovered from hardware failure mid-run, resumed from checkpoint 350 and submitted successfully.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/autonomus-DBRE' }]
-    },
-    {
-      title: 'RustDB',
-      stack: 'Rust · B-Tree · WAL · Storage Engine',
-      desc: 'SQL database engine built from scratch: B-Tree storage layer, buffer pool manager, write-ahead log, and TCP server. No ORM, no shortcuts.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/database-engine' }]
-    },
-    {
-      title: 'Ghost',
-      stack: 'Python · Gemini Flash · faster-whisper · Tesseract · Hyprland',
-      desc:
-        'Screen-share-invisible AI interview assistant for Hyprland/Wayland. Uses Hyprland window rules to exclude the overlay from screenshare capture while staying visible locally. Real-time transcription via faster-whisper, OCR via Tesseract, LLM responses via Gemini Flash API.',
-      links: []
-    },
-    {
-      title: 'SQL Optimizer — R1',
-      stack: 'Python · Gradio · RL · Hackathon',
-      desc:
-        'RL environment for SQL query optimization with a live reward function, built as Round 1 submission for Meta × Scaler OpenEnv. Selected as finalist out of 52,000+ developers.',
-      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/sql-optimizer-hackathon-round_1' }]
-    },
     {
       title: 'Guardian Manager',
       stack: 'React · TypeScript · Vite · Bungie API',
@@ -77,13 +58,41 @@ const RESUME = {
       links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/guardian-manager' }]
     },
     {
+      title: 'RustDB',
+      stack: 'Rust · B-Tree · WAL · Storage Engine',
+      desc: 'SQL database engine built from scratch: B-Tree storage layer, buffer pool manager, write-ahead log, and TCP server.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/database-engine' }]
+    },
+    {
+      title: 'SQL Optimizer — R1',
+      stack: 'Python · Gradio · RL · Hackathon',
+      desc: 'SQL query optimizer prototype. Hackathon Round 1 at METAxScaler School of Technology.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/sql-optimizer-hackathon-round_1' }]
+    },
+    {
+      title: 'Autonomic DBRE — R2',
+      stack: 'Python · Docker · GRPO',
+      desc: 'Autonomic Database Reliability Engineering prototype. Hackathon Round 2 at METAxScaler School of Technology.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/autonomus-DBRE' }]
+    },
+    {
       title: 'Ironveil',
       stack: 'Rust · Terminal · Roguelike',
       desc: 'Terminal-based roguelike dungeon crawler. Built to learn systems-level Rust.',
       links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/ironveil' }]
+    },
+    {
+      title: 'Analysis Pack',
+      stack: 'Jupyter · Python · EDA',
+      desc: 'Bundle of analyses — Spotify listening, COVID-19, WhatsApp chats, Netflix vs Prime, California housing, and more.',
+      links: [{ label: 'GitHub', url: 'https://github.com/ZeroiJ/spotify-data-analysis' }]
     }
   ]
 };
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
 
 function escapeHtml(s) {
   return String(s)
@@ -107,6 +116,10 @@ function formatResumeTime() {
   return fmt.format(now);
 }
 
+/* ============================================================
+   RESUME HTML
+   ============================================================ */
+
 function buildResumeHtmlDocument() {
   const r = RESUME;
   const toolsRows = r.tools
@@ -115,30 +128,23 @@ function buildResumeHtmlDocument() {
 
   const projectsHtml = r.projects
     .map((p) => {
-      const noteBlock = p.note ? `<p class="note">${escapeHtml(p.note)}</p>` : '';
       const linkItems = Array.isArray(p.links) ? p.links : [];
       const linksInner = linkItems
         .map((l) => `<a href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`)
         .join(' · ');
-      const linksBlock =
-        linkItems.length > 0 ? `\n    <p class="links">${linksInner}</p>` : '';
+      const linksBlock = linkItems.length > 0 ? `\n    <p class="links">${linksInner}</p>` : '';
       return `<section class="project">
     <h3>${escapeHtml(p.title)}</h3>
     <p class="stack">${escapeHtml(p.stack)}</p>
-    ${noteBlock}<p>${escapeHtml(p.desc)}</p>${linksBlock}
+    <p>${escapeHtml(p.desc)}</p>${linksBlock}
   </section>`;
     })
     .join('\n\n  ');
 
   const aboutParas = r.about.map((p) => `<p>${escapeHtml(p)}</p>`).join('\n  ');
-
   const educationHtml = r.education
-    .map(
-      (e) =>
-        `<p><strong>${escapeHtml(e.degree)}</strong> · ${escapeHtml(e.line)}</p>`
-    )
+    .map((e) => `<p><strong>${escapeHtml(e.degree)}</strong> · ${escapeHtml(e.line)}</p>`)
     .join('\n  ');
-
   const generatedAt = escapeHtml(formatResumeTime());
 
   return `<!DOCTYPE html>
@@ -158,7 +164,6 @@ function buildResumeHtmlDocument() {
     h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 0.25rem; margin: 1.35rem 0 0.5rem; page-break-after: avoid; }
     p { margin: 0 0 0.5rem; }
     .stack { font-family: ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0.15rem 0 0.35rem; }
-    .note { font-size: 0.8rem; color: var(--muted); font-style: italic; }
     .links a { color: var(--accent); }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
     th { text-align: left; width: 5.5rem; color: var(--muted); font-weight: 600; padding: 0.2rem 0.5rem 0.2rem 0; vertical-align: top; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -216,6 +221,10 @@ function downloadResumeHtml() {
   URL.revokeObjectURL(url);
 }
 
+/* ============================================================
+   CLOCK
+   ============================================================ */
+
 function updateLocalTime() {
   const now = new Date();
   const fmt = new Intl.DateTimeFormat('en-US', {
@@ -227,6 +236,18 @@ function updateLocalTime() {
   const el = document.getElementById('localTime');
   if (el) el.textContent = fmt.format(now);
 }
+
+/* ============================================================
+   SCROLL-DRIVEN TRANSITION
+   Sets --t from 0% (dark hero) to 100% (cream page) as user scrolls
+   through the transition zone. The CSS uses color-mix to interpolate.
+   ============================================================ */
+
+// Transition removed
+
+/* ============================================================
+   GITHUB STARS
+   ============================================================ */
 
 function readGhCache() {
   try {
@@ -242,9 +263,7 @@ function readGhCache() {
 function writeGhCache(map) {
   try {
     localStorage.setItem(GH_CACHE_KEY, JSON.stringify(map));
-  } catch {
-    /* ignore quota */
-  }
+  } catch { /* ignore quota */ }
 }
 
 function getCachedStars(owner, repo) {
@@ -266,7 +285,6 @@ function setCachedStars(owner, repo, stars) {
 async function fetchRepoStars(owner, repo) {
   const cached = getCachedStars(owner, repo);
   if (cached !== null) return cached;
-
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
     headers: { Accept: 'application/vnd.github+json' }
   });
@@ -308,6 +326,10 @@ async function hydrateGitHubStars() {
   );
 }
 
+/* ============================================================
+   TOAST
+   ============================================================ */
+
 let toastTimer;
 function showToast(message) {
   const toast = document.getElementById('toast');
@@ -318,11 +340,13 @@ function showToast(message) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => {
     toast.classList.remove('is-visible');
-    setTimeout(() => {
-      toast.hidden = true;
-    }, 400);
+    setTimeout(() => { toast.hidden = true; }, 400);
   }, 2400);
 }
+
+/* ============================================================
+   EMAIL COPY
+   ============================================================ */
 
 async function copyEmail() {
   try {
@@ -333,6 +357,10 @@ async function copyEmail() {
   }
 }
 
+/* ============================================================
+   KEYBOARD SHORTCUTS
+   ============================================================ */
+
 function isTypingContext(el) {
   if (!el || !(el instanceof Element)) return false;
   const tag = el.tagName;
@@ -341,46 +369,10 @@ function isTypingContext(el) {
   return false;
 }
 
-function infoPanelOpen() {
-  const panel = document.getElementById('infoPanel');
-  if (!panel) return false;
-  panel.hidden = false;
-  panel.setAttribute('aria-hidden', 'false');
-  const toggle = document.getElementById('infoToggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'true');
-  const closeBtn = panel.querySelector('[data-info-close]');
-  if (closeBtn instanceof HTMLElement) closeBtn.focus();
-  return true;
-}
-
-function infoPanelClose() {
-  const panel = document.getElementById('infoPanel');
-  if (!panel || panel.hidden) return;
-  panel.hidden = true;
-  panel.setAttribute('aria-hidden', 'true');
-  const toggle = document.getElementById('infoToggle');
-  if (toggle) {
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.focus();
-  }
-}
-
-function infoPanelToggle() {
-  const panel = document.getElementById('infoPanel');
-  if (!panel) return;
-  if (panel.hidden) infoPanelOpen();
-  else infoPanelClose();
-}
-
 function bindKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
     if (e.defaultPrevented) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
-
-    if (e.key === 'Escape') {
-      infoPanelClose();
-      return;
-    }
     if (isTypingContext(e.target)) return;
 
     const k = e.key.toLowerCase();
@@ -399,41 +391,90 @@ function bindKeyboardShortcuts() {
       copyEmail();
       return;
     }
-    if (k === 'i') {
-      e.preventDefault();
-      infoPanelToggle();
-    }
   });
 }
 
-function bindEmailTriggers() {
-  const nav = document.getElementById('emailNav');
-  if (nav) {
-    nav.addEventListener('click', (e) => {
-      e.preventDefault();
-      copyEmail();
-    });
-  }
-  const btn = document.getElementById('letsTalkBtn');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      copyEmail();
-    });
-  }
-}
+/* ============================================================
+   BUTTON BINDINGS
+   ============================================================ */
 
 function bindResumeDownload() {
   const btn = document.getElementById('resumeDownloadBtn');
-  if (!btn) return;
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    downloadResumeHtml();
+  if (btn) btn.addEventListener('click', (e) => { e.preventDefault(); downloadResumeHtml(); });
+
+  const bpBtn = document.getElementById('bpResumeBtn');
+  if (bpBtn) bpBtn.addEventListener('click', (e) => { e.preventDefault(); downloadResumeHtml(); });
+}
+
+/* ============================================================
+   TORN-PAPER ABOUT REVEAL
+   Uses IntersectionObserver (threshold 0.3).
+   Animates through jagged intermediate clip-path polygon stages
+   to read as "torn" during the transition.
+   ============================================================ */
+
+function initAboutReveal() {
+  const printout = document.getElementById('aboutPrintout');
+  const sidebar = document.getElementById('aboutSidebar');
+  
+  // Create a wrapper or use the parent section for the observer
+  const section = printout.closest('.section');
+  
+  if (!printout || !section) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      // Trigger when the section comes into view
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+
+      // Stage 1: torn-mid (top edge jagged, reveals ~55% from top)
+      requestAnimationFrame(() => {
+        printout.classList.add('torn-mid');
+      });
+
+      // Stage 2: fully revealed (after mid animation settles)
+      setTimeout(() => {
+        printout.classList.remove('torn-mid');
+        printout.classList.add('is-revealed');
+        if (sidebar) sidebar.classList.add('is-revealed');
+      }, 500);
+    },
+    { threshold: 0.3 }
+  );
+
+  // Observe the parent section instead of the clipped printout
+  observer.observe(section);
+}
+
+/* ============================================================
+   FILE STACK PROJECTS — keyboard + focus management
+   The CSS handles hover; we just need to manage reveal
+   ============================================================ */
+
+function initFileStack() {
+  // File cards are always visible structurally.
+  // The CSS clip-path on .file-body handles the "tab peek" effect.
+  // On mobile, clip-path is removed entirely via media query.
+  // Add keyboard accessibility: Enter/Space on card reveals it.
+  const cards = document.querySelectorAll('.file-card');
+  cards.forEach((card) => {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const link = card.querySelector('.fc-link');
+        if (link) link.click();
+      }
+    });
   });
 }
 
-/** @type {Uint8Array | null} */
+/* ============================================================
+   GUESTBOOK
+   ============================================================ */
+
 let guestbookPixels = null;
-/** @type {HTMLButtonElement[] | null} */
 let guestbookPixelEls = null;
 let guestbookSelectedColor = 0;
 let guestbookPollTimer;
@@ -464,7 +505,6 @@ function buildGuestbookEditor() {
   if (!root) return;
 
   root.innerHTML = '';
-  root.classList.add('pixel-editor');
   guestbookPixels = new Uint8Array(GUESTBOOK_CELLS);
   guestbookPixelEls = [];
 
@@ -482,21 +522,14 @@ function buildGuestbookEditor() {
   guestbookPixels.fill(GUESTBOOK_PAPER);
 
   let painting = false;
-
-  const endPaint = () => {
-    painting = false;
-  };
+  const endPaint = () => { painting = false; };
 
   root.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     const t = e.target;
     if (!(t instanceof HTMLElement) || !t.classList.contains('pixel-cell')) return;
     painting = true;
-    try {
-      root.setPointerCapture(e.pointerId);
-    } catch {
-      /* ignore */
-    }
+    try { root.setPointerCapture(e.pointerId); } catch { /* ignore */ }
     paintGuestbookCell(Number(t.dataset.i ?? -1));
   });
 
@@ -591,11 +624,12 @@ function renderGuestbookStamps(entries) {
 }
 
 async function fetchGuestbookEntries() {
-  const res = await fetch('/api/guestbook', { headers: { Accept: 'application/json' } });
+  const res = await fetch('https://portfolio.zeroij.workers.dev/api/guestbook', {
+    headers: { Accept: 'application/json' }
+  });
   if (!res.ok) throw new Error(String(res.status));
   const data = await res.json();
-  const entries = Array.isArray(data.entries) ? data.entries : [];
-  return entries;
+  return Array.isArray(data.entries) ? data.entries : [];
 }
 
 async function refreshGuestbookStamps() {
@@ -623,79 +657,21 @@ async function refreshGuestbookStamps() {
   }
 }
 
-async function refreshVisitorCount() {
-  const el = document.getElementById('visitorNum');
-  if (!el) return;
-  try {
-    const res = await fetch('/api/visitors', { headers: { Accept: 'application/json' } });
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    el.textContent = typeof data.count === 'number' ? `#${data.count.toLocaleString('en-US')}` : '—';
-  } catch {
-    el.textContent = '—';
-  }
-}
-
-async function maybeIncrementVisitorCount() {
-  const el = document.getElementById('visitorNum');
-  const now = Date.now();
-  let shouldPost = true;
-  try {
-    const raw = localStorage.getItem(VISIT_LS_KEY);
-    if (raw) {
-      const ts = parseInt(raw, 10);
-      if (Number.isFinite(ts) && now - ts < VISIT_TTL_MS) shouldPost = false;
-    }
-  } catch {
-    /* ignore */
-  }
-
-  if (!shouldPost) return;
-
-  try {
-    const res = await fetch('/api/visitors', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', Accept: 'application/json' },
-      body: '{}'
-    });
-    if (!res.ok) return;
-    const data = await res.json();
-    try {
-      localStorage.setItem(VISIT_LS_KEY, String(now));
-    } catch {
-      /* ignore */
-    }
-    if (el && typeof data.count === 'number') el.textContent = `#${data.count.toLocaleString('en-US')}`;
-  } catch {
-    /* ignore */
-  }
-}
-
 function bindGuestbookActions() {
   const clearBtn = document.getElementById('guestbookClear');
   const stampBtn = document.getElementById('guestbookStamp');
   const nameInput = document.getElementById('guestbookName');
 
   if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      clearGuestbookEditor();
-    });
+    clearBtn.addEventListener('click', () => { clearGuestbookEditor(); });
   }
 
   if (stampBtn && nameInput) {
     stampBtn.addEventListener('click', async () => {
-      try {
-        guestbookCellsOrThrow();
-      } catch {
-        showToast('Editor not ready');
-        return;
-      }
+      try { guestbookCellsOrThrow(); } catch { showToast('Editor not ready'); return; }
 
       const name = String(nameInput.value ?? '').trim();
-      if (!name) {
-        showToast('Add your name first');
-        return;
-      }
+      if (!name) { showToast('Add your name first'); return; }
 
       const pixels = guestbookPixelsFlat();
       if (!pixels.some((c) => c !== GUESTBOOK_PAPER)) {
@@ -705,7 +681,7 @@ function bindGuestbookActions() {
 
       stampBtn.disabled = true;
       try {
-        const res = await fetch('/api/guestbook', {
+        const res = await fetch('https://portfolio.zeroij.workers.dev/api/guestbook', {
           method: 'POST',
           headers: { 'content-type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({ name, pixels })
@@ -737,33 +713,154 @@ function initGuestbook() {
   guestbookPollTimer = setInterval(refreshGuestbookStamps, GB_POLL_MS);
 }
 
+/* ============================================================
+   VISITORS
+   ============================================================ */
+
+async function refreshVisitorCount() {
+  const el = document.getElementById('visitorNum');
+  if (!el) return;
+  try {
+    const res = await fetch('https://portfolio.zeroij.workers.dev/api/visitors', {
+      headers: { Accept: 'application/json' }
+    });
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    el.textContent = typeof data.count === 'number' ? `#${data.count.toLocaleString('en-US')}` : '—';
+  } catch {
+    el.textContent = '—';
+  }
+}
+
+async function maybeIncrementVisitorCount() {
+  const el = document.getElementById('visitorNum');
+  const now = Date.now();
+  let shouldPost = true;
+  try {
+    const raw = localStorage.getItem(VISIT_LS_KEY);
+    if (raw) {
+      const ts = parseInt(raw, 10);
+      if (Number.isFinite(ts) && now - ts < VISIT_TTL_MS) shouldPost = false;
+    }
+  } catch { /* ignore */ }
+
+  if (!shouldPost) return;
+
+  try {
+    const res = await fetch('https://portfolio.zeroij.workers.dev/api/visitors', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', Accept: 'application/json' },
+      body: '{}'
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    try { localStorage.setItem(VISIT_LS_KEY, String(now)); } catch { /* ignore */ }
+    if (el && typeof data.count === 'number') el.textContent = `#${data.count.toLocaleString('en-US')}`;
+  } catch { /* ignore */ }
+}
+
 function initVisitors() {
   refreshVisitorCount();
   maybeIncrementVisitorCount();
 }
 
-function bindInfoToggle() {
-  const toggle = document.getElementById('infoToggle');
-  if (!toggle) return;
-  toggle.addEventListener('click', () => {
-    infoPanelToggle();
-  });
-  const panel = document.getElementById('infoPanel');
-  if (!panel) return;
-  panel.querySelectorAll('[data-info-close]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      infoPanelClose();
-    });
-  });
+/* ============================================================
+   CRT FUZZ — lo-fi noise overlay
+   ============================================================ */
+
+function initFuzz() {
+  const canvas = document.getElementById('fuzz');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let w = 0;
+  let h = 0;
+  let imageData = null;
+
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    imageData = ctx.createImageData(w, h);
+  }
+
+  function draw() {
+    if (!imageData) return;
+    const data = imageData.data;
+    const len = data.length;
+    for (let i = 0; i < len; i += 4) {
+      const v = (Math.random() * 255) | 0;
+      data[i] = v;
+      data[i + 1] = v;
+      data[i + 2] = v;
+      data[i + 3] = 16;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
 }
+
+/* ============================================================
+   TYPE-SPEC LABELS — compute actual CSS values for each section
+   Updates .type-spec text nodes with real computed font-size and
+   letter-spacing from the section heading element.
+   ============================================================ */
+
+function updateTypeSpecs() {
+  document.querySelectorAll('.section-header').forEach((header) => {
+    const heading = header.querySelector('.section-heading');
+    const label = header.querySelector('.type-spec');
+    if (!heading || !label) return;
+
+    const styles = window.getComputedStyle(heading);
+    const fsPx = Math.round(parseFloat(styles.fontSize));
+    const lsRaw = parseFloat(styles.letterSpacing);
+    const lsEm = isNaN(lsRaw) || lsRaw === 0
+      ? '0EM'
+      : `${(lsRaw / parseFloat(styles.fontSize)).toFixed(2).replace(/\.?0+$/, '')}EM`;
+
+    label.textContent = `DEPARTURE MONO \u00a0 ${fsPx}PX \u00a0 ${lsEm} TRACK`;
+  });
+
+  // Also update hero typespec
+  const heroHeading = document.querySelector('.hero-title');
+  const heroSpec = document.querySelector('.hero-typespec');
+  if (heroHeading && heroSpec) {
+    const styles = window.getComputedStyle(heroHeading);
+    const fsPx = Math.round(parseFloat(styles.fontSize));
+    heroSpec.textContent = `DEPARTURE MONO \u00a0 ${fsPx}PX \u00a0 0EM TRACK`;
+  }
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
 
 updateLocalTime();
 setInterval(updateLocalTime, 60000);
 
 bindKeyboardShortcuts();
-bindEmailTriggers();
 bindResumeDownload();
-bindInfoToggle();
 hydrateGitHubStars();
+// initScrollTransition();
+initAboutReveal();
+initFileStack();
 initGuestbook();
 initVisitors();
+initFuzz();
+
+// Update type-spec labels after fonts have loaded (so computed values are accurate)
+if (document.fonts) {
+  document.fonts.ready.then(() => {
+    updateTypeSpecs();
+  });
+} else {
+  window.addEventListener('load', updateTypeSpecs);
+}
