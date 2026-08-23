@@ -64,6 +64,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.45;
+  color: var(--fg);
+  background-color: var(--bg);
 }
 
 .mono-label { font-family: var(--font-pixel); }

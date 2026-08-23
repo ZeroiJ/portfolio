@@ -1,0 +1,4 @@
+=== Todo 6 evidence 2026-08-23T12:10:05Z ===
+viewports 1440x900/1366x768/390x844: doc no-scroll TRUE, all panels clip-free (results.json)
+infoToggle: hidden desktop, visible mobile; overlay open/close + focus mgmt verified
+computed-style fidelity: font loaded, aluminum name blocks, inverse titles, blink active, avatar pixelated, 0 overflowing elements

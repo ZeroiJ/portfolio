@@ -1,0 +1,103 @@
+{
+  "1440x900": {
+    "doc": true,
+    "panels": [
+      {
+        "s": ".site-head",
+        "ok": true
+      },
+      {
+        "s": ".deck",
+        "ok": true
+      },
+      {
+        "s": ".rail-left",
+        "ok": true
+      },
+      {
+        "s": ".board",
+        "ok": true
+      },
+      {
+        "s": ".rail-right",
+        "ok": true
+      },
+      {
+        "s": ".site-foot",
+        "ok": true
+      }
+    ],
+    "infoToggleVisible": false
+  },
+  "1366x768": {
+    "doc": true,
+    "panels": [
+      {
+        "s": ".site-head",
+        "ok": true
+      },
+      {
+        "s": ".deck",
+        "ok": true
+      },
+      {
+        "s": ".rail-left",
+        "ok": true
+      },
+      {
+        "s": ".board",
+        "ok": true
+      },
+      {
+        "s": ".rail-right",
+        "ok": true
+      },
+      {
+        "s": ".site-foot",
+        "ok": true
+      }
+    ],
+    "infoToggleVisible": false
+  },
+  "390x844": {
+    "doc": true,
+    "panels": [
+      {
+        "s": ".site-head",
+        "ok": true
+      },
+      {
+        "s": ".deck",
+        "ok": true
+      },
+      {
+        "s": ".rail-left",
+        "ok": true
+      },
+      {
+        "s": ".board",
+        "ok": true
+      },
+      {
+        "s": ".rail-right",
+        "ok": true
+      },
+      {
+        "s": ".site-foot",
+        "ok": true
+      }
+    ],
+    "infoToggleVisible": true
+  },
+  "infoOverlay": {
+    "openState": {
+      "hidden": false,
+      "ariaHidden": "false",
+      "focused": true
+    },
+    "closedState": {
+      "hidden": true,
+      "focusBackOnToggle": true
+    }
+  }
+}
