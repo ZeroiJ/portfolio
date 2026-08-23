@@ -5,7 +5,7 @@
 - review_required: false
 - classification: standard (frontend redesign across index.html/styles.css/script.js; backend untouched)
 - scaffold: hand-created (script unavailable in session shell; template contract followed verbatim from references/full-workflow.md)
-- status: EXECUTING - user explicitly authorized planner to execute directly ("after re-writing the plan pls execute it"), sequential-only (no parallel agents), sandbox new/ scope folded into plan v2
+- status: COMPLETE - all 7 todos + F1-F4 APPROVE (see evidence dir)
 - gap analysis: performed by planner inline (user explicitly declined Metis delegation after two aborted task spawns). 9 findings, 0 blockers; fixes folded into plan: clipped-content probe, JS-created-node CSS list incl .pixel-editor, !important ban on stamp/pixel backgrounds, absolute font URLs, 100vh fallback, preconnect removal, todo-5 commit line, dialog focus semantics, remnant-grep additions. Structural self-check passed (header order, row grammar, counts 7+4).
 
 ## Goal

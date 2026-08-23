@@ -49,27 +49,27 @@ Single worker session, sequential todos 1→7 (later tasks depend on earlier one
 
 ## Todos
 
-- [ ] 1. Sandbox setup: clone reference repo, scaffold new/, snapshot continuity file
+- [x] 1. Sandbox setup: clone reference repo, scaffold new/, snapshot continuity file
   - Steps: `git clone --depth 1 https://github.com/rektdeckard/departure-mono.git .reference/departure-mono`; append `.reference/` to `.gitignore` (only root-file edit allowed); `mkdir -p new/assets/fonts`; copy root `assets/profile.jpg` + `assets/mgmcet-logo.jpg` into `new/assets/`; copy the two font files from `.reference/departure-mono/public/assets/` and its LICENSE to `new/assets/fonts/OFL-LICENSE.txt`; save production GET https://portfolio.zeroij.workers.dev/api/guestbook JSON to `.omo/evidence/departure-redesign/guestbook-before.json`.
   - Acceptance: all files exist; woff2 >80 KB; before-file contains entries array.
   - QA happy: `ls -laR new/assets` log to evidence t0. QA failure: verify clone origin URL via `git -C .reference/departure-mono remote get-url origin` prints the expected repo.
   - Commit: `chore(redesign): sandbox new/, reference clone, stamp continuity snapshot`
 
-- [ ] 2. Create new/script.js as verbatim copy, then apply fixed-viewport surgical edits
+- [x] 2. Create new/script.js as verbatim copy, then apply fixed-viewport surgical edits
   - References: root `script.js` lines 344-347 (scrollToResume), 349-371 (bindKeyboardShortcuts), 398-422 (initScrollReveal), 735-770 (staggerProjects), 772-782 (init calls).
   - Steps: copy root script.js to new/script.js UNCHANGED first. Then: (a) delete scrollToResume, rebind key r to downloadResumeHtml(); (b) delete initScrollReveal + staggerProjects functions and their calls; (c) add INFO toggle: i key (same typing-context guard) and #infoToggle click toggle hidden attr + aria-expanded on #infoPanel; Escape closes. DO NOT touch: EMAIL/GITHUB consts, RESUME object, the PALETTE_HEX line, guestbook block, visitors block, stars hydration, toast, clock.
   - Acceptance: `node --check new/script.js` passes; grep proves scrollToResume/initScrollReveal/staggerProjects absent; PALETTE_HEX diff vs HEAD empty.
   - QA happy: browser-dispatch r/g/e/i in non-input context asserting expected effects; log t1-keys.md. QA failure: keys while focused in #guestbookName must NOT fire shortcuts.
   - Commit: `feat(redesign): viewport-era interactions in new/script.js`
 
-- [ ] 3. Write new/styles.css: carbon token system and viewport-locked shell
+- [x] 3. Write new/styles.css: carbon token system and viewport-locked shell
   - References: token values in `.omo/drafts/departure-redesign.md` (carbon #222222, soot #333333, dark #444444, smoke #666666, ash #8e8e8e, cement #c0c0c0, aluminum #cccccc, enamel #eeeeee, amber #ffa133, pumpkin #e47b1a, foam #bccabb, flux #c8be50, clay #6c6c58, mud #8a8a6f, black #141414); easing `--flick: cubic-bezier(0.36, 2.09, 0.07, -1.52)`; root font-size 11px; blink keyframes steps(1) alternating transparent/foam; inverse utility swaps fg/bg; selection = cement on carbon.
   - Structure: html/body height 100vh THEN 100dvh fallback line, overflow hidden; NEVER apply !important to .stamp-cell or .pixel-cell backgrounds (JS inline styles from PALETTE_HEX must always win); body flex column: header.site-head, main.deck grid (columns minmax(230px,300px) / minmax(0,1fr) / minmax(300px,380px); gap 10px; flex 1; min-height 0), footer.site-foot. Panels: 1px solid var(--dark) borders, inverse-video panel headers. All type "Departure Mono" with ui-monospace fallback. Link hover amber via --flick transition; nav-style links hover get foam bg + carbon text. focus-visible 2px amber outline. prefers-reduced-motion disables blink/transitions. Avatar image-rendering pixelated, 2px aluminum border. Callout utility: clay text + thick clay left border. MUST style all JS-created nodes: .stamp-card/.stamp/.stamp-cell/.stamp-author/.stamps-empty/.pixel-cell and .pixel-editor (JS adds this class to the editor root), plus toast .is-visible and stampsStatus .is-hidden states.
   - Acceptance: zero Google-font @import; zero old Dune hexes (#f2ebe4, #9a6b4f, #d9cfc3, #6b5e52); brace count balanced; every class in Todo 3's must-style list has a rule.
   - QA happy: grep checks for forbidden hexes return nothing; save to evidence t3-token-check.log. QA failure: leave one Dune hex temporarily, check catches it, fix — proves gate bites.
   - Commit: `feat(redesign): departure-mono carbon tokens, fixed-viewport deck shell`
 
-- [ ] 4. Write new/index.html: header bar, left rail, departures board, guestbook panel
+- [x] 4. Write new/index.html: header bar, left rail, departures board, guestbook panel
   - References: root `index.html` (content source of truth — copy text verbatim); JS contract in new/script.js; board concept from reference site #departures element.
   - Head: charset/viewport/canonical/title/description/OG/Twitter carried over verbatim EXCEPT theme-color meta becomes #222222 and the two Google-fonts preconnect links are NOT included; add preload link href=/assets/fonts/DepartureMono-Regular.woff2 as=font type=font/woff2 crossorigin.
   - Required structure: header.site-head = pixelated avatar (assets/profile.jpg), name "SUJAL BIRWADKAR" as block-highlighted spans, meta segments (AGE:20 / LOC:NAVI MUMBAI / TIME with span#localTime / TZ), nav (LinkedIn, GitHub, a#emailNav Email, a#resumeDownloadBtn Resume). main.deck = section.rail-left (About copy verbatim incl. both paragraphs and Now playing/Currently micro rows; Education MGMCET row with logo; Tools 5 label/value rows; open-to-work callout + button#letsTalkBtn + chips); section.board (panel title "PROJECT DEPARTURES" with .blink cursor, then 6 article.flight rows in this order: Guardian Manager ZJ-101 stack React/TypeScript/Vite status BOARDING repo ZeroiJ/guardian-manager; RustDB ZJ-102 stack Rust/B-tree/WAL status BOARDING repo ZeroiJ/database-engine; SQL Optimizer R1 ZJ-103 stack Python/Gradio status ARRIVED repo ZeroiJ/sql-optimizer-hackathon-round_1; Autonomic DBRE R2 ZJ-104 stack Python/Docker/GRPO status FINAL CALL repo ZeroiJ/autonomus-DBRE; Ironveil ZJ-105 stack Rust/Terminal status EN ROUTE repo ZeroiJ/ironveil; Analysis Pack ZJ-106 stack Jupyter/EDA status ON TIME repo ZeroiJ/spotify-data-analysis). Each flight row keeps its existing GitHub link URL/target from HEAD index.html, one-line desc verbatim, and a span.gh-stars[data-owner][data-repo] exactly as today. section.rail-right = Guestbook: p#stampsStatus, div#stampsGrid, editor div#pixelEditor, palette div#guestbookPalette with the SAME six swatch buttons data-color-index 0..5 (first has is-selected + aria-selected true), input#guestbookName, buttons #guestbookClear #guestbookStamp. footer.site-foot = visitor line with span#visitorNum, keys hint `r resume - g github - e email - i info`, credit callout `TYPE: DEPARTURE MONO - HELENA ZHANG - SIL OFL`. Also button#infoToggle (hidden on desktop) and div#infoPanel (role=dialog aria-modal=true aria-hidden) containing a compact duplicate of rail-left content + close button.
@@ -78,21 +78,21 @@ Single worker session, sequential todos 1→7 (later tasks depend on earlier one
   - QA happy: id audit log to evidence t4-dom-contract.log. QA failure: remove one id temporarily, audit FAILS naming it, restore — proves audit works.
   - Commit: `feat(redesign): departure-board single-screen markup in new/index.html`
 
-- [ ] 5. Guestbook integration verification in new/ (zero logic changes)
+- [x] 5. Guestbook integration verification in new/ (zero logic changes)
   - References: preservation contract in this plan; guestbook block of new/script.js (lines ~424-728 of HEAD script.js); src/worker.ts API handlers; .omo/evidence/departure-redesign/guestbook-before.json.
   - Steps: style stamp cards/editor/palette with new tokens ONLY (cell colors come from inline background styles set by JS - unchanged); confirm editor builds, stamps render, poll cycle works.
   - Acceptance: PALETTE_HEX diff vs HEAD empty; root freeze intact (`git diff HEAD --stat -- index.html styles.css script.js package.json src/worker.ts migrations wrangler.json` empty); local POST with drawn pattern returns 201 and entry appears within one poll cycle.
   - QA happy: draw->stamp->visible E2E; screenshot evidence t5-stamp-local.png. QA failure: blank editor submit expects toast "Draw something first" and NO network POST (assert via request interception).
   - Commit: `feat(redesign): carbon-theme stamp and editor styling (logic untouched)`
 
-- [ ] 6. Strict-fit responsive passes, motion and focus polish
+- [x] 6. Strict-fit responsive passes, motion and focus polish
   - References: reference site breakpoints (1115px, 767px) in .reference/departure-mono/src/components/header.css; INFO overlay decision in draft.
   - Steps: at <=1115px tighten paddings/gaps and shrink display type; at <=767px switch deck to 2 columns (board + guestbook), hide rail-left, show #infoToggle; #infoPanel fixed inset-0 carbon panel, inverse title, close on button/Escape/i. Pixel type stays >=9px effective. Board-row hover foam bg like reference menu links; reduced-motion kills transitions.
   - Acceptance: headless browser at 1440x900, 1366x768, 390x844 each satisfies document scrollHeight<=innerHeight AND scrollWidth<=innerWidth PLUS per-panel probe el.scrollHeight <= el.clientHeight + 2 on header.site-head, each deck column, every panel, footer.site-foot; info toggle works at 390x844 with focus into dialog on open, restored to #infoToggle on close.
   - QA happy: three screenshots + boolean evals saved to evidence t6-viewport/ (900.png, 768.png, 844.png, results.json). QA failure: force tall child into board, eval flips false, remove — proves measurement live.
   - Commit: `feat(redesign): strict-fit breakpoints, info overlay, motion polish`
 
-- [ ] 7. Full local E2E sweep of every interactive behavior
+- [x] 7. Full local E2E sweep of every interactive behavior
   - References: verification strategy section; README local-dev commands.
   - Steps: preview recipe `rm -rf dist && mkdir dist && cp -r new/. dist/ && npm run dev`; walk EVERY feature: clock ticks IST, stars hydrate or fall back to dash, email nav copies + toast, Let's talk copies, Resume downloads HTML blob containing "Sujal Birwadkar", visitor count GET+POST, guestbook full flow, keys r/g/e/i, Escape closes info, console clean.
   - Acceptance: checklist table all green recorded to evidence t7-e2e.md with console excerpt showing zero errors.
@@ -103,10 +103,10 @@ Single worker session, sequential todos 1→7 (later tasks depend on earlier one
 
 Runs AFTER all todos, one by one per user instruction (no parallel agents); every verifier must APPROVE.
 
-- [ ] F1. Plan compliance audit - verify every `- [ ] N.` row executed as written, commits match Commit lines, evidence files exist under .omo/evidence/departure-redesign/, nothing silently skipped. Evidence: audit notes appended to draft.
-- [ ] F2. Code quality review - new/styles.css, new/script.js, new/index.html read end-to-end: dead selectors/functions removed, token-var naming consistent, no Dune remnants or reveal/data-stagger leftovers anywhere in new/, node --check passes, unique ids. Evidence: review notes in evidence dir.
-- [ ] F3. Real manual-style QA in browser - fresh build click-through at two viewports: every Todo 7 interaction re-driven independently, screenshots archived, console clean. Evidence: t-F3 screenshots + transcript.
-- [ ] F4. Scope fidelity + stamp continuity - root files zero-diff vs HEAD except allowed additions (new/**, .reference/ ignored, .gitignore line); PALETTE_HEX byte-identical; production /api/guestbook GET vs guestbook-before.json: same count, ids, names, pixels arrays (both friend stamps intact); renderer logic proven equivalent (same indices, same hex mapping). Evidence: continuity diff file.
+- [x] F1. Plan compliance audit - verify every `- [ ] N.` row executed as written, commits match Commit lines, evidence files exist under .omo/evidence/departure-redesign/, nothing silently skipped. Evidence: audit notes appended to draft.
+- [x] F2. Code quality review - new/styles.css, new/script.js, new/index.html read end-to-end: dead selectors/functions removed, token-var naming consistent, no Dune remnants or reveal/data-stagger leftovers anywhere in new/, node --check passes, unique ids. Evidence: review notes in evidence dir.
+- [x] F3. Real manual-style QA in browser - fresh build click-through at two viewports: every Todo 7 interaction re-driven independently, screenshots archived, console clean. Evidence: t-F3 screenshots + transcript.
+- [x] F4. Scope fidelity + stamp continuity - root files zero-diff vs HEAD except allowed additions (new/**, .reference/ ignored, .gitignore line); PALETTE_HEX byte-identical; production /api/guestbook GET vs guestbook-before.json: same count, ids, names, pixels arrays (both friend stamps intact); renderer logic proven equivalent (same indices, same hex mapping). Evidence: continuity diff file.
 
 ## Commit strategy
 
