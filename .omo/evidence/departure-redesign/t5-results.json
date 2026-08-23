@@ -1,0 +1,48 @@
+{
+  "noScroll": {
+    "docY": true,
+    "docX": true,
+    "docYVal": 900,
+    "innerH": 900
+  },
+  "clips": [
+    {
+      "s": ".site-head",
+      "ok": true,
+      "sh": 68,
+      "ch": 68
+    },
+    {
+      "s": ".rail-left",
+      "ok": true,
+      "sh": 782,
+      "ch": 782
+    },
+    {
+      "s": ".board",
+      "ok": true,
+      "sh": 782,
+      "ch": 782
+    },
+    {
+      "s": ".rail-right",
+      "ok": true,
+      "sh": 782,
+      "ch": 782
+    },
+    {
+      "s": ".site-foot",
+      "ok": true,
+      "sh": 28,
+      "ch": 28
+    }
+  ],
+  "stampCards": 1,
+  "firstAuthor": "qa-smoke",
+  "paintedColor": "rgb(255, 106, 0)",
+  "postStatus": 201,
+  "stampCardsAfter": 2,
+  "toastShown": true,
+  "blankSubmit": "no-post(GOOD)",
+  "consoleErrors": []
+}

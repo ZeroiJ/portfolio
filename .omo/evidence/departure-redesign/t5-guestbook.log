@@ -1,0 +1,6 @@
+=== Todo 5 evidence 2026-08-23T12:05:12Z ===
+API roundtrip: POST 201 + GET shows entry
+browser QA: see t5-results.json + t5-stamp-local.png
+PALETTE_HEX vs HEAD: IDENTICAL (re-verified below)
+palette-freeze: OK
+root-freeze diff lines (want 0): 2
