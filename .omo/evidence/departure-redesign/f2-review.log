@@ -1,0 +1,14 @@
+=== F2 RESULT 2026-08-23T12:12:38Z ===
+duplicate ids: 0
+real remnants (word-bounded): 0 (4 substring false positives: setInterval x3, Internships x1)
+node --check: PASS
+external requests: only api.github.com star lookups (pre-existing behavior); zero Google Fonts
+verdict: APPROVE
+
+## F1 audit notes
+- 7/7 todo commits match plan Commit lines (+1 documented extra: gitignore tooling artifacts)
+- deviations recorded: woff2 acceptance corrected to checksum-match (22KB pixel font); bun install workaround for npm/sharp ETIMEDOUT+addon bug; playwright in node_modules only, root manifest reverted
+- verdict: APPROVE
+
+## F3 result
+- fresh rebuild from new/: fits at 1440x900 + 390x844, 6 board rows, independent stamp POST 201 x2, zero page errors - APPROVE

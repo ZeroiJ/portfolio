@@ -1,0 +1,18 @@
+{
+  "844": {
+    "fits": true,
+    "boardRows": 6,
+    "stampsBefore": 3,
+    "postStatus": 201,
+    "stampsAfter": 4,
+    "pageErrors": []
+  },
+  "900": {
+    "fits": true,
+    "boardRows": 6,
+    "stampsBefore": 2,
+    "postStatus": 201,
+    "stampsAfter": 3,
+    "pageErrors": []
+  }
+}
