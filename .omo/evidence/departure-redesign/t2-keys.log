@@ -1,0 +1,6 @@
+=== Todo 2 evidence 2026-08-23T11:51:30Z ===
+node --check: PASS
+removed funcs (scrollToResume/initScrollReveal/staggerProjects): 0 occurrences
+PALETTE_HEX vs HEAD: IDENTICAL
+added: infoPanelOpen/Close/Toggle, bindInfoToggle, i-key + Escape handling, r->downloadResumeHtml
+lines: 769 (was 782)
