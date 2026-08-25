@@ -621,8 +621,71 @@ input:focus-visible {
   }
 }
 
+
 @media screen and (max-width: 767px) {
-  :root { font-size: 9px; }
+  /* Let everything scroll horizontally so overlays never break! */
+  .section .maxwidth {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+  
+  /* Reset the position of the absolute assets so they form a vertical scrollable column */
+  #letter {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #letter .maxwidth {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  #planet {
+    display: none; /* Hide background planet on mobile to reduce clutter */
+  }
+  
+  #badge {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 auto;
+    width: 250px !important;
+  }
+  
+  #brief {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 1010px !important;
+    min-width: 1010px !important;
+  }
+  
+  #newspaper-clipping {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 388px !important;
+    min-width: 388px !important;
+    margin: 0 auto;
+  }
+  
+  .receipt-container {
+    width: 407px !important;
+    min-width: 407px !important;
+  }
+  
+  .bp-container {
+    width: 1000px !important;
+    min-width: 1000px !important;
+  }
+  
+  .asset-img {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
   .hero { min-height: 50vh; padding: 88px 0 44px; }
   .hero-title { font-size: 44px; }
   .hero-nav { flex-wrap: wrap; gap: 4px; }
