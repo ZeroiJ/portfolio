@@ -913,3 +913,204 @@ input:focus-visible {
     left: -50px;
   }
 }
+
+
+/* ===== ASSET OVERLAYS ===== */
+.asset-container {
+  position: relative;
+  display: inline-block;
+}
+
+.asset-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* BADGE */
+#badge {
+  left: -20px;
+  top: 250px;
+  width: 250px;
+  z-index: 3;
+  transition: transform 600ms cubic-bezier(1, 0.05, 0.48, 0.99);
+}
+#badge:hover {
+  transform: rotate(3deg) translate(100px, -12px);
+}
+.overlay-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  right: 20px;
+  height: 90px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  color: var(--enamel);
+  font-family: "Departure Mono", monospace;
+}
+.overlay-badge .photo-placeholder {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--enamel);
+}
+.overlay-badge .badge-number {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 20px;
+  line-height: 1;
+}
+.overlay-badge .badge-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  font-size: 24px;
+}
+
+/* BRIEF (PRINTOUT) */
+#brief {
+  width: 1010px;
+  left: -150px;
+  z-index: 1;
+  clip-path: none !important;
+  background: transparent;
+  box-shadow: none;
+}
+.overlay-brief {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  right: 30px;
+  bottom: 10px;
+  background-color: transparent;
+  padding: 88px 66px 0;
+}
+.overlay-brief pre {
+  font-size: 16.5px;
+  line-height: 24.75px;
+  margin: 0;
+  white-space: pre;
+  color: var(--soot);
+}
+
+/* NEWSPAPER CLIPPING */
+#newspaper-clipping {
+  left: 650px;
+  top: 150px;
+  width: 350px;
+  z-index: 2;
+}
+.overlay-clipping {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  right: 15px;
+  bottom: 10px;
+  background-color: transparent;
+  padding: 16px;
+  transform: rotate(-3deg);
+  color: var(--soot);
+}
+.overlay-clipping .dossier-card-title {
+  font-family: "Departure Mono", monospace;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.overlay-clipping p {
+  line-height: 1.4;
+  margin: 0;
+}
+#newspaper-clipping .paperclip {
+  position: absolute;
+  top: -15px;
+  left: 150px;
+  width: 40px;
+  transform: rotate(5deg);
+}
+
+/* RECEIPT */
+.receipt-container {
+  width: 380px;
+  margin: 0 auto;
+}
+.overlay-receipt {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background-color: transparent;
+  padding: 24px 20px;
+  color: var(--soot);
+  font-family: "Departure Mono", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* BOARDING PASS */
+.bp-container {
+  width: 1000px;
+  max-width: 100%;
+}
+.overlay-bp {
+  position: absolute;
+  top: 5px;
+  left: 80px; /* shift past the CAUTION side text */
+  right: 5px;
+  bottom: 5px;
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 20px;
+  color: var(--ash);
+  padding: 20px;
+}
+.bp-grid-overlay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.bp-stub-overlay {
+  padding-left: 20px;
+  border-left: 2px dashed var(--ash);
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1115px) {
+  #brief { width: 800px; left: -50px; }
+  #newspaper-clipping { left: 500px; width: 300px; }
+  #badge { left: -50px; top: 200px;}
+}
+@media screen and (max-width: 767px) {
+  #brief { width: 100%; left: 0; }
+  .overlay-brief { padding: 40px 20px; }
+  #newspaper-clipping { position: relative; left: 0; width: 100%; top: 0; margin-top: 20px; }
+  #badge { position: relative; top: 0; left: 0; margin-bottom: 20px; }
+  .bp-container { width: 100%; overflow-x: auto; }
+}
+
+
+.bp-cell, .bp-stub-overlay {
+  background-color: #333333; /* Cover only the text areas */
+}
+
+
+.bp-cell, .bp-stub-overlay {
+  background-color: #333333;
+  padding: 8px 12px !important;
+  margin: -8px -12px !important;
+  position: relative;
+  z-index: 2;
+}
