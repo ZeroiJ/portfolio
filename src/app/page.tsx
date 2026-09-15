@@ -2,7 +2,6 @@ import Cursor from "@/components/Cursor";
 import Noise from "@/components/Noise";
 import Clock from "@/components/Clock";
 import ScrollReveal from "@/components/ScrollReveal";
-import Marquee from "@/components/Marquee";
 import Guestbook from "@/components/Guestbook";
 
 const PROJECTS = [
@@ -52,6 +51,13 @@ const SKILLS = [
   { label: "Infra", items: "Docker · Git · Linux" },
 ];
 
+const EXPERIENCE = [
+  {
+    role: "AI Data Analyst",
+    org: "InAmigos Foundation (IAF) · Jul 2026 — Aug 2026",
+  },
+];
+
 const EDUCATION = [
   {
     degree: "BTech in Data Science",
@@ -85,9 +91,6 @@ export default function Home() {
             <Clock />
           </div>
         </header>
-
-        {/* Marquee */}
-        <Marquee />
 
         {/* About */}
         <ScrollReveal>
@@ -130,6 +133,28 @@ export default function Home() {
                 >
                   {p.linkText}
                 </a>
+              </div>
+            ))}
+          </section>
+        </ScrollReveal>
+
+        {/* Experience */}
+        <ScrollReveal>
+          <section className="section">
+            {EXPERIENCE.map((e, i) => (
+              <div
+                key={e.role}
+                className={`flex gap-3.5 py-4 border-b border-white/20 ${
+                  i === 0 ? "border-t" : ""
+                }`}
+              >
+                <div className="edu-dot" />
+                <div>
+                  <div className="font-semibold text-sm">{e.role}</div>
+                  <div className="text-[13px] opacity-50 mt-0.5">
+                    {e.org}
+                  </div>
+                </div>
               </div>
             ))}
           </section>
