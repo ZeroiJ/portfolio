@@ -49,7 +49,7 @@ export default function Guestbook() {
     try {
       const res = await fetch(API, { headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error(String(res.status));
-      const data = await res.json();
+      const data = (await res.json()) as { entries?: StampEntry[] };
       setEntries(Array.isArray(data.entries) ? data.entries : []);
       setOffline(false);
     } catch {
@@ -128,7 +128,10 @@ export default function Guestbook() {
         headers: { "content-type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ name: trimmed, pixels }),
       });
-      const data = await res.json().catch(() => ({}));
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        ok?: boolean;
+      };
       if (!res.ok) {
         showToast(typeof data.error === "string" ? data.error : "Could not stamp");
         return;

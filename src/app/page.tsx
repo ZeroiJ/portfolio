@@ -1,6 +1,5 @@
 import Cursor from "@/components/Cursor";
 import Noise from "@/components/Noise";
-import GradientBg from "@/components/GradientBg";
 import Clock from "@/components/Clock";
 import ScrollReveal from "@/components/ScrollReveal";
 import Marquee from "@/components/Marquee";
@@ -71,7 +70,6 @@ export default function Home() {
     <>
       <Cursor />
       <Noise />
-      <GradientBg />
 
       <div className="page page-in">
         {/* Header */}

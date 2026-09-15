@@ -56,7 +56,9 @@ strong {
   flex-direction: column;
   width: 100%;
   max-width: 640px;
-  margin: 0 auto;
+  /* Left-aligned column on desktop (George Wood style) — the stamp wall
+     and guestbook editor sit on the left side of the screen. */
+  margin: 0;
   padding: 0 16px;
   z-index: 10;
 }
