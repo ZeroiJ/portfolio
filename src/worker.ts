@@ -28,6 +28,9 @@ function json(data: unknown, status = 200, headers: Record<string, string> = {})
     headers: {
       'content-type': 'application/json; charset=utf-8',
       'cache-control': 'no-store',
+      'access-control-allow-origin': '*',
+      'access-control-allow-methods': 'GET, POST, OPTIONS',
+      'access-control-allow-headers': 'content-type, accept',
       ...headers
     }
   });
@@ -220,6 +223,19 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const pathname = normalizePath(url.pathname);
+
+    // CORS preflight for API routes
+    if (request.method === 'OPTIONS' && pathname.startsWith('/api/')) {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          'access-control-allow-origin': '*',
+          'access-control-allow-methods': 'GET, POST, OPTIONS',
+          'access-control-allow-headers': 'content-type, accept',
+          'access-control-max-age': '86400'
+        }
+      });
+    }
 
     const api = await handleApi(request, env, pathname);
     if (api) return api;
