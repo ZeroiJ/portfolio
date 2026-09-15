@@ -110,6 +110,42 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
+        {/* Education */}
+        <ScrollReveal>
+          <section className="section">
+            {EDUCATION.map((e, i) => (
+              <div
+                key={e.degree}
+                className={`flex gap-3.5 py-4 border-b border-white/20 ${
+                  i === 0 ? "border-t" : ""
+                }`}
+              >
+                <div className="edu-dot" />
+                <div>
+                  <div className="font-semibold text-sm">{e.degree}</div>
+                  <div className="text-[13px] opacity-50 mt-0.5">
+                    {e.school}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </section>
+        </ScrollReveal>
+
+        {/* Skills */}
+        <ScrollReveal>
+          <section className="section">
+            <div className="grid gap-3">
+              {SKILLS.map((s) => (
+                <div key={s.label} className="flex items-baseline gap-4 text-[13px]">
+                  <span className="skills-label">{s.label}</span>
+                  <span className="skills-items">{s.items}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        </ScrollReveal>
+
         {/* Projects */}
         <ScrollReveal>
           <section className="section">
@@ -153,42 +189,6 @@ export default function Home() {
                   <div className="font-semibold text-sm">{e.role}</div>
                   <div className="text-[13px] opacity-50 mt-0.5">
                     {e.org}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </section>
-        </ScrollReveal>
-
-        {/* Skills */}
-        <ScrollReveal>
-          <section className="section">
-            <div className="grid gap-3">
-              {SKILLS.map((s) => (
-                <div key={s.label} className="flex items-baseline gap-4 text-[13px]">
-                  <span className="skills-label">{s.label}</span>
-                  <span className="skills-items">{s.items}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
-
-        {/* Education */}
-        <ScrollReveal>
-          <section className="section">
-            {EDUCATION.map((e, i) => (
-              <div
-                key={e.degree}
-                className={`flex gap-3.5 py-4 border-b border-white/20 ${
-                  i === 0 ? "border-t" : ""
-                }`}
-              >
-                <div className="edu-dot" />
-                <div>
-                  <div className="font-semibold text-sm">{e.degree}</div>
-                  <div className="text-[13px] opacity-50 mt-0.5">
-                    {e.school}
                   </div>
                 </div>
               </div>
