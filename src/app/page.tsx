@@ -114,7 +114,8 @@ export default function Home() {
             {EDUCATION.map((e, i) => (
               <div
                 key={e.degree}
-                className={`flex gap-3.5 py-5 ${i > 0 ? "mt-4" : ""}`}
+                className="flex gap-3.5 py-5"
+                style={i > 0 ? { marginTop: "1.5rem" } : undefined}
               >
                 <div className="edu-dot" />
                 <div>
