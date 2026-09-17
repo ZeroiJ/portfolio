@@ -46,7 +46,7 @@ export default function Cursor() {
     };
 
     const targets = document.querySelectorAll(
-      "a, button, .project-row, .pill, .open-card"
+      "a, button, .project-row, .pill"
     );
     targets.forEach(addHover);
 

@@ -69,8 +69,6 @@ const EDUCATION = [
   },
 ];
 
-const TAGS = ["Internships", "Data", "ML", "RL", "Remote OK"];
-
 export default function Home() {
   return (
     <>
@@ -113,13 +111,8 @@ export default function Home() {
         {/* Education */}
         <ScrollReveal>
           <section className="section">
-            {EDUCATION.map((e, i) => (
-              <div
-                key={e.degree}
-                className={`flex gap-3.5 py-4 border-b border-white/20 ${
-                  i === 0 ? "border-t" : ""
-                }`}
-              >
+            {EDUCATION.map((e) => (
+              <div key={e.degree} className="flex gap-3.5 py-5">
                 <div className="edu-dot" />
                 <div>
                   <div className="font-semibold text-sm">{e.degree}</div>
@@ -177,13 +170,8 @@ export default function Home() {
         {/* Experience */}
         <ScrollReveal>
           <section className="section">
-            {EXPERIENCE.map((e, i) => (
-              <div
-                key={e.role}
-                className={`flex gap-3.5 py-4 border-b border-white/20 ${
-                  i === 0 ? "border-t" : ""
-                }`}
-              >
+            {EXPERIENCE.map((e) => (
+              <div key={e.role} className="flex gap-3.5 py-5">
                 <div className="edu-dot" />
                 <div>
                   <div className="font-semibold text-sm">{e.role}</div>
@@ -193,30 +181,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </section>
-        </ScrollReveal>
-
-        {/* Open to work */}
-        <ScrollReveal>
-          <section className="section">
-            <div className="open-card">
-              <div className="inline-flex items-center gap-1.5 font-semibold text-[13px] mb-2.5">
-                <span className="open-dot" />
-                Actively seeking my first formal role
-              </div>
-              <p className="text-[13px] leading-relaxed opacity-70 mb-3.5">
-                Seeking internships and project collaborations in data science,
-                analytics, and data engineering — teams that care about
-                measurable impact, clean pipelines, and clear communication.
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {TAGS.map((t) => (
-                  <span key={t} className="pill pill-accent">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
           </section>
         </ScrollReveal>
 
@@ -230,7 +194,7 @@ export default function Home() {
           <section className="section">
             <div className="flex gap-10 border-t border-white/20">
               <a
-                href="mailto:sujalbirwadkar@gmail.com"
+                href="mailto:sujal.m.birwadkar@gmail.com"
                 className="contact-link"
               >
                 Email ↗

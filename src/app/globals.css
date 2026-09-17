@@ -124,12 +124,6 @@ strong {
   transition: border-color 0.2s, background 0.2s;
 }
 
-.pill-accent {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.1);
-}
-
 /* ─── SKILLS ─── */
 .skills-label {
   font-family: var(--font-geist-mono), 'SF Mono', 'Fira Code', monospace;
@@ -154,32 +148,6 @@ strong {
   background: var(--text);
   flex-shrink: 0;
   margin-top: 6px;
-}
-
-/* ─── OPEN TO WORK ─── */
-.open-card {
-  border: 1px solid var(--border);
-  border-radius: 0;
-  padding: 20px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.open-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
-}
-
-.open-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #22c55e;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
 }
 
 /* ─── CONTACT LINKS ─── */
