@@ -111,8 +111,11 @@ export default function Home() {
         {/* Education */}
         <ScrollReveal>
           <section className="section">
-            {EDUCATION.map((e) => (
-              <div key={e.degree} className="flex gap-3.5 py-5">
+            {EDUCATION.map((e, i) => (
+              <div
+                key={e.degree}
+                className={`flex gap-3.5 py-5 ${i > 0 ? "mt-4" : ""}`}
+              >
                 <div className="edu-dot" />
                 <div>
                   <div className="font-semibold text-sm">{e.degree}</div>
