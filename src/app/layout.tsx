@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Sujal Birwadkar — Portfolio",
   description:
     "Data Engineer, Data Analyst & Vibe Coder — Sujal Birwadkar",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
