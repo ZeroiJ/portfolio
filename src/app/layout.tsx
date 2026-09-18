@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   description:
     "Data Engineer, Data Analyst & Vibe Coder — Sujal Birwadkar",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+      { url: "/legacy-favicon.ico", type: "image/x-icon" },
+    ],
     apple: "/apple-touch-icon.png",
   },
 };
