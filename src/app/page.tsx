@@ -3,6 +3,7 @@ import Noise from "@/components/Noise";
 import Clock from "@/components/Clock";
 import ScrollReveal from "@/components/ScrollReveal";
 import Guestbook from "@/components/Guestbook";
+import AsciiAstronaut from "@/components/AsciiAstronaut";
 
 const PROJECTS = [
   {
@@ -74,6 +75,7 @@ export default function Home() {
     <>
       <Cursor />
       <Noise />
+      <AsciiAstronaut />
 
       <div className="page page-in">
         {/* Header */}
