@@ -3,7 +3,8 @@ import Noise from "@/components/Noise";
 import Clock from "@/components/Clock";
 import ScrollReveal from "@/components/ScrollReveal";
 import Guestbook from "@/components/Guestbook";
-import AsciiAstronaut from "@/components/AsciiAstronaut";
+import HelmAscii from "@/components/HelmAscii";
+import FirstWave from "@/components/FirstWave";
 
 const PROJECTS = [
   {
@@ -75,7 +76,7 @@ export default function Home() {
     <>
       <Cursor />
       <Noise />
-      <AsciiAstronaut />
+      <HelmAscii />
 
       <div className="page page-in">
         {/* Header */}
@@ -225,21 +226,9 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
-        {/* Footer */}
-        <footer className="footer">
-          <span className="font-semibold py-4 border-r border-white/20 pr-4">
-            2026
-          </span>
-          <a
-            href="https://github.com/ZeroiJ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            @ZeroiJ
-          </a>
-        </footer>
       </div>
+
+      <FirstWave />
     </>
   );
 }
