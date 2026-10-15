@@ -264,17 +264,14 @@ strong {
 
 /* ─── EARTH FINALE (full-bleed closing image) ─── */
 .earth-finale {
-  margin: 32px 0 0;
+  margin: 48px 0 0;
   width: 100%;
-  height: 40vh;
-  min-height: 260px;
   overflow: hidden;
 }
 
 .earth-finale-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   -webkit-mask-image: linear-gradient(
     to bottom,
