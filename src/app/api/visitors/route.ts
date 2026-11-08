@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { D1Database } from "@cloudflare/workers-types";
 import { getDb, clientIpHash, VISITOR_SERVER_COOLDOWN_SEC } from "@/lib/d1";
 
 async function getVisitorCount(db: D1Database): Promise<number> {

@@ -1,4 +1,7 @@
 export default function Noise() {
+  // Reverted to the original SVG turbulence look by request.
+  // (The feTurbulence filter is GPU-expensive; if perf matters later,
+  // swap back to a pre-rendered noise.png tile.)
   return (
     <svg
       className="fixed inset-0 w-full h-full pointer-events-none z-50"

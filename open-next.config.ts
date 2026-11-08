@@ -7,7 +7,9 @@ import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 // CLI. Without this, the CLI's "Building Next.js app" step would re-run
 // `npm run build` again → infinite recursion (the recurring banner loop seen
 // in Cloudflare deploy logs). Point the inner step directly at `next build`.
-export default {
+const config = {
   ...defineCloudflareConfig(),
   buildCommand: "next build",
 };
+
+export default config;

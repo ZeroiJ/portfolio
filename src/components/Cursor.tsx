@@ -8,6 +8,10 @@ export default function Cursor() {
   useEffect(() => {
     if ("ontouchstart" in window) return;
 
+    // Hide the native pointer only while the custom dot is actually running,
+    // so JS-disabled / pre-hydration users still have a visible cursor.
+    document.documentElement.classList.add("cursor-enabled");
+
     const dot = dotRef.current;
     if (!dot) return;
 
@@ -64,6 +68,7 @@ export default function Cursor() {
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       observer.disconnect();
+      document.documentElement.classList.remove("cursor-enabled");
     };
   }, []);
 

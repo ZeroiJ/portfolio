@@ -37,8 +37,6 @@ export default function Guestbook() {
   const [toast, setToast] = useState<string | null>(null);
 
   const paintingRef = useRef(false);
-  const pixelsRef = useRef(pixels);
-  pixelsRef.current = pixels;
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -60,10 +58,16 @@ export default function Guestbook() {
   }, []);
 
   useEffect(() => {
+    // Initial fetch: data loading on mount is the intended pattern here;
+    // setState only happens after the awaited response resolves.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchEntries();
+    // Stop hammering the API while it's unreachable; the effect re-runs
+    // (and polling resumes) as soon as a request succeeds again.
+    if (offline) return;
     const id = window.setInterval(fetchEntries, 30000);
     return () => window.clearInterval(id);
-  }, [fetchEntries]);
+  }, [fetchEntries, offline]);
 
   /* ─── drawing ─── */
   const paintCell = useCallback((idx: number) => {
@@ -169,6 +173,15 @@ export default function Guestbook() {
               ? "Loading stamps…"
               : ""}
           </p>
+          {offline && (
+            <button
+              type="button"
+              className="gb-btn gb-retry"
+              onClick={fetchEntries}
+            >
+              Retry ↗
+            </button>
+          )}
           {entries.length === 0 && !offline && !loading && (
             <div className="gb-empty">No stamps yet — be the first.</div>
           )}
@@ -196,8 +209,8 @@ export default function Guestbook() {
           </div>
         </div>
 
-        {/* editor */}
-        <div className="gb-editor">
+        {/* editor (hidden while the guestbook backend is unreachable) */}
+        <div className="gb-editor" hidden={offline}>
           <div className="gb-mono-label gb-editor-title">LEAVE A STAMP</div>
           <div className="gb-workspace">
             <div className="gb-canvas-col">
@@ -222,14 +235,14 @@ export default function Guestbook() {
                   />
                 ))}
               </div>
-              <div className="palette" role="listbox" aria-label="Ink colors">
+              <div className="palette" role="group" aria-label="Ink colors">
                 {PALETTE_HEX.map((hex, i) => (
                   <button
                     key={hex}
                     type="button"
                     className={`palette-swatch${i === selectedColor ? " is-selected" : ""}`}
                     aria-label={PALETTE_LABELS[i]}
-                    aria-selected={i === selectedColor}
+                    aria-pressed={i === selectedColor}
                     style={{ background: hex }}
                     onClick={() => setSelectedColor(i)}
                   />
@@ -241,6 +254,7 @@ export default function Guestbook() {
                 className="gb-input"
                 type="text"
                 placeholder="Name"
+                aria-label="Your name"
                 maxLength={32}
                 autoComplete="nickname"
                 value={name}

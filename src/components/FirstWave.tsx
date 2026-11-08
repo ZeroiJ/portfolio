@@ -5,7 +5,10 @@ export default function FirstWave() {
         className="earth-finale-img"
         src="/first-wave.jpg"
         alt="First Wave emblem — Earth's aurora limb glowing over the night side"
-        loading="eager"
+        loading="lazy"
+        decoding="async"
+        width={1958}
+        height={995}
       />
     </figure>
   );

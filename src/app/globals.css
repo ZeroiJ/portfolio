@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 /* ─── THEME (George Wood exact) ─── */
 :root {
   --bg: #0038ff;
@@ -20,7 +22,6 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
 body {
@@ -32,11 +33,6 @@ body {
   letter-spacing: -0.02em;
   min-height: 100vh;
   overflow-x: hidden;
-  cursor: none;
-}
-
-a, button, input, textarea, select {
-  cursor: none;
 }
 
 a {
@@ -239,7 +235,29 @@ strong {
   }
 }
 
-/* ─── CUSTOM CURSOR ─── */
+/* ─── NOISE OVERLAY (pre-rendered tile, replaces SVG feTurbulence) ─── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.2;
+  background-image: url("/noise.png");
+  background-repeat: repeat;
+}
+
+/* ─── CUSTOM CURSOR ───
+   pointer is hidden only once JS confirms the custom cursor is running. */
+html.cursor-enabled,
+html.cursor-enabled body,
+html.cursor-enabled a,
+html.cursor-enabled button,
+html.cursor-enabled input,
+html.cursor-enabled textarea,
+html.cursor-enabled select {
+  cursor: none;
+}
+
 .cursor-dot {
   position: fixed;
   width: 8px;
@@ -289,53 +307,43 @@ strong {
   );
 }
 
-/* ─── ASCII SIDE ART (desktop void filler) ─── */
-.ascii-side {
-  display: none;
-}
-
-@media (min-width: 1100px) {
-  .ascii-side {
-    display: flex;
-    position: fixed;
-    left: 700px;
-    right: 24px;
-    top: 0;
-    bottom: 0;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    z-index: 1;
-  }
-}
-
-.ascii-art {
-  font-family: var(--font-geist-mono), 'SF Mono', 'Fira Code', monospace;
-  font-size: clamp(6px, 0.52vw, 10px);
-  line-height: 1.2;
-  white-space: pre;
-  margin: 0;
-  opacity: 0.55;
-  user-select: none;
-}
-
 /* ─── RESPONSIVE ─── */
 @media (max-width: 600px) {
   body {
     font-size: 13px;
-    cursor: auto;
-  }
-
-  html {
-    cursor: auto;
-  }
-
-  a, button, input, textarea, select {
-    cursor: auto;
   }
 
   .cursor-dot {
     display: none;
+  }
+
+  html.cursor-enabled,
+  html.cursor-enabled body,
+  html.cursor-enabled a,
+  html.cursor-enabled button,
+  html.cursor-enabled input,
+  html.cursor-enabled textarea,
+  html.cursor-enabled select {
+    cursor: auto;
+  }
+
+  .pixel-editor {
+    grid-template-columns: repeat(10, 26px);
+    grid-template-rows: repeat(10, 26px);
+  }
+
+  .pixel-cell {
+    width: 26px;
+    height: 26px;
+  }
+
+  .palette-swatch {
+    width: 26px;
+    height: 26px;
+  }
+
+  .gb-input {
+    max-width: none;
   }
 
   .header {
@@ -346,6 +354,43 @@ strong {
 
   .gb-workspace {
     flex-direction: column;
+  }
+}
+
+/* ─── FOCUS VISIBILITY (custom cursor erases the pointer — keyboard users
+   need an explicit outline on every interactive element) ─── */
+.project-link:focus-visible,
+.contact-link:focus-visible,
+.gb-btn:focus-visible,
+.pill:focus-visible,
+.palette-swatch:focus-visible,
+.pixel-cell:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .page-in {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .project-row {
+    transition: background 0.2s;
+  }
+
+  .project-row:hover {
+    padding-left: 0;
+  }
+
+  .cursor-dot {
+    transition: opacity 0.3s;
   }
 }
 
@@ -388,6 +433,23 @@ strong {
 .gb-status {
   margin-bottom: 12px;
   min-height: 14px;
+}
+
+.gb-retry {
+  margin-bottom: 16px;
+}
+
+/* Visually-hidden but exposed to screen readers (section headings). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .gb-empty {
@@ -614,5 +676,46 @@ strong {
   to {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+@theme inline {
+  --color-dither-ink: var(--dither-ink);
+  --color-dither-paper: var(--dither-paper);
+  --color-dither-blue: var(--dither-color-blue);
+  --color-dither-purple: var(--dither-color-purple);
+  --color-dither-green: var(--dither-color-green);
+  --color-dither-pink: var(--dither-color-pink);
+  --color-dither-orange: var(--dither-color-orange);
+  --color-dither-red: var(--dither-color-red);
+  --color-dither-grey: var(--dither-color-grey);
+}
+
+@layer base {
+  :root {
+    --dither-ink: var(--primary);
+    --dither-paper: var(--background);
+    --dither-cell: 3px;
+    --dither-color-blue: oklch(0.56 0.18 248);
+    --dither-color-purple: oklch(0.53 0.22 302);
+    --dither-color-green: oklch(0.58 0.15 152);
+    --dither-color-pink: oklch(0.58 0.21 355);
+    --dither-color-orange: oklch(0.64 0.17 52);
+    --dither-color-red: oklch(0.55 0.21 27);
+    --dither-color-grey: oklch(0.55 0 0);
+    --dither-bloom: 0.6;
+  }
+  .dark {
+    --dither-ink: var(--primary);
+    --dither-paper: var(--background);
+    --dither-cell: 3px;
+    --dither-color-blue: oklch(0.72 0.14 240);
+    --dither-color-purple: oklch(0.7 0.18 304);
+    --dither-color-green: oklch(0.78 0.17 152);
+    --dither-color-pink: oklch(0.74 0.17 354);
+    --dither-color-orange: oklch(0.79 0.15 62);
+    --dither-color-red: oklch(0.68 0.2 25);
+    --dither-color-grey: oklch(0.66 0 0);
+    --dither-bloom: 1;
   }
 }
