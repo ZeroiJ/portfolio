@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description:
       "Data pipelines, CLI tools and AI/ML experiments at the edge of reliable systems.",
     images: [
-      { url: "https://portfolio.zeroij.workers.dev/image_2.png", width: 736, height: 313, alt: "Sujal Birwadkar — Data Engineer & Vibe Coder" },
+      { url: "/og.png", width: 1200, height: 630, alt: "Sujal Birwadkar — Data Engineer & Vibe Coder" },
     ],
   },
   twitter: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Sujal Birwadkar — Data Engineer & Vibe Coder",
     description:
       "Data pipelines, CLI tools and AI/ML experiments at the edge of reliable systems.",
-    images: ["https://portfolio.zeroij.workers.dev/image_2.png"],
+    images: ["/og.png"],
   },
   icons: {
     icon: [

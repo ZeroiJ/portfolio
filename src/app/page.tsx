@@ -92,8 +92,7 @@ export default function Home() {
     <>
       <Cursor />
       <Noise />
-      {/* Full-width hero banner */}
-      <div className="hero-banner" role="img" aria-label="Portfolio hero banner" />
+      {/* Desktop void is intentionally empty blue space. */}
 
       <div className="page page-in">
         {/* Header */}
